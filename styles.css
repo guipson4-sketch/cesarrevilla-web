@@ -266,3 +266,6 @@ article p{max-width:68ch}
   .table-wrap td:first-child{font-weight:600;color:var(--navy)}
   .table-wrap td+td{color:var(--mute);font-size:.95rem}
 }
+/* LCP: el título y el texto principal se ven desde el primer cuadro; solo se deslizan */
+@keyframes slide{from{transform:translateY(18px)}to{transform:none}}
+.hero h1.in,.hero .lead.in{opacity:1;animation:slide .8s var(--ease) both}

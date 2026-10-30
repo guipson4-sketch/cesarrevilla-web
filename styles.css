@@ -269,3 +269,57 @@ article p{max-width:68ch}
 /* LCP: el título y el texto principal se ven desde el primer cuadro; solo se deslizan */
 @keyframes slide{from{transform:translateY(18px)}to{transform:none}}
 .hero h1.in,.hero .lead.in{opacity:1;animation:slide .8s var(--ease) both}
+
+/* ===== Gráficos y cifras ===== */
+.impact{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-bottom:22px}
+.imp{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:24px;border-radius:var(--r);background:linear-gradient(150deg,var(--navy),var(--navy3));color:#dbe6f3;text-decoration:none;box-shadow:var(--shadow);transition:transform .35s var(--ease),box-shadow .35s}
+.imp::after{content:"";position:absolute;width:180px;height:180px;right:-60px;top:-70px;border-radius:50%;background:radial-gradient(circle,rgba(242,181,68,.35),transparent 70%)}
+.imp:hover{transform:translateY(-6px);box-shadow:var(--shadow-h);color:#fff}
+.imp strong{font:700 clamp(2rem,4vw,2.6rem)/1 var(--serif);color:#fff;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.imp > span{font-size:.95rem;line-height:1.45}
+.imp strong span{font:inherit;color:inherit}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.chart-fig{margin:0 0 20px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.charts .chart-fig{margin:0}
+.chart-fig figcaption{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;margin-bottom:16px}
+.chart-fig figcaption h3{margin:0;font:700 1.1rem/1.3 var(--sans);color:var(--navy)}
+.chart-fig figcaption span{font-size:.82rem;color:var(--mute)}
+.bars{display:grid;gap:12px}
+.bar-row{display:grid;grid-template-columns:minmax(140px,34%) 1fr auto;align-items:center;gap:12px}
+.bar-label{font-size:.92rem;line-height:1.3;color:var(--ink)}
+.bar-label a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--mute)}
+.bar-label a:hover{color:var(--accent-d)}
+.bar-track{position:relative;height:14px;border-radius:999px;background:#eef0f3;overflow:hidden}
+.bar-fill{position:absolute;inset:0 auto 0 0;width:var(--w);border-radius:999px;background:linear-gradient(90deg,var(--navy2),var(--navy3));transition:width 1.2s var(--ease)}
+.bar-row.hi .bar-fill{background:linear-gradient(90deg,var(--accent),var(--gold))}
+.bar-row.hi .bar-label{font-weight:700;color:var(--navy)}
+.bar-val{font:700 .95rem/1 var(--sans);color:var(--navy);font-variant-numeric:tabular-nums;min-width:3.5ch;text-align:right}
+.js .chart-fig:not(.is-in) .bar-fill{width:0}
+.stack{display:flex;height:44px;border-radius:12px;overflow:hidden;background:#eef0f3}
+.seg{display:flex;align-items:center;justify-content:center;width:var(--w);color:#fff;font-size:.9rem;transition:width 1.2s var(--ease)}
+.js .chart-fig:not(.is-in) .seg{width:0}
+.seg.s1,.dot.s1{background:var(--navy2)}
+.seg.s2,.dot.s2{background:var(--accent)}
+.seg.s3,.dot.s3{background:#8a98ab}
+.legend{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;padding:0;margin:14px 0 0;font-size:.9rem}
+.dot{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.chart-note{margin:16px 0 0;font-size:.88rem;color:var(--mute);line-height:1.5}
+.chart-src{display:block;margin-top:4px;font-size:.82rem}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
+.tile{display:flex;flex-direction:column;gap:4px;padding:18px;border-radius:14px;background:#fff;border:1px solid var(--line);text-decoration:none;color:var(--mute);box-shadow:var(--shadow);transition:transform .3s var(--ease),background .3s}
+.tile b{font:700 2rem/1 var(--serif);color:#b9c2ce}
+.tile span{font-weight:600}
+.tile.on{background:linear-gradient(150deg,#fff,#fdf1e9);border-color:#f2c9ad;color:var(--navy)}
+.tile.on b{color:var(--accent)}
+.tile:hover{transform:translateY(-4px)}
+@media(max-width:860px){.charts{grid-template-columns:1fr}.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .bar-row{grid-template-columns:1fr auto;gap:6px 10px}
+  .bar-label{grid-column:1/-1}
+  .chart-fig{padding:18px}
+  .impact{grid-template-columns:1fr 1fr;gap:12px}
+  .imp{padding:16px}
+  .imp strong{font-size:1.6rem}
+  .imp > span{font-size:.85rem}
+}
+@media(max-width:380px){.impact{grid-template-columns:1fr}}

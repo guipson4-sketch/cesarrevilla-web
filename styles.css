@@ -323,3 +323,25 @@ article p{max-width:68ch}
   .imp > span{font-size:.85rem}
 }
 @media(max-width:380px){.impact{grid-template-columns:1fr}}
+
+/* ===== Medios, canales y prensa ===== */
+.press-list{list-style:none;margin:0 0 34px;padding:0;display:grid;gap:12px}
+.press-list .year{margin:14px 0 2px}
+.press-list .year span{font:700 1.4rem/1 var(--serif);color:var(--accent)}
+.press{display:grid;gap:4px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);transition:transform .3s var(--ease),box-shadow .3s}
+.press:hover{transform:translateX(4px);box-shadow:var(--shadow-h)}
+.press-src{font:700 .75rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-d)}
+.press-title{font-weight:600;color:var(--navy);text-decoration:none;line-height:1.4}
+.press-title:hover{color:var(--accent-d);text-decoration:underline}
+.press-meta{font-size:.85rem;color:var(--mute)}
+.chips span{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:.88rem;font-weight:600;color:var(--navy)}
+.channels{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:8px 0 26px}
+.channel{display:flex;flex-direction:column;gap:4px;padding:20px;border-radius:var(--r);background:#fff;border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+.channel:hover{transform:translateY(-4px);box-shadow:var(--shadow-h);border-color:var(--accent)}
+.channel b{font:700 1.05rem/1.2 var(--sans);color:var(--navy)}
+.channel span{color:var(--accent-d);font-weight:600;word-break:break-word}
+.channel small{color:var(--mute);font-size:.85rem}
+.outlets{list-style:none;display:flex;flex-wrap:wrap;gap:12px 28px;padding:0;margin:6px 0 28px}
+.outlets li{font:700 clamp(1.15rem,2.4vw,1.6rem)/1.2 var(--serif);color:#fff;opacity:.9;letter-spacing:-.01em}
+.outlets li:nth-child(even){color:#f6c9a9}
+section.dark h2.kicker::before{color:var(--gold)}

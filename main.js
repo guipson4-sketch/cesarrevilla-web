@@ -8,7 +8,7 @@
   var bar = d.querySelector(".progress");
   var feeds = d.querySelectorAll(".feed");
   var targets = Array.prototype.slice.call(
-    d.querySelectorAll(".card, .feed li, .prov li, details.faq, .facts, .gallery figure, section.block h2, .stat, .table-wrap, .chart-fig, .imp, .tile"));
+    d.querySelectorAll(".card, .feed li, .prov li, details.faq, .facts, .gallery figure, section.block h2, .stat, .table-wrap, .chart-fig, .imp, .tile, .press, .channel"));
 
   function countUp(el) {
     var end = parseFloat(el.getAttribute("data-count"));

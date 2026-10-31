@@ -75,3 +75,20 @@
   // Red de seguridad: si algo quedara sin mostrarse, aparece igual
   w.addEventListener("load", function () { setTimeout(sweep, 300); });
 })();
+
+// Sellos de ley publicada (por si la página se generó antes del sello)
+(function (d) {
+  var L = {"universidad-nacional-de-huancabamba-ley-32162": "Ley 32162", "retiro-afp-2024-ley-32002": "Ley 32002",
+    "retiro-cts-2024-comision-economia": "Ley 32027", "mypes-detracciones-ley-por-insistencia-2023": "Ley publicada",
+    "represa-tapa-de-cuy-sechura": "Ley 31413"};
+  function mk(t) { var s = d.createElement("span"); s.className = "stamp"; s.textContent = "\u2713 " + t; return s; }
+  d.querySelectorAll(".card").forEach(function (c) {
+    if (c.querySelector(".stamp")) return;
+    var a = c.querySelector("h3 a"); if (!a) return;
+    var k = (a.getAttribute("href") || "").split("/").pop().replace(".html", "");
+    if (L[k]) c.insertBefore(mk(L[k]), c.firstChild);
+  });
+  var k = location.pathname.split("/").pop().replace(".html", ""), meta = d.querySelector("p.meta");
+  if (L[k] && meta && !meta.querySelector(".stamp")) meta.insertBefore(mk(L[k]), meta.firstChild);
+  var tc = d.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute("content", "#0F2A44");
+})(document);

@@ -428,5 +428,6 @@ section.alt .imp,section.alt .chart-fig,section.alt .tile{background:#fff}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   .js .reveal{opacity:1;transform:none}
-  .ticker .track{animation:none;white-space:normal;flex-wrap:wrap}
+  .ticker .track{animation:none;white-space:normal;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 0;padding:16px 20px;line-height:1.3}
+  .ticker .track a:nth-child(n+9){display:none}
 }

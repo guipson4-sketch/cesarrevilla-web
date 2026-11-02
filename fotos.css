@@ -1,0 +1,5 @@
+/* v4 · fotos */
+.gallery figure{position:relative}
+.gallery figure{background:#fff;border:1px solid var(--line,#e5e1d8)}
+.gallery figcaption{padding:12px 14px 14px;color:var(--navy);font:600 .84rem/1.35 var(--sans);border-top:3px solid var(--orange)}
+.retrato{object-position:center top;box-shadow:0 24px 60px -20px rgba(0,0,0,.55);border:1px solid rgba(232,113,26,.5)}

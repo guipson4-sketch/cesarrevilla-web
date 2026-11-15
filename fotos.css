@@ -3,3 +3,22 @@
 .gallery figure{background:#fff;border:1px solid var(--line,#e5e1d8)}
 .gallery figcaption{padding:12px 14px 14px;color:var(--navy);font:600 .84rem/1.35 var(--sans);border-top:3px solid var(--orange)}
 .retrato{object-position:center top;box-shadow:0 24px 60px -20px rgba(0,0,0,.55);border:1px solid rgba(232,113,26,.5)}
+
+/* ---- Pie de página v2 ---- */
+.site-foot{padding:64px 0 28px}
+.site-foot .cols{grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:36px}
+.site-foot .cols>div>strong{display:block;font:600 .74rem/1 var(--mono,'JetBrains Mono',monospace);letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.site-foot .cols>div.foot-brand>strong{letter-spacing:0;text-transform:none;margin-bottom:14px}
+.site-foot .foot-brand p{margin:0 0 16px;line-height:1.6}
+.site-foot ul{margin-top:0}
+.site-foot li{margin-bottom:9px;font-size:.92rem}
+.site-foot .foot-social{display:flex;flex-wrap:wrap;gap:8px}
+.site-foot .foot-social li{margin:0}
+.site-foot .foot-social a{display:inline-block;padding:7px 14px;border:1px solid rgba(255,255,255,.28);border-radius:999px;font-size:.84rem;transition:background .2s,border-color .2s}
+.site-foot .foot-social a:hover{background:var(--orange);border-color:var(--orange);color:#fff;text-decoration:none}
+.site-foot .foot-bottom{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.site-foot .foot-bottom .aviso{margin:0;padding:0;border:0;max-width:640px;font-size:.82rem;line-height:1.6}
+.site-foot .foot-legal{margin:0;font-size:.82rem;color:rgba(255,255,255,.7)}
+.site-foot .foot-legal a{color:rgba(255,255,255,.85)}
+@media (max-width:900px){.site-foot .cols{grid-template-columns:1fr 1fr}.site-foot .foot-brand{grid-column:1/-1}}
+@media (max-width:560px){.site-foot .cols{grid-template-columns:1fr}.site-foot .foot-bottom{flex-direction:column}}

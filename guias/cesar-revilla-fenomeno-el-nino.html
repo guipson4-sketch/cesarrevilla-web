@@ -87,5 +87,11 @@
 <p class="foot-legal">© 2026 César Revilla · <a href="../politica-de-privacidad.html">Privacidad</a> · <a href="../canales-oficiales.html">Canales oficiales</a> · <a href="../feed.xml">RSS</a> · <a href="../sitemap.xml">Mapa del sitio</a></p>
 </div>
 </div></footer>
+<script>(function(){if(typeof gtag!=="function")return;var h=location.hostname;
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var u=a.getAttribute("href")||"";
+if(u.indexOf("mailto:")===0){gtag("event","contacto_correo",{link_url:u});return}
+if(/wa[.]me|whatsapp[.]com/.test(u)){gtag("event","contacto_whatsapp",{link_url:u});return}
+if(/^https?:/.test(u)&&a.hostname!==h){gtag("event",a.closest(".fuentes,.src,.facts,article")?"clic_fuente":"clic_salida",{link_url:u,link_domain:a.hostname,page_path:location.pathname})}},true);
+var f=0;window.addEventListener("scroll",function(){if(f)return;var d=document.documentElement;if((window.scrollY+window.innerHeight)/d.scrollHeight>.9){f=1;gtag("event","lectura_completa",{page_path:location.pathname})}},{passive:true})})();</script>
 </body>
 </html>

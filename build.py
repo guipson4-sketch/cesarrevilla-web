@@ -17,6 +17,7 @@ Cómo crecer (lo que hace "real SEO"):
 import html
 import json
 import os
+import re
 
 BASE = "https://cesarrevilla.com"   # dominio comprado en Porkbun
 DRAFT = False                       # True = noindex + avisos visibles
@@ -821,7 +822,7 @@ PERSON = {
     "email": "crevilla@congreso.gob.pe",
     "knowsAbout": ["Economía", "Pensiones (AFP)", "CTS", "Mypes", "Contrataciones del Estado", "Seguridad ciudadana", "Crimen organizado",
                    "Fenómeno El Niño", "Reconstrucción", "Salud pública", "Educación universitaria", "Recursos hídricos", "Piura"],
-    "sameAs": ["https://www.facebook.com/cesarrevillav", "https://www.tiktok.com/@cesarrevillav", "https://www.wikidata.org/wiki/Q108414723",
+    "sameAs": ["https://www.facebook.com/cesarrevillav", "https://www.tiktok.com/@cesarrevillav", "https://www.wikidata.org/wiki/Q108414723", "https://es.wikipedia.org/wiki/C%C3%A9sar_Revilla",
                "https://diputados.congreso.gob.pe/diputado/revilla-villanueva-cesar-manuel/"],
 }
 
@@ -944,7 +945,7 @@ def layout(p):
                    "isPartOf": {"@type": "WebPage", "@id": url + "#pagina", "url": url}, "mentions": [{"@type": "PoliticalParty", "name": "Fuerza Popular"}, {"@type": "Place", "name": "Piura, Perú"}],
                    "citation": [{"@type": "CreativeWork", "name": SRC[k][0], "url": SRC[k][1]} for k in p["keys"]]})
     if p["ld_extra"]:
-        ld.append(p["ld_extra"])
+        ld.extend(p["ld_extra"] if isinstance(p["ld_extra"], list) else [p["ld_extra"]])
     ld_html = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
 
     head_block = ""
@@ -1033,6 +1034,12 @@ def layout(p):
 <p class="foot-legal">© 2026 César Revilla · <a href="{pre}politica-de-privacidad.html">Privacidad</a> · <a href="{pre}canales-oficiales.html">Canales oficiales</a> · <a href="{pre}feed.xml">RSS</a> · <a href="{pre}sitemap.xml">Mapa del sitio</a></p>
 </div>
 </div></footer>
+<script>(function(){{if(typeof gtag!=="function")return;var h=location.hostname;
+document.addEventListener("click",function(e){{var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var u=a.getAttribute("href")||"";
+if(u.indexOf("mailto:")===0){{gtag("event","contacto_correo",{{link_url:u}});return}}
+if(/wa[.]me|whatsapp[.]com/.test(u)){{gtag("event","contacto_whatsapp",{{link_url:u}});return}}
+if(/^https?:/.test(u)&&a.hostname!==h){{gtag("event",a.closest(".fuentes,.src,.facts,article")?"clic_fuente":"clic_salida",{{link_url:u,link_domain:a.hostname,page_path:location.pathname}})}}}},true);
+var f=0;window.addEventListener("scroll",function(){{if(f)return;var d=document.documentElement;if((window.scrollY+window.innerHeight)/d.scrollHeight>.9){{f=1;gtag("event","lectura_completa",{{page_path:location.pathname}})}}}},{{passive:true}})}})();</script>
 </body>
 </html>
 """
@@ -1143,6 +1150,7 @@ for f in FICHAS:
     add(f["path"], f["seo"], f["desc"], article_body(meta, f["resumen"], content, f["keys"], rel, pend(f["pend"]) if f["pend"] else ""),
         h1=f["h1"], crumbs=crumbs, kind="article", date=PUB, keys=f["keys"], in_feed=True)
 
+HOWTO_SLUGS = ["como-pedir-informacion-publica-peru", "como-se-crea-una-ley-en-el-peru"]
 for g in GUIAS:
     meta = f'Guía ciudadana · Publicada el {fdate(g["iso"])}'
     others = [x for x in GUIAS if x is not g and x["slug"] in POLITICA_SLUGS][:3] or [x for x in GUIAS if x is not g][:3]
@@ -1154,6 +1162,16 @@ for g in GUIAS:
             f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in g["faq"])
         faq_ld_g = {"@context": "https://schema.org", "@type": "FAQPage",
                     "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in g["faq"]]}
+    if g["slug"] in HOWTO_SLUGS:
+        _ol = re.search(r'<ol class="clean">(.*?)</ol>', g["html"], re.S)
+        _steps = []
+        for _li in re.findall(r"<li>(.*?)</li>", _ol.group(1), re.S):
+            _t = re.sub(r"<[^>]+>", "", _li).strip()
+            _n = re.match(r"([^.:]{3,60})[.:]\s", _t)
+            _steps.append({"@type": "HowToStep", "name": (_n.group(1) if _n else _t[:60]), "text": _t})
+        _howto = {"@context": "https://schema.org", "@type": "HowTo", "name": g["h1"], "description": g["desc"], "inLanguage": "es-PE",
+                  "step": [dict(st, position=i) for i, st in enumerate(_steps, 1)]}
+        faq_ld_g = [faq_ld_g, _howto] if faq_ld_g else _howto
     add(g["path"], g["seo"], g["desc"],
         article_body(meta, g["resumen"], body_html, g["keys"], rel, pend(g["pend"]) if (g.get("pend") and not g["slug"].startswith("semana")) else ""),
         h1=g["h1"], crumbs=[("Guías", "guias.html"), (g["h1"], g["path"])], kind="article", date=g["iso"], keys=g["keys"], in_feed=True,
@@ -1406,6 +1424,7 @@ for s, (n, d) in PROVS.items():
 add("biografia.html", "Biografía de César Revilla, diputado por Piura",
     "Biografía de César Revilla Villanueva: cirujano dentista, diputado por Piura 2026–2031 y presidente de comisiones del Congreso.",
     f"""<section class="block"><div class="wrap narrow">
+<p class="resumen"><strong>En breve:</strong> César Revilla (Chiclayo, 1987) es cirujano dentista y diputado de la República por Piura (2026–2031), de Fuerza Popular. Fue congresista por Piura (2021–2026) y presidió la Comisión de Economía.</p>
 <h2>Datos clave</h2>
 <dl class="facts">
 <dt>Nombre</dt><dd>César Manuel Revilla Villanueva</dd>
@@ -1430,7 +1449,11 @@ add("biografia.html", "Biografía de César Revilla, diputado por Piura",
 {pend("Contrastar la trayectoria con la hoja de vida en votoinformado.jne.gob.pe y agregar comisiones actuales en la Cámara de Diputados.")}
 </div></section>""",
     h1="Biografía de César Revilla", lead="Cirujano dentista y diputado por Piura. Datos verificables, con su fuente.",
-    crumbs=[("Biografía", "biografia.html")], brand=False)
+    crumbs=[("Biografía", "biografia.html")], brand=False,
+    ld_extra={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": "¿Quién es César Revilla?", "acceptedAnswer": {"@type": "Answer", "text": "César Manuel Revilla Villanueva (Chiclayo, 19 de marzo de 1987) es cirujano dentista y diputado de la República del Perú por Piura para 2026–2031, de Fuerza Popular."}},
+        {"@type": "Question", "name": "¿Qué cargos ha tenido César Revilla?", "acceptedAnswer": {"@type": "Answer", "text": "Fue congresista por Piura (2021–2026), presidente de la Comisión de Economía, Banca, Finanzas e Inteligencia Financiera y presidente de las comisiones de seguimiento a la Reconstrucción y contra el terrorismo y el crimen organizado."}},
+        {"@type": "Question", "name": "¿Cuántos votos obtuvo César Revilla en 2026?", "acceptedAnswer": {"@type": "Answer", "text": "23,816 votos preferenciales, la primera votación de la región Piura."}}]})
 
 # ============ TRANSPARENCIA / PRENSA / CONTACTO ============
 _FICHA = "https://diputados.congreso.gob.pe/diputado/revilla-villanueva-cesar-manuel/"

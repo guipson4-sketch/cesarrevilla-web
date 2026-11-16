@@ -1,0 +1,68 @@
+{{Ficha de político
+| nombre              = César Revilla
+| nombre completo     = César Manuel Revilla Villanueva
+| fecha de nacimiento = {{fecha de inicio|1987|3|19|edad}}
+| lugar de nacimiento = [[Chiclayo]], [[Departamento de Lambayeque|Lambayeque]], [[Perú]]
+| nacionalidad        = Peruana
+| partido             = [[Fuerza Popular]]
+| profesión           = Cirujano dentista
+| cargo               = [[Cámara de Diputados del Perú|Diputado de la República del Perú]]
+| distrito            = [[Departamento de Piura|Piura]]
+| inicio              = 26 de julio de 2026
+| final               =
+| cargo2              = [[Congreso de la República del Perú|Congresista de la República del Perú]]
+| distrito2           = [[Departamento de Piura|Piura]]
+| inicio2             = 26 de julio de 2021
+| final2              = 26 de julio de 2026
+}}
+
+'''César Manuel Revilla Villanueva''' ([[Chiclayo]], 19 de marzo de 1987) es un cirujano dentista y político peruano, miembro de [[Fuerza Popular]]. Fue congresista de la República por [[Departamento de Piura|Piura]] en el periodo 2021-2026 y desde 2026 es diputado por la misma circunscripción para el periodo 2026-2031.<ref name="diputados">{{cita web |título=Revilla Villanueva, César Manuel |url=https://diputados.congreso.gob.pe/diputado/revilla-villanueva-cesar-manuel/ |editorial=Cámara de Diputados del Perú |fechaacceso=30 de octubre de 2026}}</ref><ref name="infomercado">{{cita web |título=César Revilla Villanueva: hoja de vida, biografía, perfil y quién es el congresista |url=https://infomercado.pe/cesar-revilla-villanueva-hoja-de-vida-biografia-perfil-y-quien-es-el-congresista/ |obra=Infomercado |fechaacceso=30 de octubre de 2026}}</ref>
+
+== Biografía ==
+=== Formación ===
+Según la hoja de vida que presentó al [[Jurado Nacional de Elecciones]], es bachiller en Estomatología (2011) y cirujano dentista (2012). Obtuvo una maestría en Gestión de los Servicios de la Salud (2014) y un doctorado en Gestión Pública y Gobernabilidad (2021).<ref name="eclara">{{cita web |título=Cesar Manuel Revilla Villanueva — Fuerza Popular |url=https://www.eleccionclara.pe/candidatos/4492 |obra=Elección Clara |fechaacceso=30 de octubre de 2026}}</ref><ref name="tiempo-diputados">{{cita web |título=¿Quiénes son los nuevos diputados de Piura? |url=https://eltiempo.pe/local/quienes-son-los-nuevos-diputados-de-piura/ |obra=El Tiempo |fechaacceso=30 de octubre de 2026}}</ref>
+
+=== Trayectoria profesional ===
+Trabajó en [[EsSalud]] entre 2015 y 2017. Fue director del Hospital de Sullana (2015-2016), gerente de la Red Asistencial Piura (2016) y director del Centro de Atención Primaria III (2016-2017).<ref name="eclara" /> También fue docente de la [[Universidad Nacional de Piura]].<ref name="eclara" />
+
+== Carrera política ==
+=== Congresista (2021-2026) ===
+En las [[Elecciones generales de Perú de 2021|elecciones generales de 2021]] fue elegido congresista por Piura por Fuerza Popular.<ref name="eclara" />
+
+Presidió la Comisión Especial Multipartidaria de Seguimiento al proceso de Reconstrucción en las zonas afectadas por el Fenómeno del Niño Costero.<ref name="radio-recons">{{cita web |título=Entrevista al congresista César Revilla, presidente de la Comisión de Seguimiento al proceso de la Reconstrucción con Cambios |url=https://comunicaciones.congreso.gob.pe/radio-congreso/entrevista-al-congresista-cesar-revilla-presidente-de-la-comision-de-seguimiento-al-proceso-de-la-reconstruccion-con-cambios |editorial=Congreso de la República del Perú |fechaacceso=30 de octubre de 2026}}</ref>
+
+En julio de 2022, el Pleno aprobó con 112 votos el Proyecto de Ley 2204, de su autoría, que planteaba pasar al personal de salud contratado bajo la modalidad CAS COVID a un contrato CAS regular de forma excepcional.<ref name="cas">{{cita web |título=Congresista César Revilla: la estabilidad para los CAS COVID es una realidad |url=https://piuraempresarial.com/2022/07/02/congresista-cesar-revilla-la-estabilidad-para-los-cas-covid-es-una-realidad/ |obra=Piura Empresarial |fecha=2 de julio de 2022 |fechaacceso=30 de octubre de 2026}}</ref>
+
+El 16 de agosto de 2023 asumió la presidencia de la Comisión de Economía, Banca, Finanzas e Inteligencia Financiera para el periodo anual de sesiones 2023-2024, en reemplazo de Rosangella Barbarán.<ref name="econ">{{cita web |título=Comisión de Economía trabajará por leyes populares y no populistas |url=https://comunicaciones.congreso.gob.pe/noticias/comision-de-economia-trabajara-por-leyes-populares-y-no-populistas/ |editorial=Congreso de la República del Perú |fecha=16 de agosto de 2023 |fechaacceso=30 de octubre de 2026}}</ref><ref name="rpp">{{cita web |título=¿Quién es César Revilla, el nuevo presidente de la Comisión de Economía? |url=https://rpp.pe/economia/negocios/quien-es-cesar-revilla-el-nuevo-presidente-de-la-comision-de-economia-noticia-1500820 |obra=RPP |fecha=17 de agosto de 2023 |fechaacceso=30 de octubre de 2026}}</ref>
+
+En agosto de 2024, la bancada de Fuerza Popular lo eligió primer vocero alterno para el periodo 2024-2025.<ref name="vocero2024">{{cita web |título=Keiko Fujimori informa que bancada Fuerza Popular eligió a Arturo Alegría como vocero para el periodo 2024-2025 |url=https://elcomercio.pe/politica/congreso/keiko-fujimori-informa-que-bancada-fuerza-popular-eligio-a-arturo-alegria-como-vocero-para-el-periodo-2024-2025-congreso-cesar-revilla-jeny-lopez-ultimas-noticia/ |obra=El Comercio |fecha=9 de agosto de 2024 |fechaacceso=30 de octubre de 2026}}</ref> En octubre de 2024 fue elegido presidente de la Comisión Especial de Seguimiento e Implementación de la Autoridad Nacional de Infraestructura.<ref name="ani">{{cita web |título=César Revilla presidirá Comisión Especial de Seguimiento de la Autoridad Nacional de Infraestructura |url=https://caretas.pe/?p=725381 |obra=Caretas |fecha=23 de octubre de 2024 |fechaacceso=30 de octubre de 2026}}</ref>
+
+Es autor del Proyecto de Ley 8018/2023-CR, en el que se sustentó el dictamen que crea la Universidad Nacional de Huancabamba, aprobado por el Pleno el 17 de octubre de 2024 y publicado como Ley 32162.<ref name="huanca1">{{cita web |título=Aprueban dictamen para la creación de la Universidad Nacional de Huancabamba |url=https://comunicaciones.congreso.gob.pe/noticias/aprueban-dictamen-para-la-creacion-de-la-universidad-nacional-de-huancabamba/ |editorial=Congreso de la República del Perú |fecha=17 de octubre de 2024 |fechaacceso=30 de octubre de 2026}}</ref><ref name="huanca2">{{cita web |título=Piura: publican ley para la creación de la Universidad Nacional de Huancabamba |url=https://lahora.pe/local/piura-publican-ley-para-la-creacion-de-la-universidad-nacional-de-huancabamba/ |obra=La Hora |fechaacceso=30 de octubre de 2026}}</ref>
+
+El 27 de marzo de 2025 fue elegido por unanimidad presidente de la Comisión Especial Multipartidaria encargada de la lucha frontal contra el terrorismo y el crimen organizado transnacional.<ref name="crimen">{{cita web |título=Congresista César Revilla dirigirá comisión especial de lucha contra el terrorismo y crimen organizado |url=https://comunicaciones.congreso.gob.pe/?p=388948 |editorial=Congreso de la República del Perú |fecha=27 de marzo de 2025 |fechaacceso=30 de octubre de 2026}}</ref> En agosto de 2025 fue designado portavoz de la bancada de Fuerza Popular para el periodo 2025-2026.<ref name="vocero2025">{{cita web |título=Keiko Fujimori anuncia a representantes de Fuerza Popular para comisiones del Congreso 2025-2026 |url=https://www.infobae.com/peru/2025/08/07/keiko-fujimori-anuncia-a-fuerza-popular-al-mando-de-comisiones-clave-del-congreso-2025-2026-constitucion-economia-agraria-y-produccion/ |obra=Infobae |fecha=7 de agosto de 2025 |fechaacceso=30 de octubre de 2026}}</ref>
+
+=== Diputado (2026-presente) ===
+En las elecciones de 2026 fue elegido diputado por Piura con 23 816 votos preferenciales, la votación más alta de la circunscripción.<ref name="diputados" /><ref name="primicias">{{cita web |título=César Revilla es el candidato más votado de Piura para la cámara de diputados |url=https://primiciaspiura.com/2026/cesar-revilla-es-el-candidato-mas-votado-de-piura-para-la-camara-de-diputados/ |obra=Primicias Piura |fecha=10 de junio de 2026 |fechaacceso=30 de octubre de 2026}}</ref> Recibió su credencial del Jurado Nacional de Elecciones el 26 de junio de 2026.<ref name="acred">{{cita web |título=Acreditan a representantes por Piura para el nuevo Congreso |url=https://eltiempo.pe/local/acreditan-a-representantes-por-piura-para-el-nuevo-congreso/ |obra=El Tiempo |fecha=27 de junio de 2026 |fechaacceso=30 de octubre de 2026}}</ref>
+
+== Investigaciones y cuestionamientos ==
+En noviembre de 2023, su nombre figuró entre los congresistas mencionados en chats de [[Jaime Villanueva]], exasesor de la fiscal de la Nación [[Patricia Benavides]], que el Equipo Especial de Fiscales contra la Corrupción del Poder incluyó en su investigación. El vocero de Fuerza Popular, Eduardo Castillo, sostuvo que reuniones de ese tipo son habituales en el Congreso.<ref name="exitosa">{{cita web |título=Vocero de FP sobre mención de César Revilla en chats de exasesor de Patricia Benavides: «Es una práctica común» |url=https://www.exitosanoticias.pe/politica/vocero-fp-sobre-mencion-cesar-revilla-chats-exasesor-patricia-benavides-una-practica-comun-n114703 |obra=Exitosa |fecha=28 de noviembre de 2023 |fechaacceso=30 de octubre de 2026}}</ref> En abril de 2024 se informó que era uno de los catorce congresistas investigados por el Ministerio Público en ese caso y que el Congreso contrató su defensa legal por S/ 40 710, conforme a la norma que cubre la defensa de funcionarios por actos en ejercicio de su función.<ref name="americatv">{{cita web |título=César Revilla: Congreso pagará más de S/40 mil por defensa legal de parlamentario de Fuerza Popular |url=https://www.americatv.com.pe/noticias/actualidad/cesar-revilla-congreso-pagara-mas-s40-mil-defensa-legal-parlamentario-fuerza-popular-n490758 |obra=América TV |fecha=18 de abril de 2024 |fechaacceso=30 de octubre de 2026}}</ref> Véase también [[Escándalo de corrupción en el Ministerio Público del Perú]].
+
+En agosto de 2025, el diario ''El Tiempo'' informó que había percibido más de S/ 280 000 como docente de la Universidad Nacional de Piura desde 2021, en paralelo a su función parlamentaria. Revilla declaró que dictaba clases los viernes y sábados, cuando no coincidían con sesiones del Congreso.<ref name="unp">{{cita web |título=Congresista César Revilla cobró más de S/ 280 mil como profesor de la UNP |url=https://eltiempo.pe/nacional/congresista-cesar-revilla-cobro-mas-de-s-280-mil-como-profesor-de-la-unp/ |obra=El Tiempo |fecha=14 de agosto de 2025 |fechaacceso=30 de octubre de 2026}}</ref>
+
+== Referencias ==
+{{listaref}}
+
+== Enlaces externos ==
+* [https://diputados.congreso.gob.pe/diputado/revilla-villanueva-cesar-manuel/ Ficha en la Cámara de Diputados del Perú]
+* [https://cesarrevilla.com Sitio web oficial]
+
+{{Control de autoridades}}
+
+{{ORDENAR:Revilla Villanueva, César}}
+[[Categoría:Nacidos en 1987]]
+[[Categoría:Personas de Chiclayo]]
+[[Categoría:Odontólogos de Perú]]
+[[Categoría:Miembros de Fuerza Popular]]
+[[Categoría:Congresistas de Perú 2021-2026]]
+[[Categoría:Congresistas por Piura]]
+[[Categoría:Diputados de Perú 2026-2031]]

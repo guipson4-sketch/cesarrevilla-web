@@ -18,6 +18,12 @@ EXP_SRC = {
                     "https://andina.pe/agencia/noticia-conoce-es-estado-emergencia-y-que-situaciones-rige-955859.aspx"),
     "andinaemerg2": ("Agencia Andina (24 de septiembre de 2023)",
                      "https://andina.pe/agencia/noticia-conoce-cuales-son-las-restricciones-un-estado-emergencia-956472.aspx"),
+    "gestioncron": ("Gestión: «Congreso debatirá y votará el Presupuesto 2027 del 17 al 20 de noviembre: ¿cuál es el cronograma?» (2026)",
+                    "https://gestion.pe/peru/politica/congreso-debatira-y-votara-el-presupuesto-2027-del-17-al-20-de-noviembre-cual-es-el-cronograma-noticia/"),
+    "larep1105": ("La República (5 de noviembre de 2026): dictamen del Presupuesto 2027",
+                  "https://larepublica.pe/economia/2026/11/05/presupuesto-publico-2027-congreso-aprueba-dictamen-por-mas-de-s266500-millones-hnews-371465"),
+    "andinapres": ("Agencia Andina (5 de noviembre de 2026): dictamen del Presupuesto 2027",
+                   "https://andina.pe/agencia/noticia-comision-bicameral-aprueba-dictamen-presupuesto-2027-mas-s-266500-millones-1098746.aspx"),
 }
 
 # Temas del apartado. Una página de tema agrupa explicaciones, guías y fichas de gestión ya publicadas.
@@ -164,6 +170,55 @@ EXPLICA = [
               ("¿Las Fuerzas Armadas pueden controlar el orden interno?",
                "Sí, cuando el Presidente lo dispone en el decreto.")],
          keys=["andinaemerg", "andinaemerg2"]),
+    dict(slug="presupuesto-publico-2027-que-es-como-se-aprueba-y-que-incluye", tema="economia-y-empleo", iso="2026-11-17",
+         h1="Presupuesto público 2027: qué incluye y cómo se vota esta semana en el Congreso",
+         seo="Presupuesto 2027: qué incluye y cómo se vota",
+         desc="El Presupuesto 2027 suma S/ 266,506 millones. Qué incluye, cuánto va a educación y salud, y el cronograma del debate en el Pleno del 17 al 20 de noviembre.",
+         resumen="El dictamen del Presupuesto 2027 suma S/ 266,506 millones. El Pleno lo debate del 17 al 20 de noviembre y lo vota el viernes 20.",
+         card="Cuánto es, qué incluye y qué día se vota.",
+         html="""<h2>Qué es el presupuesto público</h2>
+<p>La Ley de Presupuesto fija cuánto dinero podrá gastar el Estado en el año y en qué: salarios, hospitales, colegios, carreteras y programas sociales. Esta semana el Pleno del Congreso debate la del año fiscal 2027.</p>
+<h2>Cuánto es y cómo se reparte</h2>
+<p>El 5 de noviembre de 2026 la Comisión Bicameral de Presupuesto aprobó el dictamen con 29 votos a favor, 1 en contra y 4 abstenciones. Según La República, el monto es de S/ 266,506 millones, 3.5% más que el presupuesto inicial de 2026 (unos S/ 8,945 millones adicionales).</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Nivel de gobierno</th><th>Monto (millones de soles)</th></tr></thead>
+<tbody>
+<tr><td>Gobierno nacional</td><td>166,613</td></tr>
+<tr><td>Gobiernos regionales</td><td>58,672</td></tr>
+<tr><td>Gobiernos locales</td><td>41,222</td></tr>
+</tbody></table></div>
+<p>Entre los sectores, La República reporta S/ 52,198 millones para educación, S/ 32,208 millones para salud y S/ 26,014 millones para transporte. La nota menciona también recursos para seguridad ciudadana, programas sociales y prevención frente al Fenómeno El Niño, sin montos.</p>
+<p class="upd">Los totales por nivel suman S/ 1 millón más que el total, probablemente por redondeo, según la propia nota.</p>
+<h2>Qué medidas incluye el dictamen</h2>
+<ul class="clean">
+<li><strong>Trabajadores CAS:</strong> las entidades podrán modificar su presupuesto hasta el 31 de marzo de 2027 para pagar gratificaciones, CTS y aportes a EsSalud de 226,401 trabajadores CAS.</li>
+<li><strong>Personal de salud:</strong> prevé incorporar unos 5,010 profesionales, técnicos y auxiliares asistenciales por concurso público de méritos, en plazas vacantes. Prohíbe nuevos contratos CAS y por locación de servicios para labores asistenciales permanentes, sin afectar la renovación de los CAS vigentes.</li>
+<li><strong>Programa Contigo:</strong> el Midis podrá transferir recursos a la ONP para pensiones y gastos operativos de más de 142,000 personas con discapacidad severa en situación de pobreza.</li>
+<li><strong>Control del gasto:</strong> prohíbe usar presupuesto en celebraciones y agasajos en 2027, salvo los vinculados a las funciones de cada entidad, y refuerza los controles sobre compromisos que pasan a años siguientes.</li>
+<li><strong>Compras a mypes:</strong> facilidades para financiar los núcleos ejecutores de compras del Ministerio de la Producción, según Andina.</li>
+</ul>
+<h2>Cuándo se debate y se vota</h2>
+<p>Según el cronograma que publicó Gestión, el Pleno trabaja así:</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Día</th><th>Qué ocurre</th></tr></thead>
+<tbody>
+<tr><td>Martes 17</td><td>Se sustentan los dictámenes de presupuesto, endeudamiento y equilibrio financiero. Intervienen el presidente del Consejo de Ministros y el ministro de Economía.</td></tr>
+<tr><td>Miércoles 18</td><td>Se sustentan los pliegos de los sectores y de organismos autónomos, como la Corte Suprema, la Fiscalía, el Tribunal Constitucional, el JNE y la Defensoría.</td></tr>
+<tr><td>Jueves 19</td><td>Debate en el Senado y en la Cámara de Diputados: tres horas por cámara, repartidas entre los seis grupos parlamentarios.</td></tr>
+<tr><td>Viernes 20</td><td>Se presenta el texto final y se vota el Presupuesto, el Endeudamiento y el Equilibrio Financiero para 2027.</td></tr>
+</tbody></table></div>
+<p class="upd">Este cronograma puede cambiar. Confirma las sesiones en el <a href="https://www.congreso.gob.pe/" rel="noopener" target="_blank">portal del Congreso</a>.</p>
+<h2>Y César Revilla</h2>
+<p>César Revilla es diputado por Piura y presidió la Comisión de Economía entre 2023 y 2024. Revisa las <a href="~/explica/economia-y-empleo.html">leyes económicas</a> de esa comisión y cómo <a href="~/guias/como-se-crea-una-ley-en-el-peru.html">se crea una ley</a>.</p>""",
+         faq=[("¿De cuánto es el Presupuesto 2027?",
+               "El dictamen suma S/ 266,506 millones, 3.5% más que el presupuesto inicial de 2026, según La República."),
+              ("¿Cuándo se vota el Presupuesto 2027 en el Pleno?",
+               "El debate va del 17 al 20 de noviembre de 2026 y la votación está prevista el viernes 20, según Gestión."),
+              ("¿Cuánto se destina a educación y salud en 2027?",
+               "S/ 52,198 millones a educación y S/ 32,208 millones a salud, según La República."),
+              ("¿Cuánto recibirán los gobiernos regionales y locales?",
+               "Los gobiernos regionales S/ 58,672 millones y los gobiernos locales S/ 41,222 millones, según La República.")],
+         keys=["larep1105", "andinapres", "gestioncron"]),
 ]
 
 # Explicaciones de hechos del día (nivel 1 y 2 del protocolo): se agregan a EXPLICA con su `iso` real.

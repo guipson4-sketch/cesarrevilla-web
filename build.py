@@ -1283,6 +1283,7 @@ add("en-vivo.html", "En vivo: sesiones del Pleno del Congreso",
 <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{EV_VID}" title="Sesión del Pleno del Congreso de la República, {EV_FECHA}" width="800" height="450" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe></div>
 <h3>Qué se debatió</h3>
 <p>Según el Congreso, el Pleno retomó el 19 de noviembre de 2026 el debate de los dictámenes de la Ley de Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento del Sector Público. Diputados de varias bancadas presentaron pedidos regionales y la sesión pasó a cuarto intermedio hasta el viernes 20 de noviembre a las 4:00 p. m.</p>
+<p><a href="~/explica/pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027.html">Lee qué dijo cada bancada en esta sesión</a>.</p>
 <p>Fuentes: <a href="{SRC['congre1119'][1]}" rel="noopener" target="_blank">Congreso: reinició el debate</a> · <a href="{SRC['congdip1119'][1]}" rel="noopener" target="_blank">Congreso: diputados fijan posición</a>.</p>
 <h2>Para entender lo que se debate</h2>
 <div class="grid">{''.join(card('Explica', x['h1'], x['card'], x['path']) for x in sorted(EXPLICA, key=lambda z: z['iso'], reverse=True)[:3])}</div>

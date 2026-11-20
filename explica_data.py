@@ -24,6 +24,10 @@ EXP_SRC = {
                    "https://comunicaciones.congreso.gob.pe/noticias/reinicio-debate-parlamentario-sobre-dictamen-de-presupuesto-del-sector-publico-2027/"),
     "congdip1119": ("Congreso de la República (19 de noviembre de 2026): Diputados fijan posición y transmiten necesidades de pobladores en debate de presupuesto público",
                     "https://comunicaciones.congreso.gob.pe/noticias/diputados-fijan-posicion-y-transmiten-necesidades-de-pobladores-en-debate-de-presupuesto-publico"),
+    "congsen1119": ("Congreso de la República (19 de noviembre de 2026): Senadores piden reactivar obras y cerrar brechas de agua y saneamiento",
+                    "https://comunicaciones.congreso.gob.pe/noticias/senadores-piden-reactivar-obras-y-cerrar-brechas-de-agua-y-saneamiento/"),
+    "andina1119": ("Agencia Andina (19 de noviembre de 2026): Congreso continúa debate del presupuesto público para el Año Fiscal 2027",
+                   "https://andina.pe/agencia/noticia-congreso-continua-debate-del-presupuesto-publico-para-ano-fiscal-2027-1100637.aspx"),
     "gestioncron": ("Gestión: «Congreso debatirá y votará el Presupuesto 2027 del 17 al 20 de noviembre: ¿cuál es el cronograma?» (2026)",
                     "https://gestion.pe/peru/politica/congreso-debatira-y-votara-el-presupuesto-2027-del-17-al-20-de-noviembre-cual-es-el-cronograma-noticia/"),
     "larep1105": ("La República (5 de noviembre de 2026): dictamen del Presupuesto 2027",
@@ -256,6 +260,73 @@ EXPLICA = [
               ("¿Se votó el Presupuesto 2027 el 19 de noviembre?",
                "No. El Pleno debatió los dictámenes y pasó a cuarto intermedio. Según el Congreso, la sesión continúa el viernes 20 de noviembre a las 4:00 p. m.")],
          keys=["conglc1119", "congre1119", "congdip1119"]),
+    dict(slug="pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027", tema="economia-y-empleo", iso="2026-11-20",
+         h1="Pleno del 19 de noviembre de 2026: de qué se habló y qué dijo cada bancada sobre el Presupuesto 2027",
+         seo="Pleno del 19-nov: qué dijo cada bancada",
+         desc="Resumen con fuentes de la sesión del Pleno del 19 de noviembre de 2026: temas, pedidos por bancada, pedidos para Piura y cómo terminó el debate.",
+         resumen="El 19 de noviembre de 2026, senadores y diputados de seis bancadas pidieron obras, más salud y educación y derechos laborales al debatir el Presupuesto 2027. La sesión pasó a cuarto intermedio.",
+         card="De qué se habló, qué pidió cada bancada y cómo terminó.",
+         html="""<h2>En pocas palabras</h2>
+<p>El jueves 19 de noviembre de 2026 el Pleno Bicameral debatió los dictámenes de la Ley de Presupuesto 2027 (S/ 266,506 millones), la Ley de Equilibrio Financiero y la Ley de Endeudamiento del Sector Público. Según el Congreso, intervinieron 28 diputados de seis bancadas y numerosos senadores. Casi todos pidieron lo mismo: dinero para obras concretas en sus regiones. Las bancadas Juntos por el Perú, Partido del Buen Gobierno y Renovación Popular además criticaron recortes en salud, vivienda y educación. La sesión pasó a cuarto intermedio y continúa el viernes 20 de noviembre a las 4:00 p. m.</p>
+<h2>Los temas que más se repitieron</h2>
+<ul class="clean">
+<li><strong>Obras paralizadas, agua y saneamiento:</strong> pedidos de fondos para terminar obras en Cusco, Piura, Huancavelica, Loreto, Puno, Tumbes y otras regiones.</li>
+<li><strong>Salud:</strong> hospitales y centros de salud sin terminar, y nombramiento del personal que trabajó durante la pandemia (ex CAS COVID).</li>
+<li><strong>Trabajadores del Estado:</strong> pase de CAS al régimen 728, negociación colectiva, escalas salariales y CTS pendiente.</li>
+<li><strong>Educación y universidades:</strong> nombramiento de docentes, pago de sentencias judiciales y fondos para universidades públicas.</li>
+<li><strong>Control del gasto:</strong> críticas a obras sin uso o sin terminar y pedidos de más supervisión de la Contraloría.</li>
+<li><strong>Distribución regional:</strong> reclamos por cómo se reparte el dinero entre regiones.</li>
+</ul>
+<h2>Qué dijo cada bancada: diputados</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Bancada</th><th>Qué plantearon (según el Congreso)</th></tr></thead>
+<tbody>
+<tr><td>Fuerza Popular</td><td>Diethell Columbus pidió al MEF evaluar siete inversiones de agua y desagüe en la macrorregión sur. Javier Castro dijo que el nuevo Congreso ahorró S/ 700 millones para obras (300 millones iniciales y 400 millones más esta semana). Auristela Obando pidió obras de movilidad en el Callao. Carmela Paucará pidió reactivar obras paralizadas en la sierra de Piura. Pier Figari cuestionó obras que llamó «elefantes blancos», entre ellas el Museo de Pachacamac.</td></tr>
+<tr><td>Juntos por el Perú</td><td>Oswar Cahuasa cuestionó que salud reciba S/ 32,208 millones y pidió restituir S/ 608 millones y concluir el Hospital de Pucallpa. Amalia Palomino pidió financiar pensiones dignas y pagar la CTS 2025, y reclamó por el reparto de obras entre regiones. Luis Jibaja insistió en rehabilitar la pista del aeropuerto de Jaén. Analí Márquez priorizó Cusco, el aeropuerto de Chinchero y el Gasoducto Sur Peruano. Jacqueline Tapullima pidió inversiones preventivas ante El Niño en San Martín. Ernesto Zunini cuestionó que no se renueve la autorización para financiar servicios en centros poblados.</td></tr>
+<tr><td>Partido del Buen Gobierno</td><td>Neri Fernández pidió no recortar inversión en colegios, carreteras y agua para pagar gasto corriente. Romina Uribe pidió fondos para la búsqueda de personas desaparecidas. Fernando Huby rechazó artículos que, según él, flexibilizan el régimen laboral. Luis Quispe pidió destrabar vías en la selva central y cuestionó el gasto en el Viaducto Santa Rosa. Miguel Huamán recordó cuatro puestos de salud de Piura sin terminar. Rossana Alayza cuestionó el recorte en infraestructura educativa en riesgo.</td></tr>
+<tr><td>Renovación Popular</td><td>Diego Bazán pidió mejoras para trabajadores de la Sunat y transferencias a universidades públicas. José Baella pidió actualizar el incentivo CAFAE de los trabajadores del INPE.</td></tr>
+<tr><td>Partido Cívico Obras</td><td>Arturo Eusebio propuso destinar al menos 50% de ciertos saldos al pago de sentencias a docentes. Heber López pidió ejecutar la Ley 32390 sobre plazas docentes. Henry Albañil pidió titular a 27 docentes de la Universidad Nacional de Piura. Dina Hancco pidió inversiones en la sierra sur. Juan Cabrera pidió financiar el canal de Tacalaya (Tacna).</td></tr>
+<tr><td>Ahora Nación</td><td>Marleny Arminta pidió agua y camino vecinal en Arequipa. Ángel Meneses pidió incorporar a trabajadores de Sunarp al régimen 728. Helard Sonco pidió vías y saneamiento en Puno. José Marcelo Salazar propuso mecanismos ágiles para financiar proyectos locales en ejecución.</td></tr>
+</tbody></table></div>
+<h2>Qué dijo cada bancada: senadores</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Bancada</th><th>Qué plantearon (según el Congreso)</th></tr></thead>
+<tbody>
+<tr><td>Fuerza Popular</td><td>Martha Moyano pidió acelerar obras paralizadas y priorizar proyectos de gran escala. Rafael Yamashiro pidió mantener las compras centralizadas de equipos médicos y reforzar la lucha contra el cáncer. Víctor Flores pidió agua y alcantarillado en Utcubamba (Amazonas). Héctor Ventura pidió reconstruir el hospital de Zarumilla (Tumbes) y mejorar el agua en La Palma.</td></tr>
+<tr><td>Partido del Buen Gobierno</td><td>Flavio Figallo calificó la propuesta de «inercial» y planteó que municipios creen sus propias empresas de agua. Susana Matute pidió mejorar las pensiones de docentes jubilados con cáncer. Patricia Iturregui advirtió que el presupuesto no financia la Ley de Acceso Universal al Agua.</td></tr>
+<tr><td>Ahora Nación</td><td>Mirtha Vásquez pidió terminar obras de agua en Loreto y Cusco y fondos para personas afectadas por metales pesados y ollas comunes. Jaime Delgado pidió S/ 4.6 millones para la Universidad Nacional de Música.</td></tr>
+<tr><td>Juntos por el Perú</td><td>Silvana Robles pidió continuar inversiones rurales de agua y nombrar progresivamente al personal ex CAS de salud. Jaime Quito advirtió recortes en seguridad ciudadana, TBC y VIH. Wilfredo Verano, Serafín Luján, Hugo Ccahuana y Víctor Cutipa pidieron obras en Cusco, Huánuco y Madre de Dios. Percy Osorio criticó el aumento de Defensa (28.5%) frente a recortes en vivienda, saneamiento y salud.</td></tr>
+<tr><td>Renovación Popular</td><td>Lourdes Alcorta cuestionó un gasto de S/ 11 millones en equipos para la misa del papa y pidió más control de la Contraloría. Absalón Vásquez pidió revertir un recorte de S/ 22 millones a la Universidad Agraria. Katherine Ampuero criticó recortes frente a El Niño. Francisco Calisto pidió autorizar S/ 482 millones de deuda para un submarino peruano.</td></tr>
+<tr><td>Partido Cívico Obras</td><td>Daniel Barragán pidió atender demandas laborales de Reniec y Sunat y seguir el pase de CAS a 728 en el Ministerio Público. Francisco Gagó pidió agua y alcantarillado en Pedregal, Pueblo Nuevo y Chihuahua (Buenos Aires, Morropón, Piura).</td></tr>
+</tbody></table></div>
+<h2>Qué se pidió para Piura</h2>
+<ul class="clean">
+<li><strong>Carmela Paucará</strong> (diputada, Fuerza Popular): partidas para reactivar obras paralizadas en la sierra de Piura.</li>
+<li><strong>Miguel Huamán</strong> (diputado, Partido del Buen Gobierno): terminar los puestos de salud de Ayabaca, Huancabamba, Huarmaca y Los Algarrobos, previstos tras el Niño Costero de 2017.</li>
+<li><strong>Henry Albañil</strong> (diputado, Partido Cívico Obras): recursos para titular a 27 docentes de la Universidad Nacional de Piura (Ley 32618).</li>
+<li><strong>Ernesto Zunini</strong> (diputado, Juntos por el Perú): nombramiento de docentes de la Universidad de Piura y renovar la autorización para financiar servicios en centros poblados.</li>
+<li><strong>Francisco Gagó</strong> (Partido Cívico Obras): agua y alcantarillado en Pedregal, Pueblo Nuevo y Chihuahua, distrito de Buenos Aires (Morropón).</li>
+</ul>
+<h2>Cifras que se citaron y no coinciden</h2>
+<p>Los legisladores citaron cifras distintas sobre los mismos sectores. Por ejemplo, para salud se mencionaron una reducción de S/ 608 millones, de 10%, de 3% y de 2% (S/ 679 millones), y para Defensa, aumentos de 21% y de 28.5%. Son afirmaciones de cada parlamentario y no se han verificado contra el texto del dictamen. Para comparar, usa el <a href="~/explica/presupuesto-publico-2027-que-es-como-se-aprueba-y-que-incluye.html">resumen del dictamen</a>.</p>
+<h2>Cómo terminó la sesión</h2>
+<p>Según el Congreso, el Pleno pasó a cuarto intermedio a pedido de la presidencia de la Comisión Bicameral de Presupuesto, para evaluar los pedidos de senadores y diputados. Se reanuda el viernes 20 de noviembre a las 4:00 p. m. para avanzar en un texto sustitutorio de los dictámenes. Según Andina, ese día habrá una intervención final de la Presidencia del Consejo de Ministros y la votación; la nota no precisa la hora. No hubo votación el 19 de noviembre.</p>
+<h2>Y César Revilla</h2>
+<p>La nota del Congreso sobre los diputados lista a 28 que intervinieron y no incluye a César Revilla. Su agenda del día está en <a href="~/explica/agenda-19-noviembre-2026-canal-n-liga-corea-pleno-presupuesto.html">Agenda del 19 de noviembre</a>. Puedes ver la sesión completa en <a href="~/en-vivo.html">En vivo</a>.</p>
+<p class="upd">Resumen elaborado a partir de dos notas oficiales del Congreso y de Andina. Los nombres y pedidos son los que esas notas recogen; no es una transcripción. Para la sesión completa, usa el video del canal oficial del Congreso.</p>""",
+         faq=[("¿De qué se habló en el Pleno del 19 de noviembre de 2026?",
+               "Del Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento. Senadores y diputados pidieron obras de agua, salud y educación, derechos laborales y más control del gasto."),
+              ("¿Qué dijo Fuerza Popular en el debate del Presupuesto 2027?",
+               "Según el Congreso, sus parlamentarios pidieron obras en sus regiones, como agua y desagüe en el sur, movilidad en el Callao y obras paralizadas en la sierra de Piura. Javier Castro habló de un ahorro de S/ 700 millones para obras."),
+              ("¿Qué criticaron Juntos por el Perú, el Partido del Buen Gobierno y Renovación Popular?",
+               "Cuestionaron recortes en salud, vivienda, saneamiento y educación, la distribución regional del gasto y algunos gastos puntuales. Cada parlamentario citó sus propias cifras."),
+              ("¿Qué se pidió para Piura?",
+               "Reactivar obras en la sierra, terminar puestos de salud en Ayabaca, Huancabamba, Huarmaca y Los Algarrobos, titular docentes de la Universidad Nacional de Piura y financiar agua y alcantarillado en Buenos Aires (Morropón)."),
+              ("¿Se votó el Presupuesto 2027 el 19 de noviembre?",
+               "No. La sesión pasó a cuarto intermedio y continúa el 20 de noviembre a las 4:00 p. m., según el Congreso."),
+              ("¿Dónde puedo ver la sesión completa?",
+               "En la página En vivo de este sitio, que incrusta la transmisión oficial del canal de YouTube del Congreso.")],
+         keys=["congdip1119", "congsen1119", "congre1119", "andina1119"]),
 ]
 
 # Explicaciones de hechos del día (nivel 1 y 2 del protocolo): se agregan a EXPLICA con su `iso` real.

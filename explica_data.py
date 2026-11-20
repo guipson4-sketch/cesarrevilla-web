@@ -260,5 +260,4 @@ EXPLICA = [
 
 # Explicaciones de hechos del día (nivel 1 y 2 del protocolo): se agregan a EXPLICA con su `iso` real.
 # COYUNTURA queda reservada para un futuro índice cronológico (no se genera mientras esté vacía).
-COYUNTURA = [
-]
+COYUNTURA = []

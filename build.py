@@ -1267,18 +1267,20 @@ add("explica.html", "Explica: política del Perú explicada con fuentes",
 YT_CH = "UC9HLcODpEZuBRLSKXZx5igw"   # canal oficial «Congreso de la República del Perú»
 EV_VID = "ehMRuO8zzls"               # última sesión del Pleno incrustada (actualizar cada sesión)
 EV_FECHA, EV_ISO = "19 de noviembre de 2026", "2026-11-19"
+EV_LIVE = "ijLmIImQlwE"              # transmisión del Congreso en curso (actualizar)
+EV_LIVE_T = "Mesa de trabajo sobre «Salud Mental e Infancia», 20 de noviembre de 2026"
 EV_FAQ = [
-    ("¿Dónde puedo ver en vivo el Pleno del Congreso?", "Aquí mismo, en esta página, cuando hay transmisión. La señal es la del canal oficial de YouTube del Congreso de la República; este sitio solo la incrusta."),
+    ("¿Dónde puedo ver en vivo el Pleno del Congreso?", "Aquí mismo, en esta página: se incrusta una transmisión del canal oficial de YouTube del Congreso de la República, en vivo cuando la hay. Este sitio solo la incrusta."),
     ("¿Este sitio es el canal oficial del Congreso?", "No. Es el sitio personal del diputado César Revilla. Las transmisiones pertenecen al Congreso y se ven desde su canal de YouTube."),
-    ("¿Qué pasa si no hay una sesión en vivo?", "El reproductor de arriba no muestra señal. Mira abajo la última sesión del Pleno que incrustamos y el resumen de lo debatido."),
+    ("¿Qué pasa si no hay una sesión en vivo?", "El primer reproductor muestra la última transmisión del Congreso que incrustamos, ya como grabación. Más abajo está la última sesión del Pleno y el resumen de lo debatido."),
 ]
 add("en-vivo.html", "En vivo: sesiones del Pleno del Congreso",
     "Mira en vivo las sesiones del Pleno del Congreso de la República, con resumen de lo que se debate y enlaces para entender cada tema.",
     f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> aquí puedes ver la transmisión oficial del Congreso de la República cuando hay sesión, y debajo, la última sesión del Pleno con un resumen de lo que se debatió. La señal es del canal oficial del Congreso en YouTube.</p>
-<h2>Transmisión en vivo</h2>
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/live_stream?channel={YT_CH}" title="Transmisión en vivo del Congreso de la República del Perú" width="800" height="450" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe></div>
-<p class="upd">Si no ves señal, no hay sesión en vivo en este momento. También puedes abrir el <a href="https://www.youtube.com/user/congresoperu/streams" rel="noopener" target="_blank">canal oficial del Congreso en YouTube</a>.</p>
+<h2>Transmisión del Congreso</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{EV_LIVE}" title="Transmisión del Congreso de la República: {EV_LIVE_T}" width="800" height="450" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe></div>
+<p class="upd">Transmisión del canal oficial del Congreso: {EV_LIVE_T}. Si ya terminó, se ve la grabación. El Pleno que debate el Presupuesto 2027 se reanuda hoy, viernes 20 de noviembre, a las 4:00 p. m. Más transmisiones en el <a href="https://www.youtube.com/user/congresoperu/streams" rel="noopener" target="_blank">canal oficial del Congreso en YouTube</a>.</p>
 <h2>Última sesión del Pleno: {EV_FECHA}</h2>
 <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{EV_VID}" title="Sesión del Pleno del Congreso de la República, {EV_FECHA}" width="800" height="450" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe></div>
 <h3>Qué se debatió</h3>

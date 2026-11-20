@@ -1044,7 +1044,7 @@ def layout(p):
 </div>
 <div class="foot-bottom">
 <p class="aviso">Sitio personal de César Revilla. No es un portal oficial del Congreso de la República. Los datos citados enlazan a su fuente; si encuentras un error, escríbenos desde la sección de contacto.</p>
-<p class="foot-legal">© 2026 César Revilla · <a href="{pre}politica-de-privacidad.html">Privacidad</a> · <a href="{pre}canales-oficiales.html">Canales oficiales</a> · <a href="{pre}feed.xml">RSS</a> · <a href="{pre}sitemap.xml">Mapa del sitio</a></p>
+<p class="foot-legal">© 2026 César Revilla · <a href="{pre}politica-de-privacidad.html">Privacidad</a> · <a href="{pre}canales-oficiales.html">Canales oficiales</a> · <a href="{pre}feed.xml">RSS</a> · <a href="{pre}mapa-del-sitio.html">Mapa del sitio</a></p>
 </div>
 </div></footer>
 <script>(function(){{if(typeof gtag!=="function")return;var h=location.hostname;
@@ -1825,6 +1825,19 @@ def rfc822(iso):
 
 def build():
     sitemap = []
+    _grp = [("Páginas principales", ""), ("Gestión", "gestion/"), ("Guías ciudadanas", "guias/"), ("Explica", "explica/"), ("Piura", "piura/"), ("Proyectos de ley", "proyectos-de-ley/")]
+    _mp = ""
+    for _t, _pre in _grp:
+        _its = [p for p in PAGES if p["index"] and p["path"] != "mapa-del-sitio.html" and
+                ((p["path"].startswith(_pre) and _pre) or (not _pre and "/" not in p["path"]))]
+        if not _its:
+            continue
+        _mp += f"<h2>{_t}</h2>\n<ul class=\"clean\">" + "".join(
+            f'<li><a href="~/{p["path"]}">{esc(p["h1"] or p["title"])}</a></li>' for p in _its) + "</ul>\n"
+    add("mapa-del-sitio.html", "Mapa del sitio de César Revilla",
+        "Todas las páginas del sitio de César Revilla, diputado por Piura: gestión, guías ciudadanas y explicaciones del Congreso.",
+        f'<section class="block"><div class="wrap narrow">\n{_mp}<p class="upd">Para buscadores: <a href="~/sitemap.xml">sitemap.xml</a>. Para lectores de noticias: <a href="~/feed.xml">RSS</a>.</p></div></section>',
+        h1="Mapa del sitio", crumbs=[("Inicio", "index.html")])
     for p in PAGES:
         full = os.path.join(OUT, p["path"])
         os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -1887,7 +1900,7 @@ def build():
         f"<pubDate>{rfc822(p['date'])}</pubDate><description>{esc(p['desc'])}</description></item>"
         for p in PAGES if p["in_feed"])
     with open(os.path.join(OUT, "feed.xml"), "w", encoding="utf-8") as fh:
-        fh.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>César Revilla · Gestiones y guías</title>'
+        fh.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="feed.xsl"?>\n<rss version="2.0"><channel><title>César Revilla · Gestiones y guías</title>'
                  f'<link>{BASE}/</link><description>Gestiones documentadas y guías ciudadanas de César Revilla, diputado por Piura.</description>'
                  f'<language>es-PE</language>{items}</channel></rss>\n')
 

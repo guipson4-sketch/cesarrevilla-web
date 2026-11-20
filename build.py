@@ -970,7 +970,7 @@ def layout(p):
                       f'<h1>{esc(p["h1"])}</h1>' + (f'<p class="lead">{p["lead"]}</p>' if p["lead"] else "") + "</div></header>")
 
     draftbar = ('<div class="draftbar">BORRADOR · no indexable · completar bloques “Pendiente” antes de publicar</div>' if DRAFT else "")
-    _fa = [("biografia.html", "Biografía"), ("gestion.html", "Gestión"), ("proyectos-de-ley.html", "Leyes"), ("cifras.html", "En cifras"), ("congreso-2026-2031.html", "Congreso 2026–2031"), ("en-vivo.html", "En vivo"), ("explica.html", "Explica"), ("guias.html", "Guías"), ("piura.html", "Piura")]
+    _fa = [("biografia.html", "Biografía"), ("gestion.html", "Gestión"), ("proyectos-de-ley.html", "Leyes"), ("cifras.html", "En cifras"), ("congreso-2026-2031.html", "Congreso 2026–2031"), ("en-vivo.html", "En vivo"), ("preguntas.html", "Preguntas"), ("explica.html", "Explica"), ("guias.html", "Guías"), ("piura.html", "Piura")]
     _fb = [("transparencia.html", "Transparencia"), ("prensa.html", "Sala de prensa"), ("medios.html", "En los medios"), ("canales-oficiales.html", "Canales oficiales"), ("contacto.html", "Contacto")]
     foot_a = "".join(f'<li><a href="{pre}{pp}">{t}</a></li>' for pp, t in _fa)
     foot_b = "".join(f'<li><a href="{pre}{pp}">{t}</a></li>' for pp, t in _fb)
@@ -1535,6 +1535,72 @@ add("transparencia.html", "Transparencia: hoja de vida y proyectos de César Rev
 {pend("Agregar respuestas documentadas a los cuestionamientos publicados, solo con documentos y fecha.")}
 </div></section>""",
     h1="Transparencia", lead="Fuentes oficiales para verificar su trabajo.", crumbs=[("Transparencia", "transparencia.html")], brand=False)
+
+
+# ============ PREGUNTAS (índice con buscador de todas las preguntas del sitio) ============
+PREG_TOP = [  # preguntas reales de Search Console y de alta demanda -> página que las responde
+    ("¿Quiénes son los diputados por Piura 2026–2031?", "guias/diputados-de-piura-2026-2031.html"),
+    ("¿Qué hace un diputado en el Perú?", "guias/que-hace-un-diputado-del-peru.html"),
+    ("¿Qué hace un senador en el Perú?", "guias/que-hace-un-senador-del-peru.html"),
+    ("¿Cuántos diputados y senadores tiene Fuerza Popular?", "guias/fuerza-popular-congreso-2026-2031.html"),
+    ("¿Quién es César Revilla y cuál es su hoja de vida?", "biografia.html"),
+    ("¿Qué ha hecho César Revilla por Piura?", "guias/que-ha-hecho-cesar-revilla-por-piura.html"),
+    ("¿Habrá un nuevo retiro de AFP en 2026?", "explica/noveno-retiro-afp-2026-en-que-va-el-proyecto-de-4-uit.html"),
+    ("¿De cuánto es el Presupuesto 2027 y cuándo se vota?", "explica/presupuesto-publico-2027-que-es-como-se-aprueba-y-que-incluye.html"),
+    ("¿Qué se dijo en el Pleno del 19 de noviembre?", "explica/pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027.html"),
+    ("¿Dónde veo en vivo las sesiones del Congreso?", "en-vivo.html"),
+]
+_pq = []  # (pregunta, respuesta, ruta, titulo de la página)
+for _g in GUIAS:
+    for _q, _a in (_g.get("faq") or []):
+        _pq.append((_q, _a, _g["path"], _g["h1"]))
+for _e in EXPLICA:
+    for _q, _a in (_e.get("faq") or []):
+        _pq.append((_q, _a, _e["path"], _e["h1"]))
+for _q, _a in EV_FAQ:
+    _pq.append((_q, _a, "en-vivo.html", "En vivo: sesiones del Congreso"))
+_seen = set(); _pq2 = []
+for _x in _pq:
+    if _x[0] not in _seen:
+        _seen.add(_x[0]); _pq2.append(_x)
+_pq = _pq2
+_pq_items = "".join(
+    f'<details class="faq pq"><summary>{esc(q)}</summary><p>{esc(a)}</p><p class="upd">Más en: <a href="~/{path}">{esc(t)}</a></p></details>'
+    for q, a, path, t in _pq)
+add("preguntas.html", "Preguntas frecuentes sobre el Congreso y César Revilla",
+    "Respuestas con fuente sobre el Congreso del Perú, el Presupuesto 2027, el retiro de AFP, los diputados por Piura y el trabajo de César Revilla.",
+    f"""<section class="block"><div class="wrap">
+<p class="resumen"><strong>En breve:</strong> escribe tu duda en el buscador. Reunimos las preguntas más buscadas sobre el Congreso, la política y el trabajo del diputado César Revilla, con respuestas cortas, su fuente y la página donde se amplía.</p>
+<label for="pq-buscar" class="pq-label"><strong>Busca tu pregunta</strong></label>
+<input id="pq-buscar" type="search" placeholder="Ejemplo: retiro AFP, diputados de Piura, senador, presupuesto" autocomplete="off" style="width:100%;padding:14px 16px;font-size:1rem;border:2px solid #0a2540;border-radius:12px;margin:8px 0 6px">
+<p id="pq-estado" class="upd" aria-live="polite">{len(_pq)} preguntas con respuesta.</p>
+<h2>Las más buscadas</h2>
+<ul class="clean" id="pq-top">{''.join(f'<li><a href="~/{path}">{esc(q)}</a></li>' for q, path in PREG_TOP)}</ul>
+<h2>Todas las preguntas</h2>
+<div id="pq-lista">{_pq_items}</div>
+<p id="pq-vacio" hidden>No encontramos esa pregunta. Escríbenos desde <a href="~/contacto.html">Contacto</a> y la respondemos con fuente.</p>
+<script>
+(function(){{
+  var inp=document.getElementById('pq-buscar'); if(!inp) return;
+  var items=[].slice.call(document.querySelectorAll('#pq-lista .pq'));
+  var est=document.getElementById('pq-estado'), vacio=document.getElementById('pq-vacio'), top=document.getElementById('pq-top');
+  function norm(t){{return t.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}}
+  var idx=items.map(function(d){{return norm(d.textContent);}});
+  inp.addEventListener('input',function(){{
+    var q=norm(inp.value.trim()).split(/\\s+/).filter(Boolean), n=0;
+    items.forEach(function(d,i){{
+      var ok=q.every(function(w){{return idx[i].indexOf(w)>-1;}});
+      d.hidden=!ok; if(ok) n++;
+    }});
+    est.textContent=q.length? n+' resultado'+(n===1?'':'s')+'.' : items.length+' preguntas con respuesta.';
+    vacio.hidden=n>0; if(top) top.parentNode.hidden=false;
+    if(typeof gtag==='function' && q.length>2){{ clearTimeout(window.__pqt); window.__pqt=setTimeout(function(){{gtag('event','busqueda_preguntas',{{termino:inp.value.trim().slice(0,60),resultados:n}});}},900); }}
+  }});
+}})();
+</script>
+</div></section>""",
+    h1="Preguntas y respuestas", lead="Busca tu duda sobre el Congreso, el presupuesto o el trabajo del diputado, con la fuente de cada respuesta.",
+    crumbs=[("Preguntas", "preguntas.html")], brand=False, date="2026-11-20")
 
 MEDIOS = [  # (fecha iso, medio, titular, url, ficha propia o None)
     ("2026-10-22", "Panamericana", "César Revilla: Piura necesita un sistema integral de drenaje pluvial", SRC["dren"][1], "gestion/drenaje-pluvial-piura-fenomeno-el-nino.html"),

@@ -28,6 +28,10 @@ EXP_SRC = {
                     "https://comunicaciones.congreso.gob.pe/noticias/senadores-piden-reactivar-obras-y-cerrar-brechas-de-agua-y-saneamiento/"),
     "andina1119": ("Agencia Andina (19 de noviembre de 2026): Congreso continúa debate del presupuesto público para el Año Fiscal 2027",
                    "https://andina.pe/agencia/noticia-congreso-continua-debate-del-presupuesto-publico-para-ano-fiscal-2027-1100637.aspx"),
+    "infobae1028": ("Infobae (28 de octubre de 2026): Retiro de AFP 2026, los siguientes pasos de las 4 UIT en la Comisión de Economía del Congreso",
+                    "https://www.infobae.com/peru/2026/10/28/retiro-de-afp-2026-los-siguientes-pasos-de-las-4-uit-en-la-comision-de-economia-del-congreso/"),
+    "larep1110": ("La República (10 de noviembre de 2026): Noveno retiro de AFP sigue en comisión, proyecto de hasta S/22.000 espera evaluación en el Congreso",
+                  "https://larepublica.pe/economia/2026/11/10/noveno-retiro-de-afp-sigue-en-comision-proyecto-de-hasta-s22000-espera-evaluacion-en-el-congreso-hnews-669950"),
     "gestioncron": ("Gestión: «Congreso debatirá y votará el Presupuesto 2027 del 17 al 20 de noviembre: ¿cuál es el cronograma?» (2026)",
                     "https://gestion.pe/peru/politica/congreso-debatira-y-votara-el-presupuesto-2027-del-17-al-20-de-noviembre-cual-es-el-cronograma-noticia/"),
     "larep1105": ("La República (5 de noviembre de 2026): dictamen del Presupuesto 2027",
@@ -327,6 +331,44 @@ EXPLICA = [
               ("¿Dónde puedo ver la sesión completa?",
                "En la página En vivo de este sitio, que incrusta la transmisión oficial del canal de YouTube del Congreso.")],
          keys=["congdip1119", "congsen1119", "congre1119", "andina1119"]),
+    dict(slug="noveno-retiro-afp-2026-en-que-va-el-proyecto-de-4-uit", tema="economia-y-empleo", iso="2026-11-20",
+         h1="Noveno retiro de AFP 2026: en qué va el proyecto de hasta 4 UIT (S/ 22,000)",
+         seo="Noveno retiro AFP 2026: en qué va",
+         desc="Estado del proyecto de nuevo retiro de AFP de hasta 4 UIT (S/ 22,000): quién lo presentó, en qué comisión está, qué falta y cuándo podría debatirse.",
+         resumen="El proyecto de un noveno retiro de AFP de hasta S/ 22,000 está en la Comisión de Economía, sin dictamen y sin fecha de debate, según La República (10 de noviembre de 2026).",
+         card="En qué comisión está, qué falta y quién lo propone.",
+         html="""<h2>En qué va</h2>
+<p>Según La República (10 de noviembre de 2026), el proyecto de ley 00469-2026-2031-CD, de la diputada Catherin Palomino (Juntos por el Perú), ingresó el 1 de octubre y pasó al día siguiente a la Comisión de Economía. Al 10 de noviembre no tenía dictamen ni fecha de debate.</p>
+<h2>Qué propone</h2>
+<ul class="clean">
+<li><strong>Monto:</strong> hasta 4 UIT, equivalentes a S/ 22,000.</li>
+<li><strong>Cuotas:</strong> cuatro desembolsos de hasta S/ 5,500, con 30 días calendario entre cada uno.</li>
+<li><strong>Plazo para pedirlo:</strong> 90 días para presentar la solicitud.</li>
+<li><strong>Desistimiento:</strong> se podría desistir una sola vez, avisando a la AFP con al menos 10 días de anticipación.</li>
+</ul>
+<h2>Qué falta para que se apruebe</h2>
+<ol class="clean">
+<li><strong>Opiniones de las entidades.</strong> El 13 de octubre la comisión pidió su opinión al MEF, la SBS, el BCRP, la SMV, el Ministerio de Justicia y Cenepred. El plazo inicial de 15 días venció el 9 de noviembre y la nota no informa que alguna entidad haya enviado su opinión.</li>
+<li><strong>Sustentación y dictamen.</strong> La autora sustenta el proyecto en la comisión y esta vota un dictamen, que puede recomendar aprobar o archivar.</li>
+<li><strong>Cámara de Diputados y Senado.</strong> Si lo aprueba Diputados, pasa a la Comisión de Economía del Senado y luego al Pleno del Senado.</li>
+<li><strong>Poder Ejecutivo.</strong> El Gobierno puede promulgarlo u observarlo. Si lo observa, el Congreso puede aprobarlo por insistencia.</li>
+</ol>
+<h2>Qué han dicho el Gobierno y el BCRP</h2>
+<p>Según La República, el ministro de Economía, Elmer Cuba, rechazó la propuesta en una entrevista. Según Infobae (28 de octubre), el BCRP ha dicho que no ve sentido en la medida.</p>
+<h2>Cuidado con las noticias falsas</h2>
+<p>Hasta la fecha de las fuentes citadas, ningún retiro nuevo está aprobado. Si ves anuncios con fechas para cobrar, verifica en el portal del Congreso y en la página de tu AFP antes de dar datos personales o pagar a terceros.</p>
+<h2>Y César Revilla</h2>
+<p>Las notas consultadas no mencionan a César Revilla en este trámite. En 2024, la Comisión de Economía que presidía aprobó el retiro de hasta 4 UIT que hoy es la Ley 32002: <a href="~/gestion/retiro-afp-2024-ley-32002.html">lee cómo fue</a>.</p>
+<p class="upd">Estado según las fuentes del 28 de octubre y del 10 de noviembre de 2026. Puede haber cambiado; confirma en el <a href="https://www.congreso.gob.pe/" rel="noopener" target="_blank">portal del Congreso</a>.</p>""",
+         faq=[("¿Hay un nuevo retiro de AFP aprobado en 2026?",
+               "No. Según La República (10 de noviembre de 2026), el proyecto de hasta 4 UIT sigue en la Comisión de Economía, sin dictamen ni fecha de debate."),
+              ("¿De cuánto sería el noveno retiro de AFP?",
+               "Hasta 4 UIT (S/ 22,000), en cuatro desembolsos de hasta S/ 5,500 cada 30 días, según el proyecto."),
+              ("¿Quién presentó el proyecto de nuevo retiro de AFP?",
+               "La diputada Catherin Palomino, de Juntos por el Perú, el 1 de octubre de 2026 (proyecto 00469-2026-2031-CD)."),
+              ("¿Qué falta para que se apruebe un nuevo retiro de AFP?",
+               "Las opiniones de las entidades consultadas, un dictamen favorable de la Comisión de Economía, la aprobación de Diputados y del Senado y la promulgación del Ejecutivo.")],
+         keys=["larep1110", "infobae1028"]),
 ]
 
 # Explicaciones de hechos del día (nivel 1 y 2 del protocolo): se agregan a EXPLICA con su `iso` real.

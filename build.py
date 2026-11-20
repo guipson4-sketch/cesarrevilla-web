@@ -115,7 +115,6 @@ SRC = {
     "reto": ("Canal N (26 de julio de 2026)", "https://canaln.pe/actualidad/oscar-reto-otero-elegido-presidente-camara-diputados-n493694"),
     "infobae1001": ("Infobae (1 de octubre de 2026)", "https://www.infobae.com/peru/2026/10/01/fuerza-popular-no-insistira-con-los-66-puntos-del-pedido-de-facultades-entendemos-que-ese-es-el-consenso/"),
     "canaln1001": ("Canal N (1 de octubre de 2026)", "https://canaln.pe/actualidad/cesar-revilla-hay-parte-juntos-peru-que-busca-generar-caos-y-enfrentamiento-n495386"),
-    "fb1118": ("Publicación oficial de César Revilla en Facebook (18 de noviembre de 2026)", "https://www.facebook.com/story.php?story_fbid=1755730106562699&id=100063771796817"),
     "congreso1014": ("Congreso de la República (14 de octubre de 2026)", "https://comunicaciones.congreso.gob.pe/noticias/diputados-de-fuerza-popular-atienden-demandas-de-infraestructura-prevencion-de-riesgos-y-presupuesto-para-hospitales/"),
 }
 
@@ -466,16 +465,6 @@ FICHAS = [
                 "Durante la visita constató que aún quedan tramos pendientes de descolmatación. Gestionó ante el Ministerio de Desarrollo Agrario y Riego (Midagri) y la Autoridad Nacional del Agua (ANA) la intervención de unos siete kilómetros.",
                 "El objetivo es proteger las parcelas agrícolas y prevenir afectaciones en la carretera Tambogrande-Las Lomas."],
          keys=["congreso1014"], pend="Agregar el oficio enviado al Midagri y a la ANA, y el avance de la intervención con fecha."),
-    dict(slug="sullana-evacuacion-aerea-nina-insn-san-borja", tema="salud", hecho="18 de noviembre de 2026", iso="2026-11-18", pub="2026-11-18",
-         h1="Sullana: Revilla coordinó la evacuación aérea de una niña a Lima",
-         seo="Evacuación aérea de niña de Sullana a Lima",
-         desc="César Revilla informó que su despacho coordinó con el SAMU y el Ministerio de Defensa la evacuación aérea de una niña de Sullana al INSN San Borja.",
-         resumen="El despacho de Revilla coordinó con el SAMU y el Ministerio de Defensa el traslado aéreo urgente de una niña desde Sullana al INSN San Borja, en Lima.",
-         paras=["El 18 de noviembre de 2026, el diputado César Revilla informó en su página oficial de Facebook que su despacho coordinó con el Servicio de Atención Móvil de Urgencias (SAMU) y el Ministerio de Defensa la evacuación aérea de una niña que necesitaba ser trasladada con urgencia desde Sullana a Lima.",
-                "Según la publicación, el despacho se sumó al trabajo que venía realizando el Hospital de Especialidades Sullana para conseguir el traslado. La menor fue llevada al Instituto Nacional de Salud del Niño San Borja (INSN San Borja), en Lima, donde continúa recibiendo atención.",
-                "Revilla se encontraba en el Congreso mientras se gestionaba la evacuación. «Cuando se trata de salvar una vida, no existen horarios, distancias ni trámites que puedan esperar», escribió.",
-                "Revilla conoce de cerca el hospital: según su hoja de vida declarada al JNE, fue director del Hospital de Sullana entre 2015 y 2016. Por respeto a la menor y a su familia, esta ficha no publica sus datos personales."],
-         keys=["fb1118", "eclara"], pend="Agregar la nota oficial del SAMU, el Minsa o el Hospital de Sullana cuando se publique, y una foto autorizada."),
 ]
 for f in FICHAS:
     f.setdefault("folder", "gestion")
@@ -758,8 +747,7 @@ PROVS = {
 PROV_FICHAS = {"provincia-de-piura": ["drenaje-pluvial-piura-fenomeno-el-nino", "km-980-sesion-descentralizada-reconstruccion", "comision-economia-sesion-descentralizada-piura", "crimen-organizado-sesion-descentralizada-piura-2025",
                                      "reconstruccion-audiencia-alcaldes-piura-2022", "el-nino-2026-credito-suplementario-piura", "puente-carnero-descolmatacion-tambogrande-las-lomas"],
                "huancabamba": ["universidad-nacional-de-huancabamba-ley-32162"],
-               "sechura": ["represa-tapa-de-cuy-sechura"],
-               "sullana": ["sullana-evacuacion-aerea-nina-insn-san-borja"]}
+               "sechura": ["represa-tapa-de-cuy-sechura"]}
 
 FAQ = [
     ("¿Quién es César Revilla?",
@@ -1152,7 +1140,7 @@ ficha_by_slug("revilla-lidera-votacion-piura-2026")["extra"] = chart_eleccion
 for f in FICHAS:
     tema = TEMAS.get(f["tema"]) if f["tema"] else None
     tema_link = (f'Tema: <a href="~/temas/{f["tema"]}.html">{esc(tema["h1"])}</a> · ' if tema else "")
-    meta = stamp_for(f["path"]) + f'Ficha de gestión · {tema_link}Hecho: {esc(f["hecho"])} · Publicado el {fdate(f.get("pub", PUB))}'
+    meta = stamp_for(f["path"]) + f'Ficha de gestión · {tema_link}Hecho: {esc(f["hecho"])} · Publicado el {fdate(PUB)}'
     content = "".join(f"<p>{t}</p>" for t in f["paras"]) + f.get("extra", "")
     rel = "".join(card("Gestión", r["h1"], r["resumen"], r["path"]) for r in related_for(f))
     crumbs = [("Gestión", "gestion.html")]
@@ -1160,7 +1148,7 @@ for f in FICHAS:
         crumbs = [("Leyes", "proyectos-de-ley.html")]
     crumbs.append((f["h1"], f["path"]))
     add(f["path"], f["seo"], f["desc"], article_body(meta, f["resumen"], content, f["keys"], rel, pend(f["pend"]) if f["pend"] else ""),
-        h1=f["h1"], crumbs=crumbs, kind="article", date=f.get("pub", PUB), keys=f["keys"], in_feed=True)
+        h1=f["h1"], crumbs=crumbs, kind="article", date=PUB, keys=f["keys"], in_feed=True)
 
 HOWTO_SLUGS = ["como-pedir-informacion-publica-peru", "como-se-crea-una-ley-en-el-peru"]
 for g in GUIAS:

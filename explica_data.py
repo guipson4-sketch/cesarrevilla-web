@@ -18,6 +18,12 @@ EXP_SRC = {
                     "https://andina.pe/agencia/noticia-conoce-es-estado-emergencia-y-que-situaciones-rige-955859.aspx"),
     "andinaemerg2": ("Agencia Andina (24 de septiembre de 2023)",
                      "https://andina.pe/agencia/noticia-conoce-cuales-son-las-restricciones-un-estado-emergencia-956472.aspx"),
+    "conglc1119": ("Congreso de la República (19 de noviembre de 2026): Liga Parlamentaria de Amistad Perú-Corea del Sur cuenta con nuevo Comité Ejecutivo",
+                   "https://comunicaciones.congreso.gob.pe/noticias/liga-parlamentaria-de-amistad-peru-corea-del-sur-cuenta-con-nuevo-comite-ejecutivo/"),
+    "congre1119": ("Congreso de la República (19 de noviembre de 2026): Reinició debate parlamentario sobre dictamen de presupuesto del sector público 2027",
+                   "https://comunicaciones.congreso.gob.pe/noticias/reinicio-debate-parlamentario-sobre-dictamen-de-presupuesto-del-sector-publico-2027/"),
+    "congdip1119": ("Congreso de la República (19 de noviembre de 2026): Diputados fijan posición y transmiten necesidades de pobladores en debate de presupuesto público",
+                    "https://comunicaciones.congreso.gob.pe/noticias/diputados-fijan-posicion-y-transmiten-necesidades-de-pobladores-en-debate-de-presupuesto-publico"),
     "gestioncron": ("Gestión: «Congreso debatirá y votará el Presupuesto 2027 del 17 al 20 de noviembre: ¿cuál es el cronograma?» (2026)",
                     "https://gestion.pe/peru/politica/congreso-debatira-y-votara-el-presupuesto-2027-del-17-al-20-de-noviembre-cual-es-el-cronograma-noticia/"),
     "larep1105": ("La República (5 de noviembre de 2026): dictamen del Presupuesto 2027",
@@ -219,8 +225,40 @@ EXPLICA = [
               ("¿Cuánto recibirán los gobiernos regionales y locales?",
                "Los gobiernos regionales S/ 58,672 millones y los gobiernos locales S/ 41,222 millones, según La República.")],
          keys=["larep1105", "andinapres", "gestioncron"]),
+    dict(slug="agenda-19-noviembre-2026-canal-n-liga-corea-pleno-presupuesto", tema="economia-y-empleo", iso="2026-11-19",
+         h1="Agenda del 19 de noviembre de 2026: Canal N, Liga Perú–Corea del Sur y debate del Presupuesto 2027",
+         seo="Agenda de Revilla: 19 de noviembre de 2026",
+         desc="Qué tenía programado el diputado César Revilla el 19 de noviembre de 2026 y qué ocurrió ese día en el Pleno y en la Liga Perú–Corea del Sur.",
+         resumen="El 19 de noviembre de 2026, César Revilla tenía tres actividades: entrevista en Canal N, instalación de la Liga Perú–Corea del Sur y el Pleno Bicameral sobre el Presupuesto 2027.",
+         card="Su agenda del jueves 19 y lo que pasó en el Congreso ese día.",
+         html="""<figure class="agenda"><img src="~/img/agenda-2026-11-19.jpg" alt="Agenda de actividades del diputado César Revilla del jueves 19 de noviembre de 2026: entrevista en Canal N, Liga Parlamentaria de Amistad Perú–Corea del Sur y Pleno Bicameral" width="800" loading="lazy" style="max-width:100%;height:auto;border-radius:12px"><figcaption>Agenda difundida por el despacho del diputado César Revilla.</figcaption></figure>
+<h2>Su agenda del jueves 19 de noviembre de 2026</h2>
+<p>Según la agenda difundida por su despacho, el diputado por Piura César Revilla (Fuerza Popular) tenía tres actividades:</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Hora</th><th>Actividad</th><th>Lugar</th></tr></thead>
+<tbody>
+<tr><td>8:00 a. m.</td><td>Entrevista en Canal N con la periodista Melissa Peschiera</td><td>Montero Rosas 1050, Santa Beatriz, Lima</td></tr>
+<tr><td>9:00 a. m.</td><td>Elección e instalación del Comité Ejecutivo de la Liga Parlamentaria de Amistad Perú–Corea del Sur</td><td>Sala 5 «Gustavo Mohme Llona», Edificio Víctor Raúl Haya de la Torre</td></tr>
+<tr><td>10:00 a. m.</td><td>Pleno Bicameral: debate del Presupuesto del Estado para 2027</td><td>Hemiciclo del Congreso</td></tr>
+</tbody></table></div>
+<h2>Liga Parlamentaria de Amistad Perú–Corea del Sur</h2>
+<p>El Congreso informó el 19 de noviembre que la Liga quedó instalada y que eligió por unanimidad a María Candelaria Ramos Rosales (Fuerza Popular) como presidenta. La vicepresidenta es Milagros Takayama Jiménez (Fuerza Popular) y el secretario, Leo Miguel De Paz Lancho (Renovación Popular). Sus integrantes acordaron elaborar un plan de trabajo para presentarlo a la Asamblea General. La Liga busca estrechar los vínculos de amistad y cooperación entre ambos países.</p>
+<h2>El debate del Presupuesto 2027 en el Pleno</h2>
+<p>Según el Congreso, el Pleno retomó el 19 de noviembre, a las 10:12 h, el debate de los dictámenes de la Ley de Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento del Sector Público. Por acuerdo de la Junta de Portavoces Conjunta, senadores y diputados tienen tres horas cada grupo de cámara para intervenir, repartidas entre los grupos parlamentarios.</p>
+<p>Durante el debate, diputados de Piura plantearon pedidos para la región, entre ellos fondos para reactivar obras paralizadas en la sierra, la culminación de establecimientos de salud en Ayabaca, Huancabamba, Huarmaca y Los Algarrobos, y el nombramiento de docentes de la Universidad Nacional de Piura. Después, la sesión pasó a cuarto intermedio y continuará el viernes 20 de noviembre a las 4:00 p. m., para elaborar un texto sustitutorio de los dictámenes.</p>
+<p class="upd">Las notas del Congreso consultadas no mencionan intervenciones de César Revilla. Esta página se actualizará cuando se publique el video o el acta de su participación.</p>
+<h2>Para entender el tema</h2>
+<p>Lee <a href="~/explica/presupuesto-publico-2027-que-es-como-se-aprueba-y-que-incluye.html">qué incluye el Presupuesto 2027 y cómo se vota</a> y <a href="~/guias/como-se-crea-una-ley-en-el-peru.html">cómo se crea una ley en el Perú</a>.</p>""",
+         faq=[("¿Qué actividades tuvo César Revilla el 19 de noviembre de 2026?",
+               "Según la agenda de su despacho, una entrevista en Canal N a las 8:00 a. m., la elección e instalación del Comité Ejecutivo de la Liga Parlamentaria de Amistad Perú–Corea del Sur a las 9:00 a. m. y el Pleno Bicameral sobre el Presupuesto 2027 a las 10:00 a. m."),
+              ("¿Quién preside la Liga Parlamentaria de Amistad Perú–Corea del Sur?",
+               "María Candelaria Ramos Rosales (Fuerza Popular), elegida por unanimidad el 19 de noviembre de 2026, según el Congreso."),
+              ("¿Se votó el Presupuesto 2027 el 19 de noviembre?",
+               "No. El Pleno debatió los dictámenes y pasó a cuarto intermedio. Según el Congreso, la sesión continúa el viernes 20 de noviembre a las 4:00 p. m.")],
+         keys=["conglc1119", "congre1119", "congdip1119"]),
 ]
 
 # Explicaciones de hechos del día (nivel 1 y 2 del protocolo): se agregan a EXPLICA con su `iso` real.
 # COYUNTURA queda reservada para un futuro índice cronológico (no se genera mientras esté vacía).
-COYUNTURA = []
+COYUNTURA = [
+]

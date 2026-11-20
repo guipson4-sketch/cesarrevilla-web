@@ -1,0 +1,36 @@
+name: Actualizar transmisión En vivo
+on:
+  schedule:
+    - cron: "*/10 14-23 * * 1-5"   # cada 10 min, 9:00–18:59 hora de Lima, lunes a viernes
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: en-vivo
+  cancel-in-progress: false
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Buscar Pleno en vivo
+        run: python3 tools/update_live.py
+      - name: Reconstruir, auditar y publicar si hubo cambios
+        run: |
+          if ! git diff --quiet build.py; then
+            python3 build.py
+            python3 audit.py
+            rm -rf __pycache__
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "En vivo: la transmisión pasa a la sesión del Pleno (automático)"
+            git push
+            gh api -X POST "/repos/${GITHUB_REPOSITORY}/pages/builds" || true
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}

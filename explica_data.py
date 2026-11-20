@@ -18,6 +18,7 @@ EXP_SRC = {
                     "https://andina.pe/agencia/noticia-conoce-es-estado-emergencia-y-que-situaciones-rige-955859.aspx"),
     "andinaemerg2": ("Agencia Andina (24 de septiembre de 2023)",
                      "https://andina.pe/agencia/noticia-conoce-cuales-son-las-restricciones-un-estado-emergencia-956472.aspx"),
+    "ytpleno1119": ("Congreso de la República, Sesión del Pleno del 19/11/2026 (video oficial; intervención de César Revilla desde 6:48:57)", "https://www.youtube.com/watch?v=ehMRuO8zzls&t=24537s"),
     "conglc1119": ("Congreso de la República (19 de noviembre de 2026): Liga Parlamentaria de Amistad Perú-Corea del Sur cuenta con nuevo Comité Ejecutivo",
                    "https://comunicaciones.congreso.gob.pe/noticias/liga-parlamentaria-de-amistad-peru-corea-del-sur-cuenta-con-nuevo-comite-ejecutivo/"),
     "congre1119": ("Congreso de la República (19 de noviembre de 2026): Reinició debate parlamentario sobre dictamen de presupuesto del sector público 2027",
@@ -254,7 +255,7 @@ EXPLICA = [
 <h2>El debate del Presupuesto 2027 en el Pleno</h2>
 <p>Según el Congreso, el Pleno retomó el 19 de noviembre, a las 10:12 h, el debate de los dictámenes de la Ley de Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento del Sector Público. Por acuerdo de la Junta de Portavoces Conjunta, senadores y diputados tienen tres horas cada grupo de cámara para intervenir, repartidas entre los grupos parlamentarios.</p>
 <p>Durante el debate, diputados de Piura plantearon pedidos para la región, entre ellos fondos para reactivar obras paralizadas en la sierra, la culminación de establecimientos de salud en Ayabaca, Huancabamba, Huarmaca y Los Algarrobos, y el nombramiento de docentes de la Universidad Nacional de Piura. Después, la sesión pasó a cuarto intermedio y continuará el viernes 20 de noviembre a las 4:00 p. m., para elaborar un texto sustitutorio de los dictámenes.</p>
-<p class="upd">Las notas del Congreso consultadas no mencionan intervenciones de César Revilla. Esta página se actualizará cuando se publique el video o el acta de su participación.</p>
+<p class="upd">César Revilla intervino en este debate: <a href="~/explica/cesar-revilla-pleno-19-noviembre-2026-propuestas-presupuesto-2027.html">lee lo que propuso para el Presupuesto 2027</a> (video desde 6:48:57).</p>
 <h2>Para entender el tema</h2>
 <p>Lee <a href="~/explica/presupuesto-publico-2027-que-es-como-se-aprueba-y-que-incluye.html">qué incluye el Presupuesto 2027 y cómo se vota</a> y <a href="~/guias/como-se-crea-una-ley-en-el-peru.html">cómo se crea una ley en el Perú</a>.</p>""",
          faq=[("¿Qué actividades tuvo César Revilla el 19 de noviembre de 2026?",
@@ -264,6 +265,40 @@ EXPLICA = [
               ("¿Se votó el Presupuesto 2027 el 19 de noviembre?",
                "No. El Pleno debatió los dictámenes y pasó a cuarto intermedio. Según el Congreso, la sesión continúa el viernes 20 de noviembre a las 4:00 p. m.")],
          keys=["conglc1119", "congre1119", "congdip1119"]),
+    dict(slug="cesar-revilla-pleno-19-noviembre-2026-propuestas-presupuesto-2027", tema="economia-y-empleo", iso="2026-11-20",
+         h1="César Revilla en el Pleno del 19 de noviembre de 2026: lo que propuso para el Presupuesto 2027",
+         seo="César Revilla en el Pleno: Presupuesto 2027",
+         desc="Qué dijo César Revilla en el Pleno del 19-nov-2026: propuestas de articulado para el Presupuesto 2027, con transcripción del video oficial.",
+         resumen="En dos minutos, el diputado César Revilla planteó al Pleno propuestas de articulado para el Presupuesto 2027: drenaje pluvial, obras por impuestos, personal de salud, Fuerzas Armadas y empleo temporal.",
+         card="Sus propuestas para el Presupuesto 2027, con transcripción.",
+         html="""<h2>En pocas palabras</h2>
+<p>El 19 de noviembre de 2026, durante el debate del Presupuesto 2027, el presidente de la sesión le dio la palabra al diputado César Revilla por dos minutos (desde 6:48:57 del video). Leyó una serie de propuestas de articulado para incorporar en las leyes en debate. Habló hasta las 6:51:26.</p>
+<h2>Lo que propuso</h2>
+<ul class="clean">
+<li><strong>Drenaje pluvial:</strong> financiamiento de proyectos de drenaje pluvial en las ciudades de Sullana, Talara y Chiclayo.</li>
+<li><strong>Obras paralizadas:</strong> reactivar inversiones paralizadas y acelerar intervenciones estratégicas con el mecanismo de obras por impuestos.</li>
+<li><strong>Personal de salud:</strong> cambio de grupo ocupacional y de línea de carrera, y nombramiento progresivo del personal contratado por emergencia COVID.</li>
+<li><strong>Fuerzas Armadas:</strong> que las operaciones de endeudamiento en trámite al 31 de diciembre de 2026 puedan aprobarse en el primer trimestre de 2027 para la operatividad de las Fuerzas Armadas.</li>
+<li><strong>Tribunal Constitucional:</strong> financiamiento para su transformación digital y renovación tecnológica.</li>
+<li><strong>Recuperación económica:</strong> transferencias financieras para el plan de inversiones en transmisión de recuperación post COVID.</li>
+<li><strong>Sechura:</strong> una disposición complementaria al Decreto Legislativo 996 (recursos de la promoción de la inversión privada en programas sociales) para ayudar a la provincia de Sechura.</li>
+<li><strong>Junta Nacional de Justicia:</strong> autorización para financiar el fortalecimiento de sus funciones constitucionales.</li>
+<li><strong>Empleo temporal:</strong> que el Ministerio de Economía asigne S/ 261 millones adicionales al programa Trabaja Perú (unidad ejecutora 005, pliego 012 del Ministerio de Trabajo).</li>
+</ul>
+<h2>Transcripción del tramo</h2>
+<blockquote>
+<p>«Presidente, la propuesta de articulado para el financiamiento de los proyectos de drenajes pluviales en la ciudad de [Sullana], Talara y Chiclayo. Presidente, la propuesta de articulado para la reactivación de obras de inversiones paralizadas y ejecución acelerada de intervenciones estratégicas mediante el mecanismo de obras por impuestos. La propuesta de la disposición complementaria final del cambio de grupo ocupacional, cambio de línea de carrera del personal de salud y el nombramiento progresivo de los [CAS] COVID. La incorporación en la ley de endeudamiento 2027 [para] disponer que las operaciones de endeudamiento comprendidas en los alcances del numeral 4 del 3.2 del artículo [de la] ley 32515, ley de endeudamiento del sector público para el año fiscal 2026, que al 31 de diciembre del 2026 se encuentren en trámite puedan ser aprobadas durante el primer trimestre del año fiscal 2027 para la operatividad de las Fuerzas Armadas. Presidente, propuesta de artículo para el financiamiento para la transformación digital y la renovación de tecnología en el Tribunal Constitucional; propuesta de artículo para transferencias financieras para el plan de inversiones en transmisión de recuperación económica post COVID en Perú; la modificación del decreto legislativo 996 […] incorporándose una disposición complementaria final […] para ayudar a la provincia de [Sechura]. Presidente, la autorización para el financiamiento del fortalecimiento de las funciones constitucionales de la Junta Nacional de Justicia. […] Autorizar al Ministerio de Economía y Finanzas a asignar en el presupuesto del sector público para el año 2027 recursos adicionales a la unidad ejecutora 005, programa para la generación de empleo social inclusivo Trabaja Perú, en el pliego 012 del Ministerio de Trabajo y Promoción del Empleo, por la suma de 261 millones de soles. Eso es todo, presidente. Muchas gracias.»</p>
+</blockquote>
+<p class="upd">Cómo leer esta transcripción: se obtuvo de los subtítulos generados automáticamente del video oficial del Congreso y puede tener errores. Los corchetes marcan palabras corregidas por contexto y los puntos suspensivos, tramos omitidos por ser ininteligibles; los nombres de lugares ([Sullana], [Sechura]) los transcribió mal el sistema automático. Para el texto exacto, escucha el video desde <a href="https://www.youtube.com/watch?v=ehMRuO8zzls&t=24537s" rel="noopener" target="_blank">6:48:57</a>.</p>
+<h2>Contexto</h2>
+<p>Estas propuestas se presentaron en el debate de la Ley de Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento del Sector Público. Lee <a href="~/explica/pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027.html">de qué se habló en el Pleno y qué dijo cada bancada</a> y <a href="~/en-vivo.html">sigue las sesiones en vivo</a>.</p>""",
+         faq=[("¿Qué dijo César Revilla en el Pleno del 19 de noviembre de 2026?",
+               "Planteó propuestas de articulado para el Presupuesto 2027: drenaje pluvial en Sullana, Talara y Chiclayo, obras por impuestos, carrera del personal de salud, operatividad de las Fuerzas Armadas, fondos para el Tribunal Constitucional y la Junta Nacional de Justicia, ayuda a Sechura y S/ 261 millones para Trabaja Perú."),
+              ("¿Cuánto tiempo habló César Revilla en el Pleno?",
+               "Tuvo dos minutos y su intervención va de 6:48:57 a 6:51:26 del video oficial de la sesión."),
+              ("¿Dónde puedo ver la intervención de César Revilla?",
+               "En el video oficial de la sesión del Pleno del 19 de noviembre de 2026 en el canal de YouTube del Congreso, desde la hora 6:48:57.")],
+         keys=["ytpleno1119", "congre1119", "congdip1119"]),
     dict(slug="pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027", tema="economia-y-empleo", iso="2026-11-20",
          h1="Pleno del 19 de noviembre de 2026: de qué se habló y qué dijo cada bancada sobre el Presupuesto 2027",
          seo="Pleno del 19-nov: qué dijo cada bancada",
@@ -316,7 +351,7 @@ EXPLICA = [
 <h2>Cómo terminó la sesión</h2>
 <p>Según el Congreso, el Pleno pasó a cuarto intermedio a pedido de la presidencia de la Comisión Bicameral de Presupuesto, para evaluar los pedidos de senadores y diputados. Se reanuda el viernes 20 de noviembre a las 4:00 p. m. para avanzar en un texto sustitutorio de los dictámenes. Según Andina, ese día habrá una intervención final de la Presidencia del Consejo de Ministros y la votación; la nota no precisa la hora. No hubo votación el 19 de noviembre.</p>
 <h2>Y César Revilla</h2>
-<p>La nota del Congreso sobre los diputados lista a 28 que intervinieron y no incluye a César Revilla. Su agenda del día está en <a href="~/explica/agenda-19-noviembre-2026-canal-n-liga-corea-pleno-presupuesto.html">Agenda del 19 de noviembre</a>. Puedes ver la sesión completa en <a href="~/en-vivo.html">En vivo</a>.</p>
+<p>César Revilla intervino por dos minutos: <a href="~/explica/cesar-revilla-pleno-19-noviembre-2026-propuestas-presupuesto-2027.html">estas fueron sus propuestas para el Presupuesto 2027</a>. La nota del Congreso sobre los diputados no lo menciona, pero el video oficial de la sesión sí lo registra. Su agenda del día está en <a href="~/explica/agenda-19-noviembre-2026-canal-n-liga-corea-pleno-presupuesto.html">Agenda del 19 de noviembre</a>. Puedes ver la sesión completa en <a href="~/en-vivo.html">En vivo</a>.</p>
 <p class="upd">Resumen elaborado a partir de dos notas oficiales del Congreso y de Andina. Los nombres y pedidos son los que esas notas recogen; no es una transcripción. Para la sesión completa, usa el video del canal oficial del Congreso.</p>""",
          faq=[("¿De qué se habló en el Pleno del 19 de noviembre de 2026?",
                "Del Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento. Senadores y diputados pidieron obras de agua, salud y educación, derechos laborales y más control del gasto."),

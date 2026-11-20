@@ -799,6 +799,7 @@ NAV = [
     ("proyectos-de-ley.html", "Leyes"),
     ("cifras.html", "En cifras"),
     ("congreso-2026-2031.html", "Congreso"),
+    ("en-vivo.html", "En vivo"),
     ("explica.html", "Explica"),
     ("guias.html", "Guías"),
     ("piura.html", "Piura"),
@@ -969,7 +970,7 @@ def layout(p):
                       f'<h1>{esc(p["h1"])}</h1>' + (f'<p class="lead">{p["lead"]}</p>' if p["lead"] else "") + "</div></header>")
 
     draftbar = ('<div class="draftbar">BORRADOR · no indexable · completar bloques “Pendiente” antes de publicar</div>' if DRAFT else "")
-    _fa = [("biografia.html", "Biografía"), ("gestion.html", "Gestión"), ("proyectos-de-ley.html", "Leyes"), ("cifras.html", "En cifras"), ("congreso-2026-2031.html", "Congreso 2026–2031"), ("explica.html", "Explica"), ("guias.html", "Guías"), ("piura.html", "Piura")]
+    _fa = [("biografia.html", "Biografía"), ("gestion.html", "Gestión"), ("proyectos-de-ley.html", "Leyes"), ("cifras.html", "En cifras"), ("congreso-2026-2031.html", "Congreso 2026–2031"), ("en-vivo.html", "En vivo"), ("explica.html", "Explica"), ("guias.html", "Guías"), ("piura.html", "Piura")]
     _fb = [("transparencia.html", "Transparencia"), ("prensa.html", "Sala de prensa"), ("medios.html", "En los medios"), ("canales-oficiales.html", "Canales oficiales"), ("contacto.html", "Contacto")]
     foot_a = "".join(f'<li><a href="{pre}{pp}">{t}</a></li>' for pp, t in _fa)
     foot_b = "".join(f'<li><a href="{pre}{pp}">{t}</a></li>' for pp, t in _fb)
@@ -1260,6 +1261,44 @@ add("explica.html", "Explica: política del Perú explicada con fuentes",
     crumbs=[("Explica", "explica.html")], brand=False, date="2026-11-14",
     ld_extra={"@context": "https://schema.org", "@type": "FAQPage",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in EXP_HUB_FAQ]})
+
+
+# ============ EN VIVO (transmisiones oficiales del Congreso, incrustadas) ============
+YT_CH = "UC9HLcODpEZuBRLSKXZx5igw"   # canal oficial «Congreso de la República del Perú»
+EV_VID = "ehMRuO8zzls"               # última sesión del Pleno incrustada (actualizar cada sesión)
+EV_FECHA, EV_ISO = "19 de noviembre de 2026", "2026-11-19"
+EV_FAQ = [
+    ("¿Dónde puedo ver en vivo el Pleno del Congreso?", "Aquí mismo, en esta página, cuando hay transmisión. La señal es la del canal oficial de YouTube del Congreso de la República; este sitio solo la incrusta."),
+    ("¿Este sitio es el canal oficial del Congreso?", "No. Es el sitio personal del diputado César Revilla. Las transmisiones pertenecen al Congreso y se ven desde su canal de YouTube."),
+    ("¿Qué pasa si no hay una sesión en vivo?", "El reproductor de arriba no muestra señal. Mira abajo la última sesión del Pleno que incrustamos y el resumen de lo debatido."),
+]
+add("en-vivo.html", "En vivo: sesiones del Pleno del Congreso",
+    "Mira en vivo las sesiones del Pleno del Congreso de la República, con resumen de lo que se debate y enlaces para entender cada tema.",
+    f"""<section class="block"><div class="wrap">
+<p class="resumen"><strong>En breve:</strong> aquí puedes ver la transmisión oficial del Congreso de la República cuando hay sesión, y debajo, la última sesión del Pleno con un resumen de lo que se debatió. La señal es del canal oficial del Congreso en YouTube.</p>
+<h2>Transmisión en vivo</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/live_stream?channel={YT_CH}" title="Transmisión en vivo del Congreso de la República del Perú" width="800" height="450" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe></div>
+<p class="upd">Si no ves señal, no hay sesión en vivo en este momento. También puedes abrir el <a href="https://www.youtube.com/user/congresoperu/streams" rel="noopener" target="_blank">canal oficial del Congreso en YouTube</a>.</p>
+<h2>Última sesión del Pleno: {EV_FECHA}</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{EV_VID}" title="Sesión del Pleno del Congreso de la República, {EV_FECHA}" width="800" height="450" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe></div>
+<h3>Qué se debatió</h3>
+<p>Según el Congreso, el Pleno retomó el 19 de noviembre de 2026 el debate de los dictámenes de la Ley de Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento del Sector Público. Diputados de varias bancadas presentaron pedidos regionales y la sesión pasó a cuarto intermedio hasta el viernes 20 de noviembre a las 4:00 p. m.</p>
+<p>Fuentes: <a href="{SRC['congre1119'][1]}" rel="noopener" target="_blank">Congreso: reinició el debate</a> · <a href="{SRC['congdip1119'][1]}" rel="noopener" target="_blank">Congreso: diputados fijan posición</a>.</p>
+<h2>Para entender lo que se debate</h2>
+<div class="grid">{''.join(card('Explica', x['h1'], x['card'], x['path']) for x in sorted(EXPLICA, key=lambda z: z['iso'], reverse=True)[:3])}</div>
+<h2>Preguntas frecuentes</h2>
+{''.join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in EV_FAQ)}
+</div></section>""",
+    h1="En vivo: sesiones del Congreso", lead="La transmisión oficial del Pleno y un resumen de lo que se debate, con fuentes.",
+    crumbs=[("En vivo", "en-vivo.html")], brand=False, date=EV_ISO,
+    ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
+               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in EV_FAQ]},
+              {"@context": "https://schema.org", "@type": "VideoObject",
+               "name": f"Sesión del Pleno del Congreso de la República, {EV_FECHA}",
+               "description": "Transmisión oficial del Pleno del Congreso: debate de los dictámenes del Presupuesto 2027, Equilibrio Financiero y Endeudamiento.",
+               "thumbnailUrl": [f"https://i.ytimg.com/vi/{EV_VID}/hqdefault.jpg"], "uploadDate": EV_ISO,
+               "embedUrl": f"https://www.youtube.com/embed/{EV_VID}",
+               "publisher": {"@type": "Organization", "name": "Congreso de la República del Perú"}}])
 
 # ============ HUBS DE TEMA ============
 for slug, t in TEMAS.items():

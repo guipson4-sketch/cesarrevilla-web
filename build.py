@@ -1268,7 +1268,7 @@ add("explica.html", "Explica: política del Perú explicada con fuentes",
 import json as _json, re as _re, unicodedata as _ud
 from urllib.parse import quote as _q
 
-PRES_REGIONES = [("puno", "Puno"), ("piura", "Piura")]          # regiones con datos cargados (data/presupuesto-2027-<slug>.json)
+PRES_REGIONES = [("piura", "Piura"), ("puno", "Puno")]          # regiones con datos cargados (data/presupuesto-2027-<slug>.json)
 PRES_PENDIENTES = []                 # regiones anunciadas, aún sin datos
 PRES_NOTAS = {
     "puno": "<li><strong>Verificación con el MEF:</strong> las inversiones de los gobiernos nacional y regional se cruzaron por CUI con los anexos 5, 6 y 8 del Proyecto de Presupuesto 2027 del MEF; casi todas coinciden en monto. Las asignaciones de gobiernos locales no figuran por CUI en esos anexos (son del texto sustitutorio aprobado), así que se confirman en el Banco de Inversiones o en el PIA por pliego.</li><li><strong>Diferencia a confirmar:</strong> CUI 2648223 (agua para riego) figura aquí con S/ 368,695, pero el anexo del MEF registra S/ 7,368,695; puede deberse a un ajuste del texto sustitutorio.</li><li><strong>Agua con camiones cisterna:</strong> el texto sustitutorio asigna S/ 4,607,896 para distritos de Puno, pero no es una inversión con CUI y no se suma.</li>",

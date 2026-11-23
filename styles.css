@@ -437,3 +437,18 @@ section.alt .imp,section.alt .chart-fig,section.alt .tile{background:#fff}
 .site-head .brand::before,.site-head .brand small{display:none}
 .site-foot .cols>div:first-child strong{display:block;width:224px;height:48px;margin-bottom:14px;font-size:0;color:transparent;background:url(img/logo-blanco.png) left center/contain no-repeat}
 @media(max-width:860px){.site-head .brand{width:150px;height:32px}}
+
+/* Presupuesto 2027 */
+.pr-cta{padding:32px 0 0}
+.pr-banner{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--mist);border:1px solid var(--hairline);border-radius:var(--r);padding:28px 32px}
+.pr-banner h2{margin:6px 0 8px;font-size:clamp(1.4rem,3vw,2rem)}
+.pr-banner p{margin:0;color:var(--smoke)}
+.pr-form label{display:block;margin:0 0 6px}
+.pr-form input,.pr-form select{width:100%;padding:14px 16px;font-size:1rem;border:2px solid var(--charcoal);border-radius:8px;background:#fff;font-family:inherit}
+.pr-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+.pr-lista{display:grid;gap:12px;margin:12px 0}
+.pr-card{border:1px solid var(--hairline);border-radius:var(--r);padding:18px 20px;background:#fff}
+.pr-card h3{font-size:1.02rem;line-height:1.35;margin:0 0 6px}
+.pr-monto{font:500 1.25rem/1.2 var(--mono);margin:0 0 6px}
+.pr-meta{color:var(--smoke);font-size:.88rem;margin:0}
+@media(max-width:600px){.pr-row{grid-template-columns:1fr}.pr-banner{padding:22px 18px}}

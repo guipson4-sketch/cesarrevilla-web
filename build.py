@@ -799,6 +799,7 @@ NAV = [
     ("proyectos-de-ley.html", "Leyes"),
     ("cifras.html", "En cifras"),
     ("congreso-2026-2031.html", "Congreso"),
+    ("presupuesto-2027.html", "Presupuesto 2027"),
     ("en-vivo.html", "En vivo"),
     ("explica.html", "Explica"),
     ("guias.html", "Guías"),
@@ -1261,6 +1262,206 @@ add("explica.html", "Explica: política del Perú explicada con fuentes",
     crumbs=[("Explica", "explica.html")], brand=False, date="2026-11-14",
     ld_extra={"@context": "https://schema.org", "@type": "FAQPage",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in EXP_HUB_FAQ]})
+
+
+# ============ PRESUPUESTO 2027 POR REGIÓN (buscador + páginas por provincia) ============
+import json as _json, re as _re, unicodedata as _ud
+
+PRES_REGIONES = [("puno", "Puno")]          # regiones con datos cargados (data/presupuesto-2027-<slug>.json)
+PRES_PENDIENTES = ["Piura"]                 # regiones anunciadas, aún sin datos
+PRES_LEY_URL = "https://comunicaciones.congreso.gob.pe/noticias/pleno-del-congreso-aprueba-la-ley-de-presupuesto-del-sector-publico-para-el-ano-fiscal-2027/"
+PRES_MEF_URL = "https://www.mef.gob.pe/es/presupuesto-del-sector-publico/proyecto-de-presupuesto"
+
+
+def _slug(t):
+    t = _ud.normalize("NFD", t.lower())
+    t = "".join(c for c in t if not _ud.combining(c))
+    return _re.sub(r"[^a-z0-9]+", "-", t).strip("-")
+
+
+def _soles(n):
+    return "S/ {:,}".format(int(n))
+
+
+def _millones(n):
+    return "S/ {:,.1f} millones".format(n / 1e6)
+
+
+PRES = {}
+for _rs, _rn in PRES_REGIONES:
+    _fp = os.path.join(OUT, "data", f"presupuesto-2027-{_rs}.json")
+    if os.path.exists(_fp):
+        with open(_fp, encoding="utf-8") as _fh:
+            PRES[_rs] = (_rn, _json.load(_fh))
+
+
+def _pres_region_pages(rs, rn, D):
+    rows = D["rows"]
+    tot = sum(r["m"] for r in rows)
+    res = D["resumen"]
+    provs = {}
+    for r in rows:
+        provs.setdefault(r["pr"], []).append(r)
+    order = sorted(provs, key=lambda k: (k.startswith("Ámbito"), -sum(x["m"] for x in provs[k])))
+    nprov = len([k for k in provs if not k.startswith("Ámbito")])
+    base = f"presupuesto-2027/{rs}"
+    top = max((k for k in provs if not k.startswith("Ámbito")), key=lambda k: sum(x["m"] for x in provs[k]))
+    faq = [
+        (f"¿Cuánto dinero tiene {rn} en el Presupuesto 2027?",
+         f"Según los anexos de la Ley de Presupuesto 2027, hay {len(rows)} inversiones de ámbito exclusivo de {rn} por {_soles(tot)}: "
+         f"{_soles(res['Gobierno Nacional']['m'])} del Gobierno Nacional, {_soles(res['Gobierno Regional']['m'])} del Gobierno Regional y "
+         f"{_soles(res['Gobierno Local']['m'])} de gobiernos locales."),
+        ("¿Cómo sé si la obra de mi distrito está en el Presupuesto 2027?",
+         f"Escribe el nombre de tu distrito, de la obra o el número CUI en el buscador de esta página. También puedes entrar a la página de tu provincia y ver la lista completa."),
+        ("¿Qué es el CUI de una inversión?",
+         "Es el Código Único de Inversiones: el número con el que el Estado identifica cada proyecto. Con ese número puedes seguir la obra en el Invierte.pe del MEF."),
+        ("¿Qué significa que una obra esté presupuestada?",
+         "Que figura en los anexos de la ley con un monto para 2027. No garantiza que se ejecute en ese año: depende del avance del proyecto y de la entidad que lo ejecuta."),
+    ]
+    prov_rows = "".join(
+        f'<tr><td><a href="~/{base}/{_slug(k)}.html">{esc(k)}</a></td><td>{len(provs[k])}</td><td>{_soles(sum(x["m"] for x in provs[k]))}</td></tr>'
+        for k in order)
+    multi_rows = "".join(
+        f'<tr><td>{esc(m["i"])}</td><td>{esc(m["p"])}</td><td>{_soles(m["m"])}</td><td>CUI {esc(m["c"])}</td></tr>' for m in D["multi"])
+    opts = "".join(f'<option value="{esc(k)}">{esc(k)}</option>' for k in order)
+    body = f"""<section class="block"><div class="wrap">
+<p class="resumen"><strong>En breve:</strong> el Presupuesto 2027, aprobado por el Pleno del Congreso el 20 de noviembre de 2026, incluye {len(rows)} inversiones de ámbito exclusivo de {rn} por {_soles(tot)}. Busca tu distrito, tu obra o su número CUI y mira si está presupuestada.</p>
+<h2>Busca la obra de tu distrito, provincia o región en {rn}</h2>
+<form id="pr-form" class="pr-form" role="search" onsubmit="return false">
+<label for="pr-q"><strong>Distrito, obra o CUI</strong></label>
+<input id="pr-q" type="search" placeholder="Ejemplo: Juliaca, colegio, agua potable, 2496607" autocomplete="off">
+<div class="pr-row">
+<div><label for="pr-prov">Provincia</label><select id="pr-prov"><option value="">Todas</option>{opts}</select></div>
+<div><label for="pr-niv">Nivel de gobierno</label><select id="pr-niv"><option value="">Todos</option><option>Gobierno Nacional</option><option>Gobierno Regional</option><option>Gobierno Local</option></select></div>
+</div></form>
+<p id="pr-estado" class="upd" aria-live="polite">Cargando inversiones…</p>
+<div id="pr-lista" class="pr-lista"></div>
+<p><button id="pr-mas" class="btn" type="button" hidden>Ver más resultados</button></p>
+<noscript><p>El buscador necesita JavaScript. Sin él, entra a la página de tu provincia en la lista de abajo.</p></noscript>
+<h2>Cuánto va a cada nivel de gobierno</h2>
+<div class="table-wrap"><table><thead><tr><th>Nivel de gobierno</th><th>Inversiones</th><th>Monto 2027</th></tr></thead><tbody>
+<tr><td>Gobierno Nacional (ministerios, universidades y otras entidades)</td><td>{res['Gobierno Nacional']['n']}</td><td>{_soles(res['Gobierno Nacional']['m'])}</td></tr>
+<tr><td>Gobierno Regional</td><td>{res['Gobierno Regional']['n']}</td><td>{_soles(res['Gobierno Regional']['m'])}</td></tr>
+<tr><td>Gobiernos locales (municipalidades)</td><td>{res['Gobierno Local']['n']}</td><td>{_soles(res['Gobierno Local']['m'])}</td></tr>
+<tr><td><strong>Total exclusivo de {rn}</strong></td><td><strong>{len(rows)}</strong></td><td><strong>{_soles(tot)}</strong></td></tr>
+</tbody></table></div>
+<h2>Presupuesto 2027 en {rn}: provincia por provincia</h2>
+<p>La provincia con más inversiones identificadas por monto es {esc(top)} ({_millones(sum(x['m'] for x in provs[top]))}). Entra a tu provincia para ver todas sus obras con monto y CUI.</p>
+<div class="table-wrap"><table><thead><tr><th>Provincia</th><th>Inversiones</th><th>Monto 2027</th></tr></thead><tbody>{prov_rows}</tbody></table></div>
+<h2>Proyectos que incluyen a {rn} y otros departamentos</h2>
+<p>Estos {len(D['multi'])} proyectos abarcan varias regiones. El monto es el del proyecto completo y no se puede atribuir solo a {rn}, por eso no se suma al total.</p>
+<div class="table-wrap"><table><thead><tr><th>Proyecto</th><th>Entidad</th><th>Monto total</th><th>CUI</th></tr></thead><tbody>{multi_rows}</tbody></table></div>
+<h2>De dónde salen estos datos y cómo leerlos</h2>
+<ul class="clean">
+<li><strong>Fuente:</strong> anexos de la Ley de Presupuesto del Sector Público 2027, aprobada por el Pleno el 20 de noviembre de 2026 (<a href="{PRES_LEY_URL}" rel="noopener" target="_blank">nota del Congreso</a>) y datos del <a href="{PRES_MEF_URL}" rel="noopener" target="_blank">MEF</a>. La consolidación por nivel y pliego es un trabajo propio de este sitio.</li>
+<li><strong>Municipalidades:</strong> el anexo no indica la municipalidad en cada fila. La entidad se asignó según el distrito o la provincia que menciona el nombre del proyecto; {sum(1 for r in rows if r['inf'])} registros locales se marcan «asignación inferida».</li>
+<li><strong>Agua con camiones cisterna:</strong> el texto sustitutorio asigna S/ 4,607,896 para distritos de {rn}, pero no es una inversión con CUI y no se suma.</li>
+<li><strong>Importante:</strong> este no es un portal oficial. Para confirmar un proyecto, busca su CUI en <a href="https://ofi5.mef.gob.pe/invierte/consultaPublica/consultaInversiones" rel="noopener" target="_blank">Invierte.pe</a>. Un proyecto presupuestado no implica que se ejecute en 2027.</li>
+<li><a href="~/datos/Presupuesto_2027_{rn}_por_Nivel_y_Pliego.xlsx" download>Descargar el Excel completo ({len(rows)} inversiones)</a></li>
+</ul>
+<h2>Preguntas frecuentes</h2>
+{''.join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in faq)}
+<p><a href="~/presupuesto-2027.html">← Presupuesto 2027 en todas las regiones</a> · <a href="~/explica/presupuesto-publico-2027-que-es-como-se-aprueba-y-que-incluye.html">Qué incluye el Presupuesto 2027</a></p>
+</div></section>
+<script>
+(function(){{
+var q=document.getElementById('pr-q'),pv=document.getElementById('pr-prov'),nv=document.getElementById('pr-niv'),est=document.getElementById('pr-estado'),lst=document.getElementById('pr-lista'),mas=document.getElementById('pr-mas');
+if(!q) return;
+var D=[],res=[],shown=0,PAGE=30;
+function norm(t){{return String(t).toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}}
+function fmt(n){{return 'S/ '+n.toString().replace(/\\B(?=(\\d{{3}})+(?!\\d))/g,',');}}
+function card(r){{var d=document.createElement('article');d.className='pr-card';
+ var h=document.createElement('h3');h.textContent=r.i;d.appendChild(h);
+ var m=document.createElement('p');m.className='pr-monto';m.textContent=fmt(r.m);d.appendChild(m);
+ var p=document.createElement('p');p.className='pr-meta';
+ p.textContent=r.n+' · '+r.p+(r.inf?' (asignación inferida)':'')+' · '+(r.d&&r.d.indexOf('Ámbito')!==0?r.d+', ':'')+r.pr+' · CUI '+r.c+' · Anexo '+r.a+', pág. '+r.g;
+ d.appendChild(p);return d;}}
+function more(){{var end=Math.min(shown+PAGE,res.length);for(var i=shown;i<end;i++)lst.appendChild(card(res[i]));shown=end;mas.hidden=shown>=res.length;}}
+function run(){{var w=norm(q.value.trim()).split(/\\s+/).filter(Boolean);
+ res=D.filter(function(r){{if(pv.value&&r.pr!==pv.value)return false;if(nv.value&&r.n!==nv.value)return false;return w.every(function(x){{return r._s.indexOf(x)>-1;}});}});
+ res.sort(function(a,b){{return b.m-a.m;}});lst.innerHTML='';shown=0;more();
+ var tot=res.reduce(function(s,r){{return s+r.m;}},0);
+ est.textContent=res.length? res.length+(res.length===1?' inversión':' inversiones')+' por '+fmt(tot)+'.' : 'No encontramos esa obra. Prueba con el distrito, una palabra del proyecto o el CUI.';
+ if(typeof gtag==='function'&&q.value.trim().length>2){{clearTimeout(window.__prt);window.__prt=setTimeout(function(){{gtag('event','busqueda_presupuesto',{{region:'{rs}',termino:q.value.trim().slice(0,60),resultados:res.length}});}},900);}}}}
+fetch("~/data/presupuesto-2027-{rs}.json").then(function(r){{return r.json();}}).then(function(j){{
+ D=j.rows.map(function(r){{r._s=norm([r.i,r.p,r.pr,r.d,r.c,r.n].join(' '));return r;}});run();
+}}).catch(function(){{est.textContent='No pudimos cargar el buscador. Usa la lista por provincia de abajo.';}});
+q.addEventListener('input',run);pv.addEventListener('change',run);nv.addEventListener('change',run);mas.addEventListener('click',more);
+}})();
+</script>"""
+    add(f"{base}.html", f"Presupuesto 2027 en {rn}: obras y montos",
+        f"Busca si la obra de tu distrito en {rn} está en el Presupuesto 2027: {len(rows)} inversiones por {_millones(tot)}, por provincia, con monto y CUI.",
+        body, h1=f"Presupuesto 2027 en {rn}: ¿está presupuestada la obra de tu distrito?",
+        crumbs=[("Presupuesto 2027", "presupuesto-2027.html"), (rn, f"{base}.html")], date="2026-11-23",
+        ld_extra={"@context": "https://schema.org", "@type": "FAQPage",
+                  "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]})
+    # una página por provincia
+    for k in order:
+        L = sorted(provs[k], key=lambda r: -r["m"])
+        t = sum(r["m"] for r in L)
+        by = {}
+        for r in L:
+            by.setdefault(r["n"], []).append(r)
+        kn = "Ámbito regional o no precisado" if k.startswith("Ámbito") else f"Provincia de {k}"
+        secs = ""
+        for niv in ("Gobierno Nacional", "Gobierno Regional", "Gobierno Local"):
+            if niv not in by:
+                continue
+            tr = "".join(
+                f'<tr><td>{esc(r["i"])}</td><td>{esc(r["p"])}' + (" <small>(asignación inferida)</small>" if r["inf"] else "") +
+                f'</td><td>{esc(r["d"]) if r["d"] and not r["d"].startswith("Ámbito") else "—"}</td><td>{_soles(r["m"])}</td><td>CUI {esc(r["c"])}</td></tr>'
+                for r in by[niv])
+            secs += (f'<h2>{niv}: {len(by[niv])} inversiones por {_soles(sum(r["m"] for r in by[niv]))}</h2>'
+                     f'<div class="table-wrap"><table><thead><tr><th>Inversión</th><th>Entidad</th><th>Distrito</th><th>Monto 2027</th><th>CUI</th></tr></thead><tbody>{tr}</tbody></table></div>')
+        dists = sorted({r["d"] for r in L if r["d"] and not r["d"].startswith("Ámbito")})
+        pb = (f'<section class="block"><div class="wrap"><p class="resumen"><strong>En breve:</strong> el Presupuesto 2027 incluye {len(L)} inversiones de '
+              f'{"ámbito regional o sin provincia precisada" if k.startswith("Ámbito") else "la provincia de " + esc(k)} ({rn}) por {_soles(t)}.'
+              + (f' Distritos con obras: {esc(", ".join(dists))}.' if dists else "") +
+              f'</p>{secs}<p class="upd">Datos de los anexos de la Ley de Presupuesto 2027 consolidados por este sitio; no es un portal oficial. Confirma cada proyecto por su CUI en '
+              f'<a href="https://ofi5.mef.gob.pe/invierte/consultaPublica/consultaInversiones" rel="noopener" target="_blank">Invierte.pe</a>. '
+              f'Más sobre el método en <a href="~/{base}.html">Presupuesto 2027 en {rn}</a>.</p></div></section>')
+        add(f"{base}/{_slug(k)}.html", (f"Presupuesto 2027 en {k}" if not k.startswith("Ámbito") else "Presupuesto 2027: ámbito regional"),
+            f"Obras e inversiones de {'ámbito regional' if k.startswith('Ámbito') else 'la provincia de ' + k} ({rn}) en el Presupuesto 2027: {len(L)} proyectos por {_millones(t)}, con CUI.",
+            pb, h1=f"Presupuesto 2027 en {k if k.startswith('Ámbito') else 'la provincia de ' + k} ({rn}): obras y montos",
+            crumbs=[("Presupuesto 2027", "presupuesto-2027.html"), (rn, f"{base}.html"), (kn, f"{base}/{_slug(k)}.html")], date="2026-11-23")
+    return len(rows), tot
+
+
+_pres_cards = ""
+_pres_n = 0
+for _rs, (_rn, _D) in PRES.items():
+    _n, _t = _pres_region_pages(_rs, _rn, _D)
+    _pres_n += _n
+    _pres_cards += (f'<div class="card"><span class="tag">Región</span><h3><a href="~/presupuesto-2027/{_rs}.html">{_rn}</a></h3>'
+                    f'<p>{_n} inversiones por {_millones(_t)}. Busca por distrito, obra o CUI.</p><a class="more" href="~/presupuesto-2027/{_rs}.html">Buscar en {_rn} →</a></div>')
+for _pn in PRES_PENDIENTES:
+    _pres_cards += (f'<div class="card"><span class="tag">En preparación</span><h3>{_pn}</h3>'
+                    f'<p>Estamos preparando el detalle del Presupuesto 2027 para {_pn}. Escríbenos desde <a href="~/contacto.html">Contacto</a> si quieres que avisemos cuando esté.</p></div>')
+PRES_HUB_FAQ = [
+    ("¿Cómo sé si la obra de mi distrito está en el Presupuesto 2027?",
+     "Entra a la página de tu región, escribe el nombre de tu distrito, de la obra o su número CUI y revisa si aparece con un monto para 2027."),
+    ("¿Cuándo se aprobó el Presupuesto 2027?",
+     "El Pleno del Congreso aprobó la Ley de Presupuesto del Sector Público para el Año Fiscal 2027 el 20 de noviembre de 2026, por S/ 266,506 millones, según el Congreso."),
+    ("¿Es información oficial?",
+     "Los montos salen de los anexos de la ley, pero la consolidación por región es de este sitio y no reemplaza al MEF. Para confirmar un proyecto, busca su CUI en Invierte.pe."),
+]
+add("presupuesto-2027.html", "Presupuesto 2027: ¿está tu obra incluida?",
+    "Averigua si la obra de tu distrito, provincia o región está presupuestada para 2027. Buscador con monto y CUI por región, con datos de los anexos de la ley.",
+    f"""<section class="block"><div class="wrap">
+<p class="resumen"><strong>En breve:</strong> el Pleno del Congreso aprobó el Presupuesto 2027 el 20 de noviembre de 2026 (S/ 266,506 millones). Elige tu región y revisa si la obra de tu distrito o provincia tiene dinero asignado.</p>
+<h2>Elige tu región</h2>
+<div class="grid">{_pres_cards}</div>
+<h2>¿Cómo funciona el buscador de obras del Presupuesto 2027?</h2>
+<ol class="clean"><li>Entra a tu región.</li><li>Escribe el distrito, una palabra de la obra (colegio, agua, pista, puesto de salud) o el número CUI.</li><li>Mira el monto, la entidad que ejecuta la obra y la página del anexo de la ley donde aparece.</li></ol>
+<p>También puedes recorrer cada provincia. Si quieres entender qué incluye el presupuesto y cómo se vota, lee <a href="~/explica/presupuesto-publico-2027-que-es-como-se-aprueba-y-que-incluye.html">qué incluye el Presupuesto 2027</a> y <a href="~/explica/pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027.html">lo que se dijo en el debate del Pleno</a>.</p>
+<h2>Preguntas frecuentes</h2>
+{''.join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in PRES_HUB_FAQ)}
+<p class="upd">Fuente: <a href="{PRES_LEY_URL}" rel="noopener" target="_blank">Congreso de la República</a> y anexos de la ley. Este sitio no es un portal oficial del Congreso ni del MEF.</p>
+</div></section>""",
+    h1="Presupuesto 2027: ¿está presupuestada la obra de tu distrito, provincia o región?",
+    crumbs=[("Presupuesto 2027", "presupuesto-2027.html")], date="2026-11-23",
+    ld_extra={"@context": "https://schema.org", "@type": "FAQPage",
+              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in PRES_HUB_FAQ]})
 
 
 # ============ EN VIVO (transmisiones oficiales del Congreso, incrustadas) ============
@@ -1773,6 +1974,7 @@ home_body = f"""<section class="hero"><div class="grid-bg" aria-hidden="true"></
 {retrato()}
 </div></section>
 <div class="ticker" aria-label="Temas"><div class="track">{ticker_items}{ticker_items}{ticker_items}{ticker_items}</div></div>
+<section class="block pr-cta"><div class="wrap"><div class="pr-banner"><div><p class="eyebrow">Presupuesto 2027 · aprobado el 20 de noviembre</p><h2>¿Está presupuestada la obra de tu distrito, provincia o región?</h2><p>Averígualo aquí: busca por distrito, obra o número CUI y mira el monto asignado.</p></div><a class="btn" href="~/presupuesto-2027.html">Revisa el presupuesto 2027</a></div></div></section>
 <section class="stats"><div class="wrap">
 <div class="stat"><strong data-count="23816">23,816</strong><span>votos preferenciales en Piura (2026), la primera votación de la región</span></div>
 <div class="stat"><strong data-count="4">4</strong><span>comisiones del Congreso presididas</span></div>

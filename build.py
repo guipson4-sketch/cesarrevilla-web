@@ -1268,8 +1268,12 @@ add("explica.html", "Explica: política del Perú explicada con fuentes",
 import json as _json, re as _re, unicodedata as _ud
 from urllib.parse import quote as _q
 
-PRES_REGIONES = [("puno", "Puno")]          # regiones con datos cargados (data/presupuesto-2027-<slug>.json)
-PRES_PENDIENTES = ["Piura"]                 # regiones anunciadas, aún sin datos
+PRES_REGIONES = [("puno", "Puno"), ("piura", "Piura")]          # regiones con datos cargados (data/presupuesto-2027-<slug>.json)
+PRES_PENDIENTES = []                 # regiones anunciadas, aún sin datos
+PRES_NOTAS = {
+    "puno": "<li><strong>Agua con camiones cisterna:</strong> el texto sustitutorio asigna S/ 4,607,896 para distritos de Puno, pero no es una inversión con CUI y no se suma.</li>",
+    "piura": "<li><strong>Texto sustitutorio:</strong> se incorporó la inversión con CUI 2521136 (ampliación del servicio de energía eléctrica en caseríos del distrito de Cura Mori) por S/ 12,565,607, financiada por el Ministerio de Energía y Minas y transferible a la Municipalidad Distrital de Cura Mori.</li><li><strong>Pedidos no aprobados:</strong> las propuestas que no figuran en los anexos ni en el texto sustitutorio final no se suman como asignación aprobada.</li><li><strong>Tres registros locales</strong> tienen asignación territorial «media» y conviene confirmarlos en el Banco de Inversiones o en el PIA 2027 por pliego.</li>",
+}
 PRES_LEY_URL = "https://comunicaciones.congreso.gob.pe/noticias/pleno-del-congreso-aprueba-la-ley-de-presupuesto-del-sector-publico-para-el-ano-fiscal-2027/"
 PRES_MEF_URL = "https://www.mef.gob.pe/es/presupuesto-del-sector-publico/proyecto-de-presupuesto"
 
@@ -1388,7 +1392,7 @@ def _pres_region_pages(rs, rn, D):
 <ul class="clean">
 <li><strong>Fuente:</strong> anexos de la Ley de Presupuesto del Sector Público 2027, aprobada por el Pleno el 20 de noviembre de 2026 (<a href="{PRES_LEY_URL}" rel="noopener" target="_blank">nota del Congreso</a>) y datos del <a href="{PRES_MEF_URL}" rel="noopener" target="_blank">MEF</a>. La consolidación por nivel y pliego es un trabajo propio de este sitio.</li>
 <li><strong>Municipalidades:</strong> el anexo no indica la municipalidad en cada fila. La entidad se asignó según el distrito o la provincia que menciona el nombre del proyecto; {sum(1 for r in rows if r['inf'])} registros locales se marcan «asignación inferida».</li>
-<li><strong>Agua con camiones cisterna:</strong> el texto sustitutorio asigna S/ 4,607,896 para distritos de {rn}, pero no es una inversión con CUI y no se suma.</li>
+{PRES_NOTAS.get(rs, "")}
 <li><strong>Importante:</strong> este no es un portal oficial. Para confirmar un proyecto, busca su CUI en <a href="https://ofi5.mef.gob.pe/invierte/consultaPublica/consultaInversiones" rel="noopener" target="_blank">Invierte.pe</a>. Un proyecto presupuestado no implica que se ejecute en 2027.</li>
 <li><a href="~/datos/Presupuesto_2027_{rn}_por_Nivel_y_Pliego.xlsx" download>Descargar el Excel completo ({len(rows)} inversiones)</a></li>
 </ul>
@@ -1407,7 +1411,7 @@ function card(r){{var d=document.createElement('article');d.className='pr-card';
  var h=document.createElement('h3');h.textContent=r.i;d.appendChild(h);
  var m=document.createElement('p');m.className='pr-monto';m.textContent=fmt(r.m);d.appendChild(m);
  var p=document.createElement('p');p.className='pr-meta';
- p.textContent=r.n+' · '+r.p+(r.inf?' (asignación inferida)':'')+' · '+(r.d&&r.d.indexOf('Ámbito')!==0?r.d+', ':'')+r.pr+' · CUI '+r.c+' · Anexo '+r.a+', pág. '+r.g;
+ p.textContent=r.n+' · '+r.p+(r.inf?' (asignación inferida)':'')+' · '+(r.d&&r.d.indexOf('Ámbito')!==0?r.d+', ':'')+r.pr+' · CUI '+r.c+' · '+r.a;
  d.appendChild(p);return d;}}
 function more(){{var end=Math.min(shown+(shown?PAGE:FIRST),res.length);for(var i=shown;i<end;i++)lst.appendChild(card(res[i]));shown=end;mas.hidden=shown>=res.length;}}
 function run(){{var w=norm(q.value.trim()).split(/\\s+/).filter(Boolean);
@@ -1453,7 +1457,7 @@ q.addEventListener('input',run);pv.addEventListener('change',run);nv.addEventLis
               f'</p>{secs}<p class="upd">Datos de los anexos de la Ley de Presupuesto 2027 consolidados por este sitio; no es un portal oficial. Confirma cada proyecto por su CUI en '
               f'<a href="https://ofi5.mef.gob.pe/invierte/consultaPublica/consultaInversiones" rel="noopener" target="_blank">Invierte.pe</a>. '
               f'Más sobre el método en <a href="~/{base}.html">Presupuesto 2027 en {rn}</a>.</p></div></section>')
-        add(f"{base}/{_slug(k)}.html", (f"Presupuesto 2027 en {k}" if not k.startswith("Ámbito") else "Presupuesto 2027: ámbito regional"),
+        add(f"{base}/{_slug(k)}.html", (("Presupuesto 2027: provincia de " + k if k == rn else f"Presupuesto 2027 en {k}") if not k.startswith("Ámbito") else f"Presupuesto 2027: ámbito regional de {rn}"),
             f"Obras e inversiones de {'ámbito regional' if k.startswith('Ámbito') else 'la provincia de ' + k} ({rn}) en el Presupuesto 2027: {len(L)} proyectos por {_millones(t)}, con CUI.",
             pb, h1=f"Presupuesto 2027 en {k if k.startswith('Ámbito') else 'la provincia de ' + k} ({rn}): obras y montos",
             crumbs=[("Presupuesto 2027", "presupuesto-2027.html"), (rn, f"{base}.html"), (kn, f"{base}/{_slug(k)}.html")], date="2026-11-23")

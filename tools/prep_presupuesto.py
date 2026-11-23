@@ -36,8 +36,10 @@ def main(region, xlsx):
     rows = []
     for r in det:
         prov = r[9] if r[9] and not str(r[9]).startswith("Ámbito") else "Ámbito regional o no precisado"
+        fu = str(r[13] or "")
+        fu = ("Anexo " + fu.replace("ANEXO ", "") + (f", pág. {r[14]}" if r[14] else "")) if fu.upper().startswith("ANEXO") else fu
         rows.append(dict(n=r[0], p=tc(re.sub(r"^\d+\s+", "", str(r[3]))), c=str(r[6]), i=tc(r[7]), pr=prov, d=r[10] or "", m=int(r[12]),
-                         a=(r[13] or "").replace("ANEXO ", ""), g=str(r[14] or ""), inf=bool(r[17])))
+                         a=fu, inf=str(r[16] or "").startswith("Inferencia")))
     multi = []
     for r in wb["Multidepartamentales"].iter_rows(min_row=6, values_only=True):
         if r[0]:

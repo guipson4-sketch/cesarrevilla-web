@@ -114,7 +114,7 @@ function card(r){var d=document.createElement('article');d.className='pr-card';
  var h=document.createElement('h3');h.textContent=r.i;d.appendChild(h);
  var m=document.createElement('p');m.className='pr-monto';m.textContent=fmt(r.m);d.appendChild(m);
  var p=document.createElement('p');p.className='pr-meta';
- p.textContent=r.n+' · '+r.p+(r.inf?' (asignación inferida)':'')+' · '+(r.d&&r.d.indexOf('Ámbito')!==0?r.d+', ':'')+r.pr+' · CUI '+r.c+' · Anexo '+r.a+', pág. '+r.g;
+ p.textContent=r.n+' · '+r.p+(r.inf?' (asignación inferida)':'')+' · '+(r.d&&r.d.indexOf('Ámbito')!==0?r.d+', ':'')+r.pr+' · CUI '+r.c+' · '+r.a;
  d.appendChild(p);return d;}
 function more(){var end=Math.min(shown+(shown?PAGE:FIRST),res.length);for(var i=shown;i<end;i++)lst.appendChild(card(res[i]));shown=end;mas.hidden=shown>=res.length;}
 function run(){var w=norm(q.value.trim()).split(/\s+/).filter(Boolean);

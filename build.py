@@ -1266,6 +1266,7 @@ add("explica.html", "Explica: política del Perú explicada con fuentes",
 
 # ============ PRESUPUESTO 2027 POR REGIÓN (buscador + páginas por provincia) ============
 import json as _json, re as _re, unicodedata as _ud
+from urllib.parse import quote as _q
 
 PRES_REGIONES = [("puno", "Puno")]          # regiones con datos cargados (data/presupuesto-2027-<slug>.json)
 PRES_PENDIENTES = ["Piura"]                 # regiones anunciadas, aún sin datos
@@ -1293,6 +1294,18 @@ for _rs, _rn in PRES_REGIONES:
     if os.path.exists(_fp):
         with open(_fp, encoding="utf-8") as _fh:
             PRES[_rs] = (_rn, _json.load(_fh))
+
+
+def _pbars(title, items, total, unit_note=""):
+    """items: (etiqueta, valor, texto, href|None, destacado)"""
+    out = []
+    for lab, val, txt, href, hi in items:
+        w = max(1.5, round(100 * val / total, 1))
+        lab_html = f'<a href="~/{href}">{esc(lab)}</a>' if href else esc(lab)
+        out.append(f'<div class="bar-row{" hi" if hi else ""}"><span class="bar-label">{lab_html}</span>'
+                   f'<span class="bar-track"><span class="bar-fill" style="--w:{w}%"></span></span><span class="bar-val">{esc(txt)}</span></div>')
+    return (f'<figure class="chart-fig"><figcaption><h3>{esc(title)}</h3>{f"<span>{esc(unit_note)}</span>" if unit_note else ""}</figcaption>'
+            f'<div class="bars">{"".join(out)}</div></figure>')
 
 
 def _pres_region_pages(rs, rn, D):
@@ -1326,6 +1339,13 @@ def _pres_region_pages(rs, rn, D):
     opts = "".join(f'<option value="{esc(k)}">{esc(k)}</option>' for k in order)
     body = f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> el Presupuesto 2027, aprobado por el Pleno del Congreso el 20 de noviembre de 2026, incluye {len(rows)} inversiones de ámbito exclusivo de {rn} por {_soles(tot)}. Busca tu distrito, tu obra o su número CUI y mira si está presupuestada.</p>
+<div class="pr-by"><p><strong>Una herramienta ciudadana de César Revilla</strong>, diputado por Piura (Fuerza Popular). El Congreso aprobó el Presupuesto 2027 para todo el país; aquí puedes revisar cada región. Mira <a href="~/explica/cesar-revilla-pleno-19-noviembre-2026-propuestas-presupuesto-2027.html">lo que propuso César Revilla en el debate del Pleno</a>.</p>
+<p><a class="btn" href="https://wa.me/?text={_q("¿Está presupuestada la obra de tu distrito? Revisa el Presupuesto 2027 en " + rn + ": " + BASE + "/presupuesto-2027/" + rs)}" rel="noopener" target="_blank">Compartir por WhatsApp</a></p></div>
+<div class="pr-tiles">
+<div class="pr-tile"><b data-count="{len(rows)}">{len(rows)}</b><span>obras e inversiones de {rn} en el Presupuesto 2027</span></div>
+<div class="pr-tile"><b data-count="{round(tot / 1e6)}">{round(tot / 1e6):,}</b><span>millones de soles asignados</span></div>
+<div class="pr-tile"><b data-count="{nprov}">{nprov}</b><span>provincias con obras identificadas</span></div>
+</div>
 <h2>Busca la obra de tu distrito, provincia o región en {rn}</h2>
 <form id="pr-form" class="pr-form" role="search" onsubmit="return false">
 <label for="pr-q"><strong>Distrito, obra o CUI</strong></label>
@@ -1338,6 +1358,19 @@ def _pres_region_pages(rs, rn, D):
 <div id="pr-lista" class="pr-lista"></div>
 <p><button id="pr-mas" class="btn" type="button" hidden>Ver más resultados</button></p>
 <noscript><p>El buscador necesita JavaScript. Sin él, entra a la página de tu provincia en la lista de abajo.</p></noscript>
+<h2>El presupuesto de {rn} en cuadros</h2>
+<div class="pr-charts">
+{_pbars("¿Quién va a ejecutar el dinero?", [(n_, res[n_]["m"], _millones(res[n_]["m"]), None, False) for n_ in ("Gobierno Nacional", "Gobierno Regional", "Gobierno Local")], tot, "Monto 2027 por nivel de gobierno")}
+{_pbars("¿A qué provincias llega más dinero?", [(k, sum(x["m"] for x in provs[k]), _millones(sum(x["m"] for x in provs[k])), f"{base}/{_slug(k)}.html", i == 0) for i, k in enumerate(order[:8])], max(sum(x["m"] for x in provs[order[0]]), 1), "Las 8 provincias con mayor monto · toca una para ver sus obras")}
+</div>
+<h2>Las 10 obras con más dinero para {rn}</h2>
+<div class="pr-lista">{''.join(f'<article class="pr-card"><h3>{esc(r["i"])}</h3><p class="pr-monto">{_soles(r["m"])}</p><p class="pr-meta">{esc(r["n"])} · {esc(r["p"])} · {esc(r["pr"])} · CUI {esc(r["c"])}</p></article>' for r in sorted(rows, key=lambda r: -r["m"])[:10])}</div>
+<h2>Explicado fácil: ¿qué significa que una obra esté en el Presupuesto 2027?</h2>
+<div class="pr-pasos">
+<div><b>1</b><h3>El Congreso aprobó el dinero</h3><p>El Pleno aprobó la ley el 20 de noviembre de 2026. Sus anexos listan las obras con un monto para 2027.</p></div>
+<div><b>2</b><h3>La obra tiene un código</h3><p>Cada proyecto tiene un CUI. Con ese número puedes seguirlo en Invierte.pe, el sistema del MEF.</p></div>
+<div><b>3</b><h3>La entidad la ejecuta</h3><p>El ministerio, el gobierno regional o la municipalidad es quien contrata y construye. Estar en la lista no asegura que termine en 2027.</p></div>
+</div>
 <h2>Cuánto va a cada nivel de gobierno</h2>
 <div class="table-wrap"><table><thead><tr><th>Nivel de gobierno</th><th>Inversiones</th><th>Monto 2027</th></tr></thead><tbody>
 <tr><td>Gobierno Nacional (ministerios, universidades y otras entidades)</td><td>{res['Gobierno Nacional']['n']}</td><td>{_soles(res['Gobierno Nacional']['m'])}</td></tr>
@@ -1367,7 +1400,7 @@ def _pres_region_pages(rs, rn, D):
 (function(){{
 var q=document.getElementById('pr-q'),pv=document.getElementById('pr-prov'),nv=document.getElementById('pr-niv'),est=document.getElementById('pr-estado'),lst=document.getElementById('pr-lista'),mas=document.getElementById('pr-mas');
 if(!q) return;
-var D=[],res=[],shown=0,PAGE=30;
+var D=[],res=[],shown=0,FIRST=6,PAGE=20;
 function norm(t){{return String(t).toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}}
 function fmt(n){{return 'S/ '+n.toString().replace(/\\B(?=(\\d{{3}})+(?!\\d))/g,',');}}
 function card(r){{var d=document.createElement('article');d.className='pr-card';
@@ -1376,7 +1409,7 @@ function card(r){{var d=document.createElement('article');d.className='pr-card';
  var p=document.createElement('p');p.className='pr-meta';
  p.textContent=r.n+' · '+r.p+(r.inf?' (asignación inferida)':'')+' · '+(r.d&&r.d.indexOf('Ámbito')!==0?r.d+', ':'')+r.pr+' · CUI '+r.c+' · Anexo '+r.a+', pág. '+r.g;
  d.appendChild(p);return d;}}
-function more(){{var end=Math.min(shown+PAGE,res.length);for(var i=shown;i<end;i++)lst.appendChild(card(res[i]));shown=end;mas.hidden=shown>=res.length;}}
+function more(){{var end=Math.min(shown+(shown?PAGE:FIRST),res.length);for(var i=shown;i<end;i++)lst.appendChild(card(res[i]));shown=end;mas.hidden=shown>=res.length;}}
 function run(){{var w=norm(q.value.trim()).split(/\\s+/).filter(Boolean);
  res=D.filter(function(r){{if(pv.value&&r.pr!==pv.value)return false;if(nv.value&&r.n!==nv.value)return false;return w.every(function(x){{return r._s.indexOf(x)>-1;}});}});
  res.sort(function(a,b){{return b.m-a.m;}});lst.innerHTML='';shown=0;more();
@@ -1449,6 +1482,7 @@ add("presupuesto-2027.html", "Presupuesto 2027: ¿está tu obra incluida?",
     "Averigua si la obra de tu distrito, provincia o región está presupuestada para 2027. Buscador con monto y CUI por región, con datos de los anexos de la ley.",
     f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> el Pleno del Congreso aprobó el Presupuesto 2027 el 20 de noviembre de 2026 (S/ 266,506 millones). Elige tu región y revisa si la obra de tu distrito o provincia tiene dinero asignado.</p>
+<div class="pr-by"><p><strong>Una herramienta ciudadana de César Revilla</strong>, diputado por Piura (Fuerza Popular): para que cualquier peruano revise si el Estado asignó dinero a la obra de su zona. Mira <a href="~/explica/cesar-revilla-pleno-19-noviembre-2026-propuestas-presupuesto-2027.html">lo que propuso César Revilla en el debate del Pleno</a>.</p></div>
 <h2>Elige tu región</h2>
 <div class="grid">{_pres_cards}</div>
 <h2>¿Cómo funciona el buscador de obras del Presupuesto 2027?</h2>

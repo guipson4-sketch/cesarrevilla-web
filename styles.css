@@ -452,3 +452,18 @@ section.alt .imp,section.alt .chart-fig,section.alt .tile{background:#fff}
 .pr-monto{font:500 1.25rem/1.2 var(--mono);margin:0 0 6px}
 .pr-meta{color:var(--smoke);font-size:.88rem;margin:0}
 @media(max-width:600px){.pr-row{grid-template-columns:1fr}.pr-banner{padding:22px 18px}}
+
+.pr-by{background:#fff;border:1px solid var(--hairline);border-left:4px solid var(--orange,#e8711a);border-radius:var(--r);padding:18px 22px;margin:0 0 24px}
+.pr-by p{margin:0 0 10px}
+.pr-by p:last-child{margin:0}
+.pr-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.pr-tile{background:var(--charcoal);color:#fff;border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.pr-tile b{font:400 clamp(2.4rem,5vw,3.6rem)/1 var(--mono);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.pr-tile span{color:rgba(255,255,255,.8);font-size:.95rem}
+.pr-charts{display:grid;gap:24px;margin:0 0 24px}
+.pr-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 24px}
+.pr-pasos>div{background:#fff;border:1px solid var(--hairline);border-radius:var(--r);padding:22px}
+.pr-pasos b{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--charcoal);color:#fff;align-items:center;justify-content:center;font-weight:500;margin-bottom:10px}
+.pr-pasos h3{margin:0 0 6px;font-size:1.05rem}
+.pr-pasos p{margin:0;color:var(--smoke);font-size:.95rem}
+@media(max-width:700px){.pr-tiles,.pr-pasos{grid-template-columns:1fr}}

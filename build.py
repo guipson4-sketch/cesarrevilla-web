@@ -1394,7 +1394,6 @@ def _pres_region_pages(rs, rn, D):
 <li><strong>Municipalidades:</strong> el anexo no indica la municipalidad en cada fila. La entidad se asignó según el distrito o la provincia que menciona el nombre del proyecto; {sum(1 for r in rows if r['inf'])} registros locales se marcan «asignación inferida».</li>
 {PRES_NOTAS.get(rs, "")}
 <li><strong>Importante:</strong> este no es un portal oficial. Para confirmar un proyecto, busca su CUI en <a href="https://ofi5.mef.gob.pe/invierte/consultaPublica/consultaInversiones" rel="noopener" target="_blank">Invierte.pe</a>. Un proyecto presupuestado no implica que se ejecute en 2027.</li>
-<li><a href="~/datos/Presupuesto_2027_{rn}_por_Nivel_y_Pliego.xlsx" download>Descargar el Excel completo ({len(rows)} inversiones)</a></li>
 </ul>
 <h2>Preguntas frecuentes</h2>
 {''.join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in faq)}

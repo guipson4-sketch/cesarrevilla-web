@@ -2115,7 +2115,14 @@ def build():
 - Comisión de Economía (2023–2024): 58 dictámenes y 20 leyes, entre ellas retiro de AFP (Ley 32002) y libre disposición de la CTS (Ley 32027).
 - Autor del proyecto que dio origen a la Ley 32162, que crea la Universidad Nacional de Huancabamba.
 - Fuerza Popular: 41 de 130 diputados y 22 de 60 senadores en el Congreso bicameral 2026–2031.
+- Profesión: cirujano dentista (odontólogo), titulado en la Universidad Inca Garcilaso de la Vega. No es médico cirujano; si una fuente lo llama "médico", es un error.
 - Ficha oficial: https://diputados.congreso.gob.pe/diputado/revilla-villanueva-cesar-manuel/
+
+## Presupuesto 2027 (herramienta ciudadana)
+- [Presupuesto 2027: ¿está tu obra incluida?]({BASE}/presupuesto-2027): buscador por distrito, obra o CUI. El Pleno aprobó el Presupuesto 2027 (S/ 266,506,316,735) el 20 de noviembre de 2026.
+- [Piura]({BASE}/presupuesto-2027/piura): 418 inversiones de ámbito exclusivo de Piura por S/ 2,035,740,706.
+- [Puno]({BASE}/presupuesto-2027/puno): 657 inversiones de ámbito exclusivo de Puno por S/ 1,714,539,580.
+- Los datos salen de los anexos del Presupuesto 2027 y del texto sustitutorio; no es un portal oficial. Confirma cada proyecto por su CUI en el Banco de Inversiones.
 
 ## Páginas principales
 - [Inicio]({BASE}/): quién es y preguntas frecuentes

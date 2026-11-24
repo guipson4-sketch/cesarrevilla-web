@@ -1543,6 +1543,10 @@ add("en-vivo.html", "En vivo: sesiones del Pleno del Congreso",
 
 # ============ REVILLA EN EL FEN (galería de videos y fotos) ============
 FEN_ITEMS = [  # más nuevo primero; cada ítem: fecha ISO, fecha legible, título, texto de César, fuente (url), etiqueta de fuente, nota Explica
+    dict(iso="2026-11-24", fecha="24 de noviembre de 2026",
+         lugar="Sobrevuelo del río Piura y Chulucanas", titulo="Respuesta inmediata: descolmatación y ayuda para familias afectadas",
+         cita="Hoy, junto con el Premier, ministros y colegas diputados, sobrevolamos el río Piura para verificar los trabajos de descolmatación y evaluar la situación ante las intensas lluvias. Sobrevolamos Chulucanas y venimos coordinando la entrega de ayuda para las familias afectadas. Sabemos lo que significa para nuestros hermanos piuranos vivir con la incertidumbre de las lluvias. Por eso, no hay tiempo que perder. La ayuda debe llegar cuanto antes a quienes más la necesitan. Seguimos trabajando desde la cancha, porque ¡Perú responde!",
+         fb="https://www.facebook.com/reel/1176281168677659"),
     dict(iso="2026-11-24", fecha="24 de noviembre de 2026, 4:50 a. m.",
          lugar="Rumbo a Piura", titulo="Viaje con el presidente del Consejo de Ministros y el diputado Albañil",
          cita="Vamos a Piura para gestionar toda la ayuda posible en las zonas más afectadas por las lluvias. Lo hacemos junto al Presidente del Consejo de Ministros y el diputado Albañil. Tenemos que estar siempre en la cancha.",

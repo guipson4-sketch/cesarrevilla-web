@@ -8,6 +8,8 @@ Las explicaciones de coyuntura (hechos del día) van en COYUNTURA con la misma e
 """
 
 EXP_SRC = {
+    "fbreel1124": ("Facebook de César Revilla: video del 24/11/2026 (4:50 a. m.)", "https://www.facebook.com/reel/28557465393932507"),
+    "infobae1103": ("Infobae (3 de noviembre de 2026): declaran emergencia por 60 días ante el riesgo de lluvias intensas por El Niño (DS 149-2026-PCM)", "https://www.infobae.com/peru/2026/11/03/peru-en-alerta-por-el-nino-declaran-emergencia-por-60-dias-ante-el-riesgo-de-lluvias-intensas-en-25-regiones/"),
     "andinabicam": ("Agencia Andina: «Vuelve el Congreso Bicameral» (2026)",
                     "https://portal.andina.pe/edpespeciales/2026/vuelve_el_congreso_bicameral/index.html"),
     "larep1117": ("La República (17 de noviembre de 2025)",
@@ -431,6 +433,30 @@ EXPLICA = [
               ("¿Qué falta para que se apruebe un nuevo retiro de AFP?",
                "Las opiniones de las entidades consultadas, un dictamen favorable de la Comisión de Economía, la aprobación de Diputados y del Senado y la promulgación del Ejecutivo.")],
          keys=["larep1110", "infobae1028"]),
+    dict(slug="cesar-revilla-viaja-a-piura-por-las-lluvias-24-noviembre-2026", tema="clima-y-desastres", iso="2026-11-24",
+         h1="César Revilla viaja a Piura con el presidente del Consejo de Ministros por las lluvias (24 de noviembre de 2026)",
+         seo="César Revilla viaja a Piura por las lluvias",
+         desc="César Revilla anunció el 24 de noviembre de 2026 que viaja a Piura con el presidente del Consejo de Ministros para gestionar ayuda por las lluvias.",
+         resumen="El 24 de noviembre de 2026 a las 4:50 a. m., César Revilla anunció en un video que viaja a Piura junto al presidente del Consejo de Ministros y el diputado Albañil para gestionar ayuda en las zonas más afectadas por las lluvias.",
+         card="Qué anunció, el contexto de emergencia y qué falta confirmar.",
+         html="""<h2>En pocas palabras</h2>
+<p>El 24 de noviembre de 2026, a las 4:50 a. m., César Revilla publicó un video en su Facebook. En él dice que viaja a Piura para gestionar toda la ayuda posible en las zonas más afectadas por las lluvias, junto al presidente del Consejo de Ministros y el diputado Albañil.</p>
+<h2>Qué dijo César Revilla</h2>
+<p>El texto que acompaña el video dice: «Vamos a Piura para gestionar toda la ayuda posible en las zonas más afectadas por las lluvias. Lo hacemos junto al Presidente del Consejo de Ministros y el diputado Albañil. Tenemos que estar siempre en la cancha». Usa las etiquetas #Lluvias, #Piura, #PeruResponde y #fen.</p>
+<h2>Contexto: emergencia por El Niño</h2>
+<p>Según Infobae (3 de noviembre de 2026), el Gobierno declaró por 60 días el estado de emergencia, mediante el Decreto Supremo 149-2026-PCM, en distritos de varias regiones, entre ellas Piura, por peligro inminente ante lluvias intensas asociadas al Fenómeno El Niño 2026-2027.</p>
+<h2>Qué falta confirmar</h2>
+<p>Esta página se basa en lo que César Revilla publicó en su propio Facebook. Todavía no incluye notas de prensa ni comunicados de la PCM sobre la visita: cuando se publiquen, se sumarán aquí con su fuente, junto con las acciones que se anuncien. Esta página no afirma resultados de la visita.</p>
+<h2>Más sobre este tema</h2>
+<p>Lee <a href="~/guias/cesar-revilla-fenomeno-el-nino.html">César Revilla y el Fenómeno El Niño</a> y el <a href="~/temas/lluvias-y-drenaje.html">tema de lluvias y drenaje en Piura</a>.</p>
+<p class="upd">Información del 24 de noviembre de 2026, según las fuentes citadas. Puede haber cambiado.</p>""",
+         faq=[("¿Adónde viaja César Revilla el 24 de noviembre de 2026?",
+               "A Piura, para gestionar ayuda en las zonas más afectadas por las lluvias, según el video que publicó en su Facebook ese día."),
+              ("¿Con quién viaja César Revilla a Piura?",
+               "Con el presidente del Consejo de Ministros y el diputado Albañil, según el mismo video."),
+              ("¿Piura está en emergencia por lluvias?",
+               "Sí: según Infobae (3 de noviembre de 2026), el Decreto Supremo 149-2026-PCM declaró por 60 días el estado de emergencia en distritos de varias regiones, entre ellas Piura, por peligro ante lluvias asociadas a El Niño.")],
+         keys=["fbreel1124", "infobae1103"]),
 ]
 
 # Explicaciones de hechos del día (nivel 1 y 2 del protocolo): se agregan a EXPLICA con su `iso` real.

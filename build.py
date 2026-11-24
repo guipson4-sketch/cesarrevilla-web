@@ -1563,7 +1563,7 @@ FEN_FAQ = [
 def _fen_item(it, n, total):
     href = it["fb"]
     q = href.replace(":", "%3A").replace("/", "%2F")
-    media = f'''<div class="fen-video"><iframe src="https://www.facebook.com/plugins/video.php?height=476&amp;href={q}%2F&amp;show_text=false&amp;width=267&amp;t=0" title="Video de César Revilla: {it['titulo']}" width="267" height="476" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>'''
+    media = f'''<div class="fen-video"><iframe src="https://www.facebook.com/plugins/video.php?height=640&amp;href={q}%2F&amp;show_text=false&amp;width=360&amp;t=0" title="Video de César Revilla: {it['titulo']}" width="360" height="640" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>'''
     badge = '<span class="fen-badge">Última parada</span>' if n == 0 else ''
     if it.get("explica"):
         mas = f'<a class="more" href="~/{it["explica"]}">Ver contexto y fuentes →</a>'

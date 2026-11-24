@@ -1546,11 +1546,11 @@ FEN_ITEMS = [  # más nuevo primero; cada ítem: fecha ISO, fecha legible, títu
     dict(iso="2026-11-24", fecha="24 de noviembre de 2026",
          lugar="Sobrevuelo del río Piura y Chulucanas", titulo="Respuesta inmediata: descolmatación y ayuda para familias afectadas",
          cita="Hoy, junto con el Premier, ministros y colegas diputados, sobrevolamos el río Piura para verificar los trabajos de descolmatación y evaluar la situación ante las intensas lluvias. Sobrevolamos Chulucanas y venimos coordinando la entrega de ayuda para las familias afectadas. Sabemos lo que significa para nuestros hermanos piuranos vivir con la incertidumbre de las lluvias. Por eso, no hay tiempo que perder. La ayuda debe llegar cuanto antes a quienes más la necesitan. Seguimos trabajando desde la cancha, porque ¡Perú responde!",
-         fb="https://www.facebook.com/reel/1176281168677659"),
+         fb="https://www.facebook.com/reel/1176281168677659", tipo="post", alto=720),
     dict(iso="2026-11-24", fecha="24 de noviembre de 2026, 4:50 a. m.",
          lugar="Rumbo a Piura", titulo="Viaje con el presidente del Consejo de Ministros y el diputado Albañil",
          cita="Vamos a Piura para gestionar toda la ayuda posible en las zonas más afectadas por las lluvias. Lo hacemos junto al Presidente del Consejo de Ministros y el diputado Albañil. Tenemos que estar siempre en la cancha.",
-         fb="https://www.facebook.com/reel/28557465393932507",
+         fb="https://www.facebook.com/reel/28557465393932507", tipo="post", alto=720,
          explica="explica/cesar-revilla-viaja-a-piura-por-las-lluvias-24-noviembre-2026.html"),
 ]
 FEN_FAQ = [

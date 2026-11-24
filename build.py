@@ -1546,11 +1546,13 @@ FEN_ITEMS = [  # más nuevo primero; cada ítem: fecha ISO, fecha legible, títu
     dict(iso="2026-11-24", fecha="24 de noviembre de 2026",
          lugar="Sobrevuelo del río Piura y Chulucanas", titulo="Respuesta inmediata: descolmatación y ayuda para familias afectadas",
          cita="Hoy, junto con el Premier, ministros y colegas diputados, sobrevolamos el río Piura para verificar los trabajos de descolmatación y evaluar la situación ante las intensas lluvias. Sobrevolamos Chulucanas y venimos coordinando la entrega de ayuda para las familias afectadas. Sabemos lo que significa para nuestros hermanos piuranos vivir con la incertidumbre de las lluvias. Por eso, no hay tiempo que perder. La ayuda debe llegar cuanto antes a quienes más la necesitan. Seguimos trabajando desde la cancha, porque ¡Perú responde!",
-         fb="https://www.facebook.com/reel/1176281168677659", tipo="post", alto=720),
+         fb="https://www.facebook.com/reel/1176281168677659",
+         resumen="Sobrevuelo junto al Premier, ministros y diputados para verificar los trabajos de descolmatación y coordinar la ayuda a familias afectadas, según lo que publicó César Revilla."),
     dict(iso="2026-11-24", fecha="24 de noviembre de 2026, 4:50 a. m.",
          lugar="Rumbo a Piura", titulo="Viaje con el presidente del Consejo de Ministros y el diputado Albañil",
          cita="Vamos a Piura para gestionar toda la ayuda posible en las zonas más afectadas por las lluvias. Lo hacemos junto al Presidente del Consejo de Ministros y el diputado Albañil. Tenemos que estar siempre en la cancha.",
-         fb="https://www.facebook.com/reel/28557465393932507", tipo="post", alto=720,
+         fb="https://www.facebook.com/reel/28557465393932507",
+         resumen="César Revilla anunció que viaja a Piura con el Presidente del Consejo de Ministros y el diputado Albañil para gestionar ayuda en las zonas más afectadas.",
          explica="explica/cesar-revilla-viaja-a-piura-por-las-lluvias-24-noviembre-2026.html"),
 ]
 FEN_FAQ = [
@@ -1561,23 +1563,19 @@ FEN_FAQ = [
 def _fen_item(it, n, total):
     href = it["fb"]
     q = href.replace(":", "%3A").replace("/", "%2F")
-    ex = f'<p><a href="~/{it["explica"]}">Contexto y fuentes de esta parada</a></p>' if it.get("explica") else ""
-    if it.get("tipo") == "post":
-        h = it.get("alto", 640)
-        media = f'<div class="fen-post"><iframe src="https://www.facebook.com/plugins/post.php?href={q}&amp;show_text=true&amp;width=500" title="Publicación de César Revilla: {it['titulo']}" width="500" height="{h}" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>'
-    else:
-        media = f'''<div class="fen-video"><iframe src="https://www.facebook.com/plugins/video.php?height=476&amp;href={q}%2F&amp;show_text=false&amp;width=267&amp;t=0" title="Video de César Revilla: {it['titulo']}" width="267" height="476" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>'''
-    now = ' fen-ahora' if n == 0 else ''
+    media = f'''<div class="fen-video"><iframe src="https://www.facebook.com/plugins/video.php?height=476&amp;href={q}%2F&amp;show_text=false&amp;width=267&amp;t=0" title="Video de César Revilla: {it['titulo']}" width="267" height="476" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>'''
     badge = '<span class="fen-badge">Última parada</span>' if n == 0 else ''
-    return f"""<article class="fen-item{now}">
-<span class="fen-pin" aria-hidden="true"><svg viewBox="0 0 24 32" width="22" height="30"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.6 12 32 12 32s12-11.4 12-20.3C24 5.2 18.6 0 12 0z" fill="currentColor"/><circle cx="12" cy="11.5" r="4.6" fill="#fff"/></svg></span>
-<p class="fen-fecha"><time datetime="{it['iso']}">{it['fecha']}</time> {badge}</p>
-<h3>{it['lugar']}</h3>
-<p class="fen-sub">{it['titulo']}</p>
+    if it.get("explica"):
+        mas = f'<a class="more" href="~/{it["explica"]}">Ver contexto y fuentes →</a>'
+    else:
+        mas = f'<a class="more" href="{href}" rel="noopener" target="_blank">Ver en Facebook →</a>'
+    return f"""<article class="card fen-card">
 {media}
-<blockquote><p>«{it['cita']}»</p></blockquote>
-{ex}
-<p><a href="{href}" rel="noopener" target="_blank">Ver la publicación original en Facebook</a></p>
+<span class="tag">{it['lugar']}</span> {badge}
+<h3>{it['titulo']}</h3>
+<p class="fen-fecha"><time datetime="{it['iso']}">{it['fecha']}</time></p>
+<p>{it['resumen']}</p>
+{mas}
 </article>"""
 def _fen_ruta():
     pts = list(reversed(FEN_ITEMS))
@@ -1588,9 +1586,9 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
     f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> aquí se reúnen, con fecha y fuente, los videos y fotos de César Revilla, diputado por Piura, en las zonas afectadas por las lluvias del Fenómeno El Niño (FEN). Se actualiza a medida que se publican nuevas actividades.</p>
 <h2>El recorrido de César Revilla en el FEN</h2>
-<p>Cada parada es una actividad que César Revilla publicó. La más reciente va arriba, con el pin naranja; las anteriores quedan más abajo en el camino. La ruta de abajo muestra el recorrido en orden, de la primera a la última parada.</p>
+<p>Cada parada es una actividad que César Revilla publicó. La más reciente va primero. La ruta de abajo muestra el recorrido en orden, de la primera a la última parada. Toca un video para verlo y usa «Compartir» para enviarlo.</p>
 {_fen_ruta()}
-<div class="fen-ruta">
+<div class="grid fen-grid">
 {''.join(_fen_item(i, n, len(FEN_ITEMS)) for n, i in enumerate(FEN_ITEMS))}
 </div>
 <h2>Para entender el Fenómeno El Niño en Piura</h2>

@@ -897,6 +897,15 @@ def stamp_for(path):
     return f'<span class="stamp">✓ {LEY_PUB[slug]}</span>' if slug in LEY_PUB else ""
 
 
+def _asset_v(name):
+    import hashlib
+    try:
+        with open(os.path.join(OUT, name), "rb") as fh:
+            return hashlib.md5(fh.read()).hexdigest()[:8]
+    except OSError:
+        return "0"
+
+
 def card(tag, title, desc, path):
     return (f'<div class="card">{stamp_for(path)}<span class="tag">{esc(tag)}</span><h3><a href="~/{path}">{esc(title)}</a></h3>'
             f'<p>{esc(desc)}</p><a class="more" href="~/{path}">Leer →</a></div>')
@@ -1009,7 +1018,7 @@ def layout(p):
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap"></noscript>
-<link rel="stylesheet" href="{pre}styles.css"><link rel="stylesheet" href="{pre}fotos.css">
+<link rel="stylesheet" href="{pre}styles.css?v={_asset_v("styles.css")}"><link rel="stylesheet" href="{pre}fotos.css?v={_asset_v("fotos.css")}">
 <script src="{pre}main.js" defer></script>
 {GTAG}
 {ld_html}

@@ -56,7 +56,7 @@ for rel, s in pages.items():
     for h in re.findall(r'href="([^"]+)"', s):
         if re.match(r"(https?:|#|mailto:)", h) or h.endswith((".xml", ".css")):
             continue
-        target = os.path.normpath(os.path.join(here, h.split("#")[0]))
+        target = os.path.normpath(os.path.join(here, h.split("#")[0].split("?")[0]))
         if not os.path.exists(target):
             problems.append((rel, f"enlace roto: {h}"))
         else:

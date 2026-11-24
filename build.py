@@ -1544,7 +1544,7 @@ add("en-vivo.html", "En vivo: sesiones del Pleno del Congreso",
 # ============ REVILLA EN EL FEN (galería de videos y fotos) ============
 FEN_ITEMS = [  # más nuevo primero; cada ítem: fecha ISO, fecha legible, título, texto de César, fuente (url), etiqueta de fuente, nota Explica
     dict(iso="2026-11-24", fecha="24 de noviembre de 2026, 4:50 a. m.",
-         titulo="Viaje a Piura con el presidente del Consejo de Ministros",
+         lugar="Rumbo a Piura", titulo="Viaje con el presidente del Consejo de Ministros y el diputado Albañil",
          cita="Vamos a Piura para gestionar toda la ayuda posible en las zonas más afectadas por las lluvias. Lo hacemos junto al Presidente del Consejo de Ministros y el diputado Albañil. Tenemos que estar siempre en la cancha.",
          fb="https://www.facebook.com/reel/28557465393932507",
          explica="explica/cesar-revilla-viaja-a-piura-por-las-lluvias-24-noviembre-2026.html"),
@@ -1554,24 +1554,36 @@ FEN_FAQ = [
     ("¿De dónde salen los videos y fotos de esta página?", "De las cuentas oficiales de César Revilla. Cada uno indica su fecha y enlaza a la publicación original. Cuando hay notas de prensa o comunicados oficiales sobre la actividad, se enlazan aparte."),
     ("¿Esta página afirma que César Revilla logró obras o ayuda?", "No. Solo muestra lo que él publicó y lo que dicen las fuentes citadas. Los resultados se agregan únicamente cuando hay un documento o una nota que los respalde."),
 ]
-def _fen_item(it):
+def _fen_item(it, n, total):
     href = it["fb"]
     q = href.replace(":", "%3A").replace("/", "%2F")
-    ex = f'<p><a href="~/{it["explica"]}">Lee el contexto y las fuentes de esta actividad</a>.</p>' if it.get("explica") else ""
-    return f"""<article class="fen-item">
-<h3>{it['titulo']}</h3>
-<p class="upd">{it['fecha']}</p>
+    ex = f'<p><a href="~/{it["explica"]}">Contexto y fuentes de esta parada</a></p>' if it.get("explica") else ""
+    now = ' fen-ahora' if n == 0 else ''
+    badge = '<span class="fen-badge">Última parada</span>' if n == 0 else ''
+    return f"""<article class="fen-item{now}">
+<span class="fen-pin" aria-hidden="true"><svg viewBox="0 0 24 32" width="22" height="30"><path d="M12 0C5.4 0 0 5.2 0 11.7 0 20.6 12 32 12 32s12-11.4 12-20.3C24 5.2 18.6 0 12 0z" fill="currentColor"/><circle cx="12" cy="11.5" r="4.6" fill="#fff"/></svg></span>
+<p class="fen-fecha"><time datetime="{it['iso']}">{it['fecha']}</time> {badge}</p>
+<h3>{it['lugar']}</h3>
+<p class="fen-sub">{it['titulo']}</p>
 <div class="fen-video"><iframe src="https://www.facebook.com/plugins/video.php?height=476&amp;href={q}%2F&amp;show_text=false&amp;width=267&amp;t=0" title="Video de César Revilla: {it['titulo']}" width="267" height="476" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>
 <blockquote><p>«{it['cita']}»</p></blockquote>
 {ex}
 <p><a href="{href}" rel="noopener" target="_blank">Ver la publicación original en Facebook</a></p>
 </article>"""
+def _fen_ruta():
+    pts = list(reversed(FEN_ITEMS))
+    chips = ''.join(f'<li{" class=\"fen-ahora\"" if i == len(pts)-1 else ""}>{x["lugar"]}</li>' for i, x in enumerate(pts))
+    return f'<ol class="fen-chips" aria-label="Recorrido en orden cronológico">{chips}</ol>'
 add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
     "Videos y fotos de César Revilla en las zonas afectadas por las lluvias y el Fenómeno El Niño en Piura, con fecha y enlace a cada publicación original.",
     f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> aquí se reúnen, con fecha y fuente, los videos y fotos de César Revilla, diputado por Piura, en las zonas afectadas por las lluvias del Fenómeno El Niño (FEN). Se actualiza a medida que se publican nuevas actividades.</p>
-<h2>Últimas actividades de César Revilla en el FEN</h2>
-{''.join(_fen_item(i) for i in FEN_ITEMS)}
+<h2>El recorrido de César Revilla en el FEN</h2>
+<p>Cada parada es una actividad que César Revilla publicó. La más reciente va arriba, con el pin naranja; las anteriores quedan más abajo en el camino. La ruta de abajo muestra el recorrido en orden, de la primera a la última parada.</p>
+{_fen_ruta()}
+<div class="fen-ruta">
+{''.join(_fen_item(i, n, len(FEN_ITEMS)) for n, i in enumerate(FEN_ITEMS))}
+</div>
 <h2>Para entender el Fenómeno El Niño en Piura</h2>
 <div class="grid">
 {card("Guía", "César Revilla y el Fenómeno El Niño", "Lo que ha planteado y logrado desde 2021.", "guias/cesar-revilla-fenomeno-el-nino.html")}

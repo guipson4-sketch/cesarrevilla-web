@@ -8,6 +8,12 @@ Las explicaciones de coyuntura (hechos del día) van en COYUNTURA con la misma e
 """
 
 EXP_SRC = {
+    "infobae1119": ("Infobae (19 de noviembre de 2026): Senamhi advierte nuevas lluvias y posible crecida del río Piura; aviso rojo del COEN (boletín 322-2026)", "https://www.infobae.com/peru/2026/11/19/lluvias-persisten-en-piura-y-tumbes-senamhi-advierte-nuevas-precipitaciones-y-posible-crecida-del-rio-piura-durante-los-proximos-dias/"),
+    "norte1103": ("Norte Sostenible (3 de noviembre de 2026): 65 distritos de Piura declarados en emergencia por lluvias (DS 149-2026-PCM)", "https://nortesostenible.com/65-distritos-piura-declarados-emergencia-lluvias-fenomeno-nino/"),
+    "andina0312": ("Andina (12 de marzo de 2026): peligros de las lluvias intensas y precauciones recomendadas por Indeci", "https://andina.pe/agencia/noticia-que-peligros-ocasionan-las-lluvias-intensas-y-precauciones-debe-tomar-poblacion-1064613.aspx"),
+    "infobae0626": ("Infobae (26 de junio de 2026): números de emergencia en Perú (105, 116, 106, 100, 911)", "https://www.infobae.com/peru/2026/06/26/numeros-de-emergencia-en-peru-cuando-llamar-a-la-policia-bomberos-samu-linea-100-y-911/"),
+    "senamhi": ("Senamhi: pronósticos y avisos meteorológicos (sitio oficial)", "https://www.senamhi.gob.pe/"),
+    "indeci": ("Indeci: portal oficial (alertas, boletines y recomendaciones)", "https://portal.indeci.gob.pe/"),
     "fbreel1124": ("Facebook de César Revilla: video del 24/11/2026 (4:50 a. m.)", "https://www.facebook.com/reel/28557465393932507"),
     "infobae1103": ("Infobae (3 de noviembre de 2026): declaran emergencia por 60 días ante el riesgo de lluvias intensas por El Niño (DS 149-2026-PCM)", "https://www.infobae.com/peru/2026/11/03/peru-en-alerta-por-el-nino-declaran-emergencia-por-60-dias-ante-el-riesgo-de-lluvias-intensas-en-25-regiones/"),
     "andinabicam": ("Agencia Andina: «Vuelve el Congreso Bicameral» (2026)",
@@ -457,6 +463,61 @@ EXPLICA = [
               ("¿Piura está en emergencia por lluvias?",
                "Sí: según Infobae (3 de noviembre de 2026), el Decreto Supremo 149-2026-PCM declaró por 60 días el estado de emergencia en distritos de varias regiones, entre ellas Piura, por peligro ante lluvias asociadas a El Niño.")],
          keys=["fbreel1124", "infobae1103"]),
+    dict(slug="lluvias-en-piura-que-hacer-y-telefonos-de-emergencia", tema="clima-y-desastres", iso="2026-11-24",
+         h1="Lluvias en Piura: qué hacer, a quién llamar y dónde informarse (24 de noviembre de 2026)",
+         seo="Lluvias en Piura: qué hacer y a quién llamar",
+         desc="Guía con fuentes oficiales para las lluvias en Piura: qué hacer antes y durante, teléfonos de emergencia y dónde ver los avisos de Senamhi e Indeci.",
+         resumen="Piura está en estado de emergencia por peligro de lluvias (DS 149-2026-PCM, 65 distritos) y se esperan lluvias fuertes. Esta guía reúne las precauciones de Indeci, los teléfonos de emergencia y los canales oficiales donde ver los avisos.",
+         card="Precauciones, teléfonos de emergencia y avisos oficiales.",
+         html="""<h2>En pocas palabras</h2>
+<p>Piura está en estado de emergencia por peligro ante lluvias asociadas al Fenómeno El Niño. Según Norte Sostenible (3 de noviembre de 2026), el Decreto Supremo 149-2026-PCM cubre 65 distritos de las ocho provincias de la región por 60 días. Esta página junta información de fuentes oficiales para que la tengas a mano. No reemplaza las indicaciones de Defensa Civil ni de las autoridades de tu distrito.</p>
+<h2>Qué avisó el Estado en los últimos días</h2>
+<p>Según Infobae (19 de noviembre de 2026), el boletín 322-2026 del Indeci/COEN puso nivel rojo de peligro por lluvias de intensidad extrema en las provincias piuranas de Ayabaca, Huancabamba, Morropón, Piura, Sullana y Talara, entre las 13:00 del 19 y las 13:00 del 20 de noviembre. El jefe zonal de Senamhi en Piura y Tumbes, Héctor Yauri, advirtió que las lluvias podían repetirse en varios episodios, con mayor presencia en las zonas altas de la cuenca del río Piura, y que el caudal del río podía subir de forma progresiva.</p>
+<p>Los avisos cambian cada día. Consulta siempre el más reciente en los canales oficiales de abajo.</p>
+<h2>Qué hacer antes</h2>
+<p>Estas recomendaciones son del Indeci, según Andina (12 de marzo de 2026):</p>
+<ul>
+<li>Verifica que tu vivienda esté lejos de zonas con antecedentes de aluviones, huaicos o desbordes.</li>
+<li>Ten a mano los números de bomberos, Policía, tu municipalidad, el centro de salud y tus familiares.</li>
+<li>Conoce las zonas de seguridad y las rutas de evacuación de tu barrio.</li>
+<li>Prepara una mochila de emergencia con agua, alimentos no perecibles, linterna, baterías, radio a pilas y botiquín.</li>
+</ul>
+<h2>Qué hacer durante</h2>
+<ul>
+<li>Mantén la calma, atiende las alarmas y sigue las indicaciones de los Comités de Defensa Civil.</li>
+<li>Evacúa rápido con tu familia hacia las zonas de seguridad y lleva tu mochila de emergencia.</li>
+</ul>
+<h2>Qué hacer después</h2>
+<ul>
+<li>Evita pasar por las zonas por donde discurrió el huaico o la inundación.</li>
+<li>Apoya las labores de rescate, limpieza y rehabilitación solo cuando Defensa Civil lo indique.</li>
+</ul>
+<h2>Teléfonos de emergencia</h2>
+<p>Según Infobae (26 de junio de 2026):</p>
+<ul>
+<li><strong>105</strong>: Policía Nacional.</li>
+<li><strong>116</strong>: Bomberos Voluntarios (incendios, accidentes, rescates).</li>
+<li><strong>106</strong>: SAMU del Ministerio de Salud (atención médica urgente).</li>
+</ul>
+<p>Para reportar daños o pedir ayuda por la lluvia, acude también a la oficina de Defensa Civil de tu municipalidad.</p>
+<h2>Dónde ver los avisos oficiales</h2>
+<ul>
+<li><a href="https://www.senamhi.gob.pe/" rel="noopener" target="_blank">Senamhi</a>: pronósticos y avisos meteorológicos.</li>
+<li><a href="https://portal.indeci.gob.pe/" rel="noopener" target="_blank">Indeci</a>: alertas, boletines del COEN y recomendaciones.</li>
+</ul>
+<h2>Lo que hace César Revilla</h2>
+<p>El 24 de noviembre de 2026, César Revilla publicó que sobrevoló el río Piura y Chulucanas junto al Premier, ministros y otros diputados para verificar los trabajos de descolmatación, y que coordina la entrega de ayuda a familias afectadas. Es lo que él publicó; esta página no afirma resultados. Mira la galería <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a> y la nota <a href="~/explica/cesar-revilla-viaja-a-piura-por-las-lluvias-24-noviembre-2026.html">César Revilla viaja a Piura por las lluvias</a>.</p>
+<p>Más sobre el tema: <a href="~/guias/cesar-revilla-fenomeno-el-nino.html">César Revilla y el Fenómeno El Niño</a> y <a href="~/temas/lluvias-y-drenaje.html">lluvias y drenaje en Piura</a>.</p>
+<p class="upd">Información al 24 de noviembre de 2026, según las fuentes citadas. Los avisos y pronósticos cambian: confirma siempre en Senamhi e Indeci.</p>""",
+         faq=[("¿Piura está en emergencia por lluvias?",
+               "Sí: según Norte Sostenible (3 de noviembre de 2026), el Decreto Supremo 149-2026-PCM declaró por 60 días el estado de emergencia en 65 distritos de Piura por peligro ante lluvias asociadas a El Niño."),
+              ("¿Qué debo hacer si hay lluvias fuertes en Piura?",
+               "Según el Indeci: mantén la calma, sigue las indicaciones de Defensa Civil, evacúa hacia las zonas de seguridad con tu mochila de emergencia y evita las zonas por donde pasó el huaico o la inundación."),
+              ("¿A qué número llamo en una emergencia en Perú?",
+               "Según Infobae (26 de junio de 2026): 105 para la Policía, 116 para Bomberos y 106 para el SAMU del Ministerio de Salud."),
+              ("¿Dónde veo los avisos de lluvia oficiales?",
+               "En los sitios oficiales de Senamhi (senamhi.gob.pe) para pronósticos y de Indeci (portal.indeci.gob.pe) para alertas y boletines.")],
+         keys=["infobae1119", "norte1103", "andina0312", "infobae0626", "senamhi", "indeci", "fbreel1124"]),
 ]
 
 # Explicaciones de hechos del día (nivel 1 y 2 del protocolo): se agregan a EXPLICA con su `iso` real.

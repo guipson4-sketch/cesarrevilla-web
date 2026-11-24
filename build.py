@@ -836,7 +836,7 @@ PERSON = {
     "email": "crevilla@congreso.gob.pe",
     "knowsAbout": ["Economía", "Pensiones (AFP)", "CTS", "Mypes", "Contrataciones del Estado", "Seguridad ciudadana", "Crimen organizado",
                    "Fenómeno El Niño", "Reconstrucción", "Salud pública", "Educación universitaria", "Recursos hídricos", "Piura"],
-    "sameAs": ["https://www.facebook.com/cesarrevillav", "https://www.tiktok.com/@cesarrevillav", "https://www.wikidata.org/wiki/Q108414723", "https://es.wikipedia.org/wiki/C%C3%A9sar_Revilla",
+    "sameAs": ["https://www.facebook.com/cesarrevillav", "https://www.tiktok.com/@cesarrevillav", "https://www.instagram.com/cesarrevillav/", "https://www.wikidata.org/wiki/Q108414723", "https://es.wikipedia.org/wiki/C%C3%A9sar_Revilla",
                "https://diputados.congreso.gob.pe/diputado/revilla-villanueva-cesar-manuel/"],
 }
 
@@ -1042,6 +1042,7 @@ def layout(p):
 <ul class="foot-social">
 <li><a href="https://www.facebook.com/cesarrevillav" rel="me noopener" target="_blank">Facebook</a></li>
 <li><a href="https://www.tiktok.com/@cesarrevillav" rel="me noopener" target="_blank">TikTok</a></li>
+<li><a href="https://www.instagram.com/cesarrevillav/" rel="me noopener" target="_blank">Instagram</a></li>
 <li><a href="mailto:crevilla@congreso.gob.pe">Correo</a></li>
 </ul></div>
 <div><strong>Explora</strong><ul>{foot_a}</ul></div>
@@ -1600,6 +1601,13 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
 <div class="grid fen-grid">
 {''.join(_fen_item(i, n, len(FEN_ITEMS)) for n, i in enumerate(FEN_ITEMS))}
 </div>
+<h2>Sigue las nuevas paradas en sus cuentas oficiales</h2>
+<p>Cada actividad se publica primero en las redes de César Revilla. Estas son sus cuentas oficiales:</p>
+<ul class="canales-sociales">
+<li><a href="https://www.facebook.com/cesarrevillav" rel="me noopener" target="_blank">Facebook: facebook.com/cesarrevillav</a></li>
+<li><a href="https://www.instagram.com/cesarrevillav/" rel="me noopener" target="_blank">Instagram: @cesarrevillav</a></li>
+<li><a href="https://www.tiktok.com/@cesarrevillav" rel="me noopener" target="_blank">TikTok: @cesarrevillav</a></li>
+</ul>
 <h2>Para entender el Fenómeno El Niño en Piura</h2>
 <div class="grid">
 {card("Guía", "César Revilla y el Fenómeno El Niño", "Lo que ha planteado y logrado desde 2021.", "guias/cesar-revilla-fenomeno-el-nino.html")}
@@ -1984,6 +1992,7 @@ add("medios.html", "César Revilla en los medios: entrevistas y notas de prensa"
 CANALES = [
     ("Facebook", "facebook.com/cesarrevillav", "https://www.facebook.com/cesarrevillav", "Página oficial"),
     ("TikTok", "@cesarrevillav", "https://www.tiktok.com/@cesarrevillav", "Cuenta oficial"),
+    ("Instagram", "@cesarrevillav", "https://www.instagram.com/cesarrevillav/", "Cuenta oficial"),
     ("Cámara de Diputados", "Ficha oficial del diputado", "https://diputados.congreso.gob.pe/diputado/revilla-villanueva-cesar-manuel/", "Perfil institucional"),
     ("Correo institucional", "crevilla@congreso.gob.pe", "mailto:crevilla@congreso.gob.pe", "Despacho congresal"),
     ("Sitio web", "cesarrevilla.com", BASE + "/", "Sitio personal"),
@@ -2034,6 +2043,7 @@ add("contacto.html", "Contacto con el despacho de César Revilla",
 <dt>Correo institucional</dt><dd><a href="mailto:crevilla@congreso.gob.pe">crevilla@congreso.gob.pe</a></dd>
 <dt>Facebook</dt><dd><a href="https://www.facebook.com/cesarrevillav" rel="me noopener" target="_blank">facebook.com/cesarrevillav</a></dd>
 <dt>TikTok</dt><dd><a href="https://www.tiktok.com/@cesarrevillav" rel="me noopener" target="_blank">@cesarrevillav</a></dd>
+<dt>Instagram</dt><dd><a href="https://www.instagram.com/cesarrevillav/" rel="me noopener" target="_blank">@cesarrevillav</a></dd>
 <dt>Ficha oficial</dt><dd><a href="https://diputados.congreso.gob.pe/diputado/revilla-villanueva-cesar-manuel/" rel="noopener" target="_blank">Cámara de Diputados del Perú</a></dd>
 </dl>
 <h2>Qué incluir en tu mensaje</h2>

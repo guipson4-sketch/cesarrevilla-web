@@ -467,3 +467,9 @@ section.alt .imp,section.alt .chart-fig,section.alt .tile{background:#fff}
 .pr-pasos h3{margin:0 0 6px;font-size:1.05rem}
 .pr-pasos p{margin:0;color:var(--smoke);font-size:.95rem}
 @media(max-width:700px){.pr-tiles,.pr-pasos{grid-template-columns:1fr}}
+
+/* Revilla en el FEN */
+.fen-item{margin:1.5rem 0 2rem;padding:1.25rem;border:1px solid var(--line,#e3e6ec);border-radius:14px;background:#fff}
+.fen-video{display:flex;justify-content:center;margin:.75rem 0;background:#0b1220;border-radius:12px;padding:.5rem}
+.fen-video iframe{width:267px;height:476px;max-width:100%;aspect-ratio:auto;border-radius:8px}
+.fen-item blockquote{margin:.75rem 0;padding:.5rem 1rem;border-left:4px solid #e86a1a;background:#fdf3ea}

@@ -1541,6 +1541,53 @@ add("en-vivo.html", "En vivo: sesiones del Pleno del Congreso",
                "embedUrl": f"https://www.youtube.com/embed/{EV_VID}",
                "publisher": {"@type": "Organization", "name": "Congreso de la República del Perú"}}])
 
+# ============ REVILLA EN EL FEN (galería de videos y fotos) ============
+FEN_ITEMS = [  # más nuevo primero; cada ítem: fecha ISO, fecha legible, título, texto de César, fuente (url), etiqueta de fuente, nota Explica
+    dict(iso="2026-11-24", fecha="24 de noviembre de 2026, 4:50 a. m.",
+         titulo="Viaje a Piura con el presidente del Consejo de Ministros",
+         cita="Vamos a Piura para gestionar toda la ayuda posible en las zonas más afectadas por las lluvias. Lo hacemos junto al Presidente del Consejo de Ministros y el diputado Albañil. Tenemos que estar siempre en la cancha.",
+         fb="https://www.facebook.com/reel/28557465393932507",
+         explica="explica/cesar-revilla-viaja-a-piura-por-las-lluvias-24-noviembre-2026.html"),
+]
+FEN_FAQ = [
+    ("¿Qué es el FEN?", "Es el Fenómeno El Niño: calentamiento del mar que en el norte del Perú puede traer lluvias intensas e inundaciones. Para 2026-2027 el Gobierno declaró estado de emergencia por peligro ante lluvias asociadas a El Niño, según Infobae (3 de noviembre de 2026)."),
+    ("¿De dónde salen los videos y fotos de esta página?", "De las cuentas oficiales de César Revilla. Cada uno indica su fecha y enlaza a la publicación original. Cuando hay notas de prensa o comunicados oficiales sobre la actividad, se enlazan aparte."),
+    ("¿Esta página afirma que César Revilla logró obras o ayuda?", "No. Solo muestra lo que él publicó y lo que dicen las fuentes citadas. Los resultados se agregan únicamente cuando hay un documento o una nota que los respalde."),
+]
+def _fen_item(it):
+    href = it["fb"]
+    q = href.replace(":", "%3A").replace("/", "%2F")
+    ex = f'<p><a href="~/{it["explica"]}">Lee el contexto y las fuentes de esta actividad</a>.</p>' if it.get("explica") else ""
+    return f"""<article class="fen-item">
+<h3>{it['titulo']}</h3>
+<p class="upd">{it['fecha']}</p>
+<div class="fen-video"><iframe src="https://www.facebook.com/plugins/video.php?height=476&amp;href={q}%2F&amp;show_text=false&amp;width=267&amp;t=0" title="Video de César Revilla: {it['titulo']}" width="267" height="476" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>
+<blockquote><p>«{it['cita']}»</p></blockquote>
+{ex}
+<p><a href="{href}" rel="noopener" target="_blank">Ver la publicación original en Facebook</a></p>
+</article>"""
+add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
+    "Videos y fotos de César Revilla en las zonas afectadas por las lluvias y el Fenómeno El Niño en Piura, con fecha y enlace a cada publicación original.",
+    f"""<section class="block"><div class="wrap">
+<p class="resumen"><strong>En breve:</strong> aquí se reúnen, con fecha y fuente, los videos y fotos de César Revilla, diputado por Piura, en las zonas afectadas por las lluvias del Fenómeno El Niño (FEN). Se actualiza a medida que se publican nuevas actividades.</p>
+<h2>Últimas actividades de César Revilla en el FEN</h2>
+{''.join(_fen_item(i) for i in FEN_ITEMS)}
+<h2>Para entender el Fenómeno El Niño en Piura</h2>
+<div class="grid">
+{card("Guía", "César Revilla y el Fenómeno El Niño", "Lo que ha planteado y logrado desde 2021.", "guias/cesar-revilla-fenomeno-el-nino.html")}
+{card("Tema", "Lluvias y drenaje en Piura", "Gestiones documentadas sobre drenaje pluvial.", "temas/lluvias-y-drenaje.html")}
+{card("Presupuesto", "¿Tu obra está en el Presupuesto 2027?", "Busca por distrito, obra o CUI.", "presupuesto-2027.html")}
+</div>
+<h2>Preguntas frecuentes</h2>
+{''.join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in FEN_FAQ)}
+<p class="upd">Los videos pertenecen a las cuentas de César Revilla y se muestran incrustados desde Facebook. Actualizado el 24 de noviembre de 2026.</p>
+</div></section>""",
+    h1="Revilla en el FEN: videos y fotos desde las zonas afectadas por las lluvias",
+    lead="Sus visitas y gestiones ante el Fenómeno El Niño en Piura, con fecha y fuente.",
+    crumbs=[("Revilla en el FEN", "revilla-en-el-fen.html")], brand=False, date="2026-11-24",
+    ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
+               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FEN_FAQ]}])
+
 # ============ HUBS DE TEMA ============
 for slug, t in TEMAS.items():
     items = [f for f in FICHAS if f["tema"] == slug]

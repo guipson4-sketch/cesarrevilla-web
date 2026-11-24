@@ -448,7 +448,7 @@ EXPLICA = [
 <h2>Qué falta confirmar</h2>
 <p>Esta página se basa en lo que César Revilla publicó en su propio Facebook. Todavía no incluye notas de prensa ni comunicados de la PCM sobre la visita: cuando se publiquen, se sumarán aquí con su fuente, junto con las acciones que se anuncien. Esta página no afirma resultados de la visita.</p>
 <h2>Más sobre este tema</h2>
-<p>Lee <a href="~/guias/cesar-revilla-fenomeno-el-nino.html">César Revilla y el Fenómeno El Niño</a> y el <a href="~/temas/lluvias-y-drenaje.html">tema de lluvias y drenaje en Piura</a>.</p>
+<p>Mira la galería <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a>. Lee también <a href="~/guias/cesar-revilla-fenomeno-el-nino.html">César Revilla y el Fenómeno El Niño</a> y el <a href="~/temas/lluvias-y-drenaje.html">tema de lluvias y drenaje en Piura</a>.</p>
 <p class="upd">Información del 24 de noviembre de 2026, según las fuentes citadas. Puede haber cambiado.</p>""",
          faq=[("¿Adónde viaja César Revilla el 24 de noviembre de 2026?",
                "A Piura, para gestionar ayuda en las zonas más afectadas por las lluvias, según el video que publicó en su Facebook ese día."),

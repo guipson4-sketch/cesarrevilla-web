@@ -1562,6 +1562,11 @@ def _fen_item(it, n, total):
     href = it["fb"]
     q = href.replace(":", "%3A").replace("/", "%2F")
     ex = f'<p><a href="~/{it["explica"]}">Contexto y fuentes de esta parada</a></p>' if it.get("explica") else ""
+    if it.get("tipo") == "post":
+        h = it.get("alto", 640)
+        media = f'<div class="fen-post"><iframe src="https://www.facebook.com/plugins/post.php?href={q}&amp;show_text=true&amp;width=500" title="Publicación de César Revilla: {it['titulo']}" width="500" height="{h}" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>'
+    else:
+        media = f'''<div class="fen-video"><iframe src="https://www.facebook.com/plugins/video.php?height=476&amp;href={q}%2F&amp;show_text=false&amp;width=267&amp;t=0" title="Video de César Revilla: {it['titulo']}" width="267" height="476" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>'''
     now = ' fen-ahora' if n == 0 else ''
     badge = '<span class="fen-badge">Última parada</span>' if n == 0 else ''
     return f"""<article class="fen-item{now}">
@@ -1569,7 +1574,7 @@ def _fen_item(it, n, total):
 <p class="fen-fecha"><time datetime="{it['iso']}">{it['fecha']}</time> {badge}</p>
 <h3>{it['lugar']}</h3>
 <p class="fen-sub">{it['titulo']}</p>
-<div class="fen-video"><iframe src="https://www.facebook.com/plugins/video.php?height=476&amp;href={q}%2F&amp;show_text=false&amp;width=267&amp;t=0" title="Video de César Revilla: {it['titulo']}" width="267" height="476" loading="lazy" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>
+{media}
 <blockquote><p>«{it['cita']}»</p></blockquote>
 {ex}
 <p><a href="{href}" rel="noopener" target="_blank">Ver la publicación original en Facebook</a></p>

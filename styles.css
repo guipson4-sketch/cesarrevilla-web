@@ -489,3 +489,5 @@ section.alt .imp,section.alt .chart-fig,section.alt .tile{background:#fff}
 .fen-video iframe{width:267px;height:476px;max-width:100%;aspect-ratio:auto;border-radius:8px}
 .fen-item blockquote{margin:.75rem 0;padding:.5rem 1rem;border-left:4px solid #e86a1a;background:#fdf3ea}
 @media (max-width:560px){.fen-ruta{padding-left:38px}.fen-ruta::before{left:12px}.fen-pin{left:-36px}.fen-item{padding:1rem}}
+
+.fen-post{display:flex;justify-content:center;margin:.6rem 0}.fen-post iframe{width:100%;max-width:500px;border:0}

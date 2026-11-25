@@ -14,6 +14,10 @@ EXP_SRC = {
     "infobae0626": ("Infobae (26 de junio de 2026): números de emergencia en Perú (105, 116, 106, 100, 911)", "https://www.infobae.com/peru/2026/06/26/numeros-de-emergencia-en-peru-cuando-llamar-a-la-policia-bomberos-samu-linea-100-y-911/"),
     "senamhi": ("Senamhi: pronósticos y avisos meteorológicos (sitio oficial)", "https://www.senamhi.gob.pe/"),
     "indeci": ("Indeci: portal oficial (alertas, boletines y recomendaciones)", "https://portal.indeci.gob.pe/"),
+    "andina1120": ("Andina (20 de noviembre de 2026): Congreso aprueba la Ley de Presupuesto Público para el Año Fiscal 2027", "https://andina.pe/agencia/noticia-congreso-aprueba-ley-presupuesto-publico-para-ano-fiscal-2027-1100905.aspx"),
+    "congre1120": ("Congreso de la República (20 de noviembre de 2026): el Pleno aprueba la Ley de Presupuesto del Sector Público para el Año Fiscal 2027", "https://comunicaciones.congreso.gob.pe/noticias/pleno-del-congreso-aprueba-la-ley-de-presupuesto-del-sector-publico-para-el-ano-fiscal-2027/"),
+    "rpp1117": ("RPP (17 de noviembre de 2026): las 12 medidas añadidas frente al proyecto del Ejecutivo", "https://rpp.pe/economia/economia/pleno-del-congreso-inicia-debate-del-presupuesto-publico-2027-estos-son-los-12-nuevos-cambios-frente-al-proyecto-del-ejecutivo-noticia-1718239"),
+    "mefproy": ("MEF: Proyecto de Presupuesto Año 2027 (página oficial, con anexos del proyecto)", "https://www.mef.gob.pe/es/presupuesto-del-sector-publico/proyecto-de-presupuesto"),
     "fbreel1124": ("Facebook de César Revilla: video del 24/11/2026 (4:50 a. m.)", "https://www.facebook.com/reel/28557465393932507"),
     "infobae1103": ("Infobae (3 de noviembre de 2026): declaran emergencia por 60 días ante el riesgo de lluvias intensas por El Niño (DS 149-2026-PCM)", "https://www.infobae.com/peru/2026/11/03/peru-en-alerta-por-el-nino-declaran-emergencia-por-60-dias-ante-el-riesgo-de-lluvias-intensas-en-25-regiones/"),
     "andinabicam": ("Agencia Andina: «Vuelve el Congreso Bicameral» (2026)",
@@ -323,6 +327,9 @@ EXPLICA = [
 <h3>Endeudamiento y presupuesto de Defensa Nacional</h3>
 <p>La Ley de Endeudamiento 2026 (32515) fija en su artículo 3, numeral 3.2, punto 4, un tope de S/ 7,923 millones para Defensa Nacional. La propuesta pide que las operaciones en trámite a fin de 2026 puedan aprobarse en el primer trimestre de 2027.</p>
 <p>Para las demás propuestas (obras por impuestos, Tribunal Constitucional, Junta Nacional de Justicia, Sechura y Trabaja Perú) no hay aún una fuente que explique su motivo. Cuando el despacho de César Revilla comparta sus razones, las publicaremos aquí con su nombre.</p>
+<h2>¿Qué pasó después? (actualizado el 25 de noviembre de 2026)</h2>
+<p>El 20 de noviembre de 2026, el Pleno aprobó la Ley de Presupuesto del Sector Público 2027, por S/ 266 506 316 735. Según el Congreso, votaron 71 diputados a favor, 32 en contra y 12 se abstuvieron; en el Senado fueron 36 a favor, 14 en contra y 3 abstenciones. También se aprobaron las leyes de Equilibrio Financiero y de Endeudamiento.</p>
+<p>Las fuentes consultadas no detallan si cada una de las propuestas de César Revilla se incorporó al texto final. Las 12 medidas añadidas al dictamen que RPP listó el 17 de noviembre, antes de este debate, no mencionan sus temas. Además, el MEF todavía muestra en su página solo el proyecto del Ejecutivo y sus anexos, no los anexos finales. Cuando se publique la ley en El Peruano con sus anexos, se verificará propuesta por propuesta y se actualizará esta página.</p>
 <h2>Contexto</h2>
 <p>Estas propuestas se presentaron en el debate de la Ley de Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento del Sector Público. Lee <a href="~/explica/pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027.html">de qué se habló en el Pleno y qué dijo cada bancada</a> y <a href="~/en-vivo.html">sigue las sesiones en vivo</a>.</p>""",
          faq=[("¿Qué dijo César Revilla en el Pleno del 19 de noviembre de 2026?",
@@ -333,7 +340,7 @@ EXPLICA = [
                "En el video oficial de la sesión del Pleno del 19 de noviembre de 2026 en el canal de YouTube del Congreso, desde la hora 6:48:57."),
               ("¿Por qué César Revilla pidió drenaje pluvial y el nombramiento del personal de salud?",
                "En la sesión no explicó sus motivos. Las fuentes indican que Piura enfrentaba el riesgo de un Niño fuerte con obras de drenaje cuestionadas, y que la Ley 32568 ya autoriza el nombramiento progresivo del personal CAS COVID, que depende de los presupuestos de cada entidad.")],
-         keys=["ytpleno1119", "larep0803", "andina0326", "mef32515", "congre1119", "congdip1119"]),
+         keys=["ytpleno1119", "larep0803", "andina0326", "mef32515", "congre1119", "congdip1119", "andina1120", "congre1120", "rpp1117", "mefproy"]),
     dict(slug="pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027", tema="economia-y-empleo", iso="2026-11-20",
          h1="Pleno del 19 de noviembre de 2026: de qué se habló y qué dijo cada bancada sobre el Presupuesto 2027",
          seo="Pleno del 19-nov: qué dijo cada bancada",

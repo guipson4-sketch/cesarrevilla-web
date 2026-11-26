@@ -1515,8 +1515,8 @@ add("presupuesto-2027.html", "Presupuesto 2027: ¿está tu obra incluida?",
 YT_CH = "UC9HLcODpEZuBRLSKXZx5igw"   # canal oficial «Congreso de la República del Perú»
 EV_VID = "ehMRuO8zzls"               # última sesión del Pleno incrustada (actualizar cada sesión)
 EV_FECHA, EV_ISO = "19 de noviembre de 2026", "2026-11-19"
-EV_LIVE = "ijLmIImQlwE"              # transmisión del Congreso en curso (actualizar)
-EV_LIVE_T = "Mesa de trabajo sobre «Salud Mental e Infancia», 20 de noviembre de 2026"
+EV_LIVE = "vZgadmzf5wI"              # transmisión del Congreso en curso (actualizar)
+EV_LIVE_T = "Sesión del Pleno del Congreso de la República"
 EV_FAQ = [
     ("¿Dónde puedo ver en vivo el Pleno del Congreso?", "Aquí mismo, en esta página: se incrusta una transmisión del canal oficial de YouTube del Congreso de la República, en vivo cuando la hay. Este sitio solo la incrusta."),
     ("¿Este sitio es el canal oficial del Congreso?", "No. Es el sitio personal del diputado César Revilla. Las transmisiones pertenecen al Congreso y se ven desde su canal de YouTube."),

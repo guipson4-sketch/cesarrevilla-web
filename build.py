@@ -1626,7 +1626,7 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FEN_FAQ]}])
 
 # ============ REPORTA TU PROBLEMA POR LAS LLUVIAS ============
-REPORTE_WA = "51941608731"   # WhatsApp que recibe los reportes (cambiar aquí si hace falta)
+REPORTE_WA_B64 = "NTE5NDE2MDg3MzE="   # número que recibe los reportes, en base64 (no va en texto plano en la página)
 REP_TIPOS = ["Calle o avenida inundada", "Vivienda afectada o sin acceso", "Sin luz, agua o desagüe",
              "Vía, puente o camino bloqueado o dañado", "Dren, canal o quebrada desbordada u obstruida",
              "Colegio o centro de salud afectado", "Familia que necesita ayuda", "Otro problema"]
@@ -1647,7 +1647,7 @@ REP_BODY = """<section class="block"><div class="wrap">
 <div class="rep-alert" role="note"><strong>Si hay peligro para la vida, llama primero:</strong> 105 Policía Nacional · 116 Bomberos · 106 SAMU. Esta página no es una línea de emergencia.</div>
 <p class="resumen"><strong>En breve:</strong> cuéntanos qué pasa en tu calle o distrito por las lluvias. Al enviar, se abre WhatsApp con tu reporte listo y llega al equipo digital de César Revilla, diputado por Piura. Sirve para ordenar qué zonas piden ayuda; no garantiza una respuesta inmediata.</p>
 <h2>Reporta tu problema</h2>
-<form id="rep-form" class="rep-form" action="https://wa.me/__WA__" method="get" target="_blank" rel="noopener">
+<form id="rep-form" class="rep-form">
 <label>¿Qué está pasando?<select name="tipo" required><option value="">Elige una opción</option>__TIPOS__</select></label>
 <label>Zona o distrito<select name="zona" required><option value="">Elige una opción</option>__ZONAS__</select></label>
 <label>Dirección o referencia (calle, cuadra, colegio, mercado cercano)<input name="ref" type="text" maxlength="160" required autocomplete="street-address"></label>
@@ -1656,7 +1656,7 @@ REP_BODY = """<section class="block"><div class="wrap">
 <label>Tu teléfono (opcional)<input name="tel" type="tel" maxlength="20" autocomplete="tel"></label></div>
 <label class="rep-ok"><input type="checkbox" name="ok" required> Acepto que mi reporte se envíe por WhatsApp al equipo digital y se use para ordenar y canalizar reportes. <a href="~/politica-de-privacidad.html">Política de privacidad</a>.</label>
 <button class="btn" type="submit">Enviar reporte por WhatsApp</button>
-<p class="rep-note">Se abrirá WhatsApp con el mensaje listo; tú decides si lo envías. Puedes adjuntar fotos en el chat. Si no se abre, escribe al +51 941 608 731.</p>
+<p class="rep-note">Se abrirá WhatsApp con el mensaje listo; tú decides si lo envías. Puedes adjuntar fotos en el chat.</p>
 </form>
 <h2>Situación actual en Piura (27 de noviembre de 2026)</h2>
 <p>Resumen con las fuentes de hoy. Las cifras cambian durante el día: confirma siempre en <a href="https://www.senamhi.gob.pe/" rel="noopener" target="_blank">Senamhi</a> e <a href="https://portal.indeci.gob.pe/" rel="noopener" target="_blank">Indeci</a>.</p>
@@ -1683,9 +1683,9 @@ if(v("nombre"))m+="Nombre: "+v("nombre")+"\\n";
 if(v("tel"))m+="Teléfono: "+v("tel")+"\\n";
 m+="Enviado: "+new Date().toLocaleString("es-PE");
 try{if(window.gtag)gtag("event","reporte_lluvias",{tipo:v("tipo"),zona:v("zona")})}catch(x){}
-window.open("https://wa.me/__WA__?text="+encodeURIComponent(m),"_blank","noopener");});})();
+window.open("https://wa.me/"+atob("__WA__")+"?text="+encodeURIComponent(m),"_blank","noopener");});})();
 </script>"""
-REP_BODY = (REP_BODY.replace("__WA__", REPORTE_WA).replace("__TIPOS__", _rep_opts(REP_TIPOS))
+REP_BODY = (REP_BODY.replace("__WA__", REPORTE_WA_B64).replace("__TIPOS__", _rep_opts(REP_TIPOS))
             .replace("__ZONAS__", _rep_opts(REP_ZONAS))
             .replace("__FAQ__", "".join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in REP_FAQ)))
 add("reporta-lluvias.html", "Reporta tu problema por las lluvias en Piura",

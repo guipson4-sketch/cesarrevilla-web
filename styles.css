@@ -514,3 +514,20 @@ section.alt .imp,section.alt .chart-fig,section.alt .tile{background:#fff}
 .rep-note{font-size:.92rem;opacity:.85;margin:0}
 .rep-cta{margin:12px 0 4px}
 @media (max-width:560px){.rep-two{grid-template-columns:1fr}}
+
+/* Reporte El Niño 2026–27 */
+.ni-box{background:#fff;border:1px solid var(--hairline);border-radius:var(--r);padding:1rem 1.1rem;margin:.6rem 0 1.2rem}
+.ni-big{font-size:1.2rem;margin:0 0 .4rem}
+.ni-lista{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.ni-av{display:flex;gap:.7rem;align-items:flex-start;padding:.7rem .8rem;border-radius:var(--r);border:1px solid var(--hairline);border-left:6px solid #888}
+.ni-av.ni-rojo{border-left-color:#c0392b;background:#fdf0ee}
+.ni-av.ni-naranja{border-left-color:#e67e22;background:#fff5ea}
+.ni-av.ni-amarillo{border-left-color:#d4ac0d;background:#fffbe6}
+.ni-pill{flex:none;font-size:.72rem;font-weight:700;letter-spacing:.04em;padding:.2rem .5rem;border-radius:999px;background:#444;color:#fff}
+.ni-rojo .ni-pill{background:#c0392b}.ni-naranja .ni-pill{background:#b9650f}.ni-amarillo .ni-pill{background:#8a6d00}
+.ni-meta,.ni-hora{font-size:.85rem;color:var(--smoke)}
+.ni-det{margin:.8rem 0 0;padding:.6rem .9rem;border-left:3px solid var(--hairline);font-size:.95rem}
+.ni-det footer{font-size:.8rem;color:var(--smoke);margin-top:.4rem}
+.ni-tabla{width:100%;border-collapse:collapse;font-size:.92rem}
+.ni-tabla th,.ni-tabla td{padding:.45rem .6rem;border-bottom:1px solid var(--hairline);text-align:left}
+.ni-fallo{color:var(--smoke)}

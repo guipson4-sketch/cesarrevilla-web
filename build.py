@@ -800,6 +800,7 @@ NAV = [
     ("cifras.html", "En cifras"),
     ("congreso-2026-2031.html", "Congreso"),
     ("presupuesto-2027.html", "Presupuesto 2027"),
+    ("fenomeno-el-nino-2026-2027.html", "El Niño 2026–27"),
     ("en-vivo.html", "En vivo"),
     ("explica.html", "Explica"),
     ("guias.html", "Guías"),
@@ -980,7 +981,7 @@ def layout(p):
                       f'<h1>{esc(p["h1"])}</h1>' + (f'<p class="lead">{p["lead"]}</p>' if p["lead"] else "") + "</div></header>")
 
     draftbar = ('<div class="draftbar">BORRADOR · no indexable · completar bloques “Pendiente” antes de publicar</div>' if DRAFT else "")
-    _fa = [("biografia.html", "Biografía"), ("gestion.html", "Gestión"), ("proyectos-de-ley.html", "Leyes"), ("cifras.html", "En cifras"), ("congreso-2026-2031.html", "Congreso 2026–2031"), ("en-vivo.html", "En vivo"), ("preguntas.html", "Preguntas"), ("explica.html", "Explica"), ("guias.html", "Guías"), ("piura.html", "Piura")]
+    _fa = [("biografia.html", "Biografía"), ("gestion.html", "Gestión"), ("proyectos-de-ley.html", "Leyes"), ("cifras.html", "En cifras"), ("congreso-2026-2031.html", "Congreso 2026–2031"), ("fenomeno-el-nino-2026-2027.html", "El Niño 2026–27"), ("en-vivo.html", "En vivo"), ("preguntas.html", "Preguntas"), ("explica.html", "Explica"), ("guias.html", "Guías"), ("piura.html", "Piura")]
     _fb = [("transparencia.html", "Transparencia"), ("prensa.html", "Sala de prensa"), ("medios.html", "En los medios"), ("canales-oficiales.html", "Canales oficiales"), ("contacto.html", "Contacto")]
     foot_a = "".join(f'<li><a href="{pre}{pp}">{t}</a></li>' for pp, t in _fa)
     foot_b = "".join(f'<li><a href="{pre}{pp}">{t}</a></li>' for pp, t in _fb)
@@ -1595,7 +1596,7 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
     "Videos y fotos de César Revilla en las zonas afectadas por las lluvias y el Fenómeno El Niño en Piura, con fecha y enlace a cada publicación original.",
     f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> aquí se reúnen, con fecha y fuente, los videos y fotos de César Revilla, diputado por Piura, en las zonas afectadas por las lluvias del Fenómeno El Niño (FEN). Se actualiza a medida que se publican nuevas actividades.</p>
-<p class="rep-cta"><a class="btn" href="~/reporta-lluvias.html">¿Lluvias en tu zona? Reporta tu problema</a></p>
+<p class="rep-cta"><a class="btn" href="~/reporta-lluvias.html">¿Lluvias en tu zona? Reporta tu problema</a> <a class="btn ghost" href="~/fenomeno-el-nino-2026-2027.html">Datos del Senamhi en vivo</a></p>
 <h2>El recorrido de César Revilla en el FEN</h2>
 <p>Cada parada es una actividad que César Revilla publicó. La más reciente va primero. La ruta de abajo muestra el recorrido en orden, de la primera a la última parada. Toca un video para verlo y usa «Compartir» para enviarlo.</p>
 {_fen_ruta()}
@@ -1666,6 +1667,7 @@ REP_BODY = """<section class="block"><div class="wrap">
 <li><strong>Afectación:</strong> Forbes Perú cita al Indeci con unas 2.000 familias afectadas en Piura, y un reporte preliminar del COEN sin daños a personas. Hay calles inundadas y tránsito interrumpido en varias avenidas de la ciudad, y ambientes inundados en el Hospital Regional Cayetano Heredia. La altura del agua varía mucho por zona.</li>
 <li><strong>Medidas:</strong> la Defensoría del Pueblo pidió clases virtuales y evaluar el teletrabajo este viernes 27; el Ejército y el Ministerio de Vivienda hacen labores de drenaje.</li>
 </ul>
+<p><strong>Datos en vivo:</strong> mira los <a href="~/fenomeno-el-nino-2026-2027.html">avisos del Senamhi y el estado de El Niño 2026–2027</a>.</p>
 <h2>Qué hacer mientras tanto</h2>
 <p>Sigue las precauciones de Indeci, evita cruzar zonas inundadas y mantén a la mano los teléfonos de emergencia. Lo tienes en la <a href="~/explica/lluvias-en-piura-que-hacer-y-telefonos-de-emergencia.html">guía de lluvias en Piura</a>. Para ver cómo ha trabajado César Revilla frente al Fenómeno El Niño, entra a <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a>.</p>
 <h2>Preguntas frecuentes</h2>
@@ -1695,6 +1697,56 @@ add("reporta-lluvias.html", "Reporta tu problema por las lluvias en Piura",
     crumbs=[("Reporta lluvias", "reporta-lluvias.html")], brand=False, date="2026-11-27",
     ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in REP_FAQ]}])
+
+NI_FAQ = [
+    ("¿De dónde salen los datos de esta página?",
+     "Los avisos y el estado de El Niño costero se leen en vivo desde la web oficial del Senamhi cada vez que abres la página (con una copia de 10 minutos en tu navegador). La tabla de lluvia estimada viene de un modelo meteorológico (Open-Meteo) y no es un dato oficial."),
+    ("¿Qué es El Niño costero?",
+     "Es un calentamiento anormal del mar frente a la costa norte del Perú que el ENFEN (comisión multisectorial) monitorea. Puede traer lluvias intensas en la costa norte, como Tumbes y Piura. La alerta y su duración las define el ENFEN en sus comunicados oficiales."),
+    ("¿Por qué dice 2026–2027?",
+     "Porque el ENFEN informó que El Niño costero continuaría hasta inicios del invierno de 2027, según el comunicado oficial vigente en Senamhi. Si el ENFEN lo cambia, esta página lo mostrará al leer la fuente."),
+    ("¿Esta página reemplaza los avisos oficiales?",
+     "No. Es un resumen que facilita encontrarlos. Ante una alerta, confirma siempre en senamhi.gob.pe e indeci.gob.pe y sigue las indicaciones de Defensa Civil."),
+]
+NI_BODY = """<section class="block"><div class="wrap">
+<div class="rep-alert" role="note"><strong>Si hay peligro para la vida, llama primero:</strong> 105 Policía Nacional · 116 Bomberos · 106 SAMU. Esta página no es una línea de emergencia.</div>
+<p class="resumen"><strong>En breve:</strong> aquí se reúnen, en un solo lugar, los avisos meteorológicos vigentes del Senamhi y el estado de El Niño costero 2026–2027. Los datos se leen en vivo desde las fuentes oficiales cada vez que abres la página. ¿Tienes un problema en tu zona? <a href="~/reporta-lluvias.html">Repórtalo aquí</a>.</p>
+<h2>Estado de El Niño costero</h2>
+<div id="ni-estado" class="ni-box" aria-live="polite">
+<p class="ni-big"><strong>Alerta de El Niño Costero</strong></p>
+<p>El Niño costero continuaría hasta inicios del invierno de 2027, según el Comunicado Oficial ENFEN N.° 20-2026 (13 de noviembre de 2026).</p>
+<p class="ni-hora">Captura del 27 de noviembre de 2026. Si tu navegador permite JavaScript, se actualiza en vivo desde Senamhi.</p>
+</div>
+<h2>Avisos meteorológicos del Senamhi</h2>
+<div id="ni-avisos" class="ni-box" aria-live="polite">
+<ul class="ni-lista"><li class="ni-av ni-rojo ni-main"><span class="ni-pill">ROJO</span><div><strong>Aviso de precipitaciones en la costa norte y sierra</strong><br><span class="ni-meta">Aviso N.° 486 · vigente hasta el 29 de noviembre de 2026 · <a href="https://www.senamhi.gob.pe/?p=aviso-meteorologico" rel="noopener" target="_blank">Ver avisos en Senamhi</a></span></div></li></ul>
+<p class="ni-hora">Captura del 27 de noviembre de 2026. Con JavaScript se actualiza en vivo desde Senamhi.</p>
+</div>
+<p><button type="button" id="ni-refresh" class="btn ghost">Actualizar datos</button></p>
+<h2>Lluvia estimada en el norte (modelo, no oficial)</h2>
+<div id="ni-modelo" class="ni-box" aria-live="polite"><p class="ni-hora">Cargando estimación…</p></div>
+<h2>Fuentes oficiales</h2>
+<ul>
+<li><a href="https://www.senamhi.gob.pe/?p=aviso-meteorologico" rel="noopener" target="_blank">Senamhi: avisos meteorológicos</a></li>
+<li><a href="https://www.senamhi.gob.pe/?p=fenomeno-el-nino" rel="noopener" target="_blank">Senamhi: Fenómeno El Niño y comunicados ENFEN</a></li>
+<li><a href="https://www.gob.pe/institucion/senamhi/tema/reportes-hidrologicos" rel="noopener" target="_blank">Senamhi: reportes hidrológicos (ríos)</a></li>
+<li><a href="https://portal.indeci.gob.pe/" rel="noopener" target="_blank">Indeci: emergencias y recomendaciones</a></li>
+</ul>
+<h2>Qué hacer</h2>
+<p>Revisa la <a href="~/explica/lluvias-en-piura-que-hacer-y-telefonos-de-emergencia.html">guía de lluvias en Piura</a>, <a href="~/reporta-lluvias.html">reporta tu problema</a> y conoce el trabajo de César Revilla en <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a>.</p>
+<h2>Preguntas frecuentes</h2>
+__FAQ__
+<p class="upd">Datos de Senamhi y ENFEN leídos en vivo; modelo Open-Meteo referencial. Captura estática del 27 de noviembre de 2026.</p>
+</div></section>
+<script src="~/elnino.js?v=__V__" defer></script>"""
+NI_BODY = NI_BODY.replace("__V__", _asset_v("elnino.js")).replace("__FAQ__", "".join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in NI_FAQ))
+add("fenomeno-el-nino-2026-2027.html", "El Niño 2026–2027: datos del Senamhi en vivo",
+    "Reporte del Fenómeno El Niño 2026–2027 en Piura: avisos del Senamhi y estado del ENFEN en vivo, lluvia estimada y fuentes oficiales.",
+    NI_BODY, h1="Reporte del Fenómeno El Niño 2026–2027: datos del Senamhi",
+    lead="Avisos meteorológicos y estado de El Niño costero, leídos en vivo desde Senamhi, con enlaces a las fuentes oficiales.",
+    crumbs=[("El Niño 2026–2027", "fenomeno-el-nino-2026-2027.html")], brand=False, date="2026-11-27",
+    ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
+               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in NI_FAQ]}])
 
 # ============ HUBS DE TEMA ============
 for slug, t in TEMAS.items():

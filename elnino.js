@@ -16,7 +16,7 @@
 
   /* ---- Avisos meteorológicos de Senamhi ---- */
   function avisos() {
-    return cache("ni_av", 600000, function () {
+    return cache("ni_av2", 600000, function () {
       return fetch(SEN + "?p=aviso-meteorologico").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
         var doc = new DOMParser().parseFromString(h, "text/html");
         var rows = [].slice.call(doc.querySelectorAll("table tbody tr")).map(function (tr) {
@@ -56,7 +56,7 @@
 
   /* ---- Estado de El Niño costero (ENFEN, vía Senamhi) ---- */
   function estado() {
-    return cache("ni_es", 1800000, function () {
+    return cache("ni_es2", 1800000, function () {
       return fetch(SEN + "?p=fenomeno-el-nino").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
         var tx = norm(new DOMParser().parseFromString(h, "text/html").body.textContent);
         var m = /Condiciones actuales de El Niño\/La Niña:\s*(.+?)\s*\(Actualizado al ([^)]+)\)\s*(.+?)\s*(?:Ver más|Monitoreo)/i.exec(tx);
@@ -67,13 +67,14 @@
     });
   }
   function pintaEstado(x) {
+    if (/\{\{|\}\}/.test(x.est + x.fec + x.msg)) return;
     get("ni-estado", '<p class="ni-big"><strong>' + esc(x.est) + '</strong></p><p>' + esc(x.msg.charAt(0) + x.msg.slice(1).toLowerCase()).replace(/niño/g, 'Niño') + '</p><p class="ni-hora">Actualizado por Senamhi/ENFEN al ' + esc(x.fec) + '. Leído el ' + esc(ahora()).replace(/\.$/, '') + '.</p>');
   }
 
   /* ---- Lluvia estimada por modelo (Open-Meteo): referencial, no oficial ---- */
   var LUG = [["Piura", -5.1945, -80.6328], ["Sullana", -4.9039, -80.6853], ["Chulucanas", -5.0968, -80.1619], ["Paita", -5.0892, -81.1144], ["Talara", -4.5772, -81.2719], ["Tumbes", -3.5669, -80.4515]];
   function modelo() {
-    return cache("ni_om", 900000, function () {
+    return cache("ni_om2", 900000, function () {
       var u = "https://api.open-meteo.com/v1/forecast?latitude=" + LUG.map(function (l) { return l[1]; }).join(",") + "&longitude=" + LUG.map(function (l) { return l[2]; }).join(",") +
         "&hourly=precipitation&past_hours=24&forecast_hours=24&timezone=America%2FLima";
       return fetch(u).then(function (r) { if (!r.ok) throw 0; return r.json(); });
@@ -104,7 +105,7 @@
       io.observe(box);
     } else { carga(); }
     var b = $("ni-refresh");
-    if (b) b.addEventListener("click", function () { try { ["ni_av", "ni_es", "ni_om"].forEach(function (k) { sessionStorage.removeItem(k); }); } catch (e) {} carga(); });
+    if (b) b.addEventListener("click", function () { try { ["ni_av2", "ni_es2", "ni_om2"].forEach(function (k) { sessionStorage.removeItem(k); }); } catch (e) {} carga(); });
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();

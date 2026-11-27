@@ -60,7 +60,7 @@
       return fetch(SEN + "?p=fenomeno-el-nino").then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (h) {
         var tx = norm(new DOMParser().parseFromString(h, "text/html").body.textContent);
         var m = /Condiciones actuales de El Niño\/La Niña:\s*(.+?)\s*\(Actualizado al ([^)]+)\)\s*(.+?)\s*(?:Ver más|Monitoreo)/i.exec(tx);
-        if (!m) throw 0;
+        if (!m || /\{\{|\}\}/.test(m[1] + m[2] + m[3])) throw 0;
         var c = /Comunicado ENFEN[^0-9]{0,20}(\d+-\d{4})/i.exec(tx) || /Comunicado N°\s*(\d+-\d{4})/i.exec(tx);
         return { est: m[1], fec: m[2], msg: m[3] };
       });

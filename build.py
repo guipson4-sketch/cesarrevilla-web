@@ -1710,12 +1710,12 @@ NI_FAQ = [
 ]
 NI_BODY = """<section class="block"><div class="wrap">
 <div class="rep-alert" role="note"><strong>Si hay peligro para la vida, llama primero:</strong> 105 Policía Nacional · 116 Bomberos · 106 SAMU. Esta página no es una línea de emergencia.</div>
-<p class="resumen"><strong>En breve:</strong> aquí se reúnen, en un solo lugar, los avisos meteorológicos vigentes del Senamhi y el estado de El Niño costero 2026–2027. Los datos se leen en vivo desde las fuentes oficiales cada vez que abres la página. ¿Tienes un problema en tu zona? <a href="~/reporta-lluvias.html">Repórtalo aquí</a>.</p>
+<p class="resumen"><strong>En breve:</strong> aquí se reúnen, en un solo lugar, los avisos meteorológicos vigentes del Senamhi y el estado de El Niño costero 2026–2027. Los avisos se leen en vivo desde el Senamhi cada vez que abres la página; el estado de El Niño es una captura con enlace a la fuente. ¿Tienes un problema en tu zona? <a href="~/reporta-lluvias.html">Repórtalo aquí</a>.</p>
 <h2>Estado de El Niño costero</h2>
 <div id="ni-estado" class="ni-box" aria-live="polite">
 <p class="ni-big"><strong>Alerta de El Niño Costero</strong></p>
 <p>El Niño costero continuaría hasta inicios del invierno de 2027, según el Comunicado Oficial ENFEN N.° 20-2026 (13 de noviembre de 2026).</p>
-<p class="ni-hora">Captura del 27 de noviembre de 2026. Si tu navegador permite JavaScript, se actualiza en vivo desde Senamhi.</p>
+<p class="ni-hora">Captura del 27 de noviembre de 2026 del Senamhi. Confirma la última versión en la <a href=\"https://www.senamhi.gob.pe/?p=fenomeno-el-nino\" rel=\"noopener\" target=\"_blank\">página oficial</a>.</p>
 </div>
 <h2>Avisos meteorológicos del Senamhi</h2>
 <div id="ni-avisos" class="ni-box" aria-live="polite">

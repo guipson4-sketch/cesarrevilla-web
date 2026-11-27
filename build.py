@@ -1515,8 +1515,8 @@ add("presupuesto-2027.html", "Presupuesto 2027: ¿está tu obra incluida?",
 YT_CH = "UC9HLcODpEZuBRLSKXZx5igw"   # canal oficial «Congreso de la República del Perú»
 EV_VID = "ehMRuO8zzls"               # última sesión del Pleno incrustada (actualizar cada sesión)
 EV_FECHA, EV_ISO = "19 de noviembre de 2026", "2026-11-19"
-EV_LIVE = "vZgadmzf5wI"              # transmisión del Congreso en curso (actualizar)
-EV_LIVE_T = "Sesión del Pleno del Congreso de la República"
+EV_LIVE = "ijLmIImQlwE"              # transmisión del Congreso en curso (actualizar)
+EV_LIVE_T = "Mesa de trabajo sobre «Salud Mental e Infancia», 20 de noviembre de 2026"
 EV_FAQ = [
     ("¿Dónde puedo ver en vivo el Pleno del Congreso?", "Aquí mismo, en esta página: se incrusta una transmisión del canal oficial de YouTube del Congreso de la República, en vivo cuando la hay. Este sitio solo la incrusta."),
     ("¿Este sitio es el canal oficial del Congreso?", "No. Es el sitio personal del diputado César Revilla. Las transmisiones pertenecen al Congreso y se ven desde su canal de YouTube."),
@@ -1534,7 +1534,6 @@ add("en-vivo.html", "En vivo: sesiones del Pleno del Congreso",
 <h3>Qué se debatió</h3>
 <p>Según el Congreso, el Pleno retomó el 19 de noviembre de 2026 el debate de los dictámenes de la Ley de Presupuesto 2027, la Ley de Equilibrio Financiero y la Ley de Endeudamiento del Sector Público. Diputados de varias bancadas presentaron pedidos regionales y la sesión pasó a cuarto intermedio hasta el viernes 20 de noviembre a las 4:00 p. m.</p>
 <p><a href="~/explica/pleno-19-noviembre-2026-que-se-dijo-presupuesto-2027.html">Lee qué dijo cada bancada en esta sesión</a>.</p>
-<p>El jueves 26 de noviembre de 2026 también sesionó el Pleno de la Cámara de Diputados: <a href="~/explica/pleno-26-noviembre-2026-que-se-dijo-camara-de-diputados.html">lee de qué se habló y qué dijo cada bancada</a>. El video de esa sesión aún no está incrustado aquí.</p>
 <p>Fuentes: <a href="{SRC['congre1119'][1]}" rel="noopener" target="_blank">Congreso: reinició el debate</a> · <a href="{SRC['congdip1119'][1]}" rel="noopener" target="_blank">Congreso: diputados fijan posición</a>.</p>
 <h2>Para entender lo que se debate</h2>
 <div class="grid">{''.join(card('Explica', x['h1'], x['card'], x['path']) for x in sorted(EXPLICA, key=lambda z: z['iso'], reverse=True)[:3])}</div>
@@ -1596,6 +1595,7 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
     "Videos y fotos de César Revilla en las zonas afectadas por las lluvias y el Fenómeno El Niño en Piura, con fecha y enlace a cada publicación original.",
     f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> aquí se reúnen, con fecha y fuente, los videos y fotos de César Revilla, diputado por Piura, en las zonas afectadas por las lluvias del Fenómeno El Niño (FEN). Se actualiza a medida que se publican nuevas actividades.</p>
+<p class="rep-cta"><a class="btn" href="~/reporta-lluvias.html">¿Lluvias en tu zona? Reporta tu problema</a></p>
 <h2>El recorrido de César Revilla en el FEN</h2>
 <p>Cada parada es una actividad que César Revilla publicó. La más reciente va primero. La ruta de abajo muestra el recorrido en orden, de la primera a la última parada. Toca un video para verlo y usa «Compartir» para enviarlo.</p>
 {_fen_ruta()}
@@ -1624,6 +1624,77 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
     crumbs=[("Revilla en el FEN", "revilla-en-el-fen.html")], brand=False, date="2026-11-24",
     ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FEN_FAQ]}])
+
+# ============ REPORTA TU PROBLEMA POR LAS LLUVIAS ============
+REPORTE_WA = "51941608731"   # WhatsApp que recibe los reportes (cambiar aquí si hace falta)
+REP_TIPOS = ["Calle o avenida inundada", "Vivienda afectada o sin acceso", "Sin luz, agua o desagüe",
+             "Vía, puente o camino bloqueado o dañado", "Dren, canal o quebrada desbordada u obstruida",
+             "Colegio o centro de salud afectado", "Familia que necesita ayuda", "Otro problema"]
+REP_ZONAS = ["Piura", "Castilla", "Veintiséis de Octubre", "Catacaos", "Sullana", "Bellavista", "Tambogrande",
+             "Chulucanas", "Morropón", "Talara", "Paita", "Sechura", "Ayabaca", "Huancabamba", "Otra zona de Piura"]
+REP_FAQ = [
+    ("¿Esto reemplaza a Defensa Civil o a los números de emergencia?",
+     "No. Si hay peligro para la vida, llama primero al 105 (Policía), 116 (Bomberos) o 106 (SAMU). Este formulario es un canal ciudadano para ordenar reportes; no es una línea de emergencia ni garantiza una respuesta inmediata."),
+    ("¿Qué pasa con mi reporte?",
+     "Al enviarlo se abre WhatsApp con tu mensaje ya escrito y llega al equipo digital que lo recibe. Tú decides si lo envías. Con los reportes se puede ordenar qué zonas piden ayuda y canalizarlos a las autoridades que corresponda."),
+    ("¿Puedo mandar fotos?",
+     "Sí. Después de enviar el mensaje, adjunta las fotos o videos en el mismo chat de WhatsApp. Indica la dirección o una referencia clara para ubicar el lugar."),
+    ("¿Qué datos piden?",
+     "Solo lo que escribes en el formulario: tipo de problema, zona, referencia y, si quieres, tu nombre y teléfono. No pedimos DNI ni datos bancarios."),
+]
+_rep_opts = lambda xs: "".join(f'<option value="{esc(x)}">{esc(x)}</option>' for x in xs)
+REP_BODY = """<section class="block"><div class="wrap">
+<div class="rep-alert" role="note"><strong>Si hay peligro para la vida, llama primero:</strong> 105 Policía Nacional · 116 Bomberos · 106 SAMU. Esta página no es una línea de emergencia.</div>
+<p class="resumen"><strong>En breve:</strong> cuéntanos qué pasa en tu calle o distrito por las lluvias. Al enviar, se abre WhatsApp con tu reporte listo y llega al equipo digital de César Revilla, diputado por Piura. Sirve para ordenar qué zonas piden ayuda; no garantiza una respuesta inmediata.</p>
+<h2>Reporta tu problema</h2>
+<form id="rep-form" class="rep-form" action="https://wa.me/__WA__" method="get" target="_blank" rel="noopener">
+<label>¿Qué está pasando?<select name="tipo" required><option value="">Elige una opción</option>__TIPOS__</select></label>
+<label>Zona o distrito<select name="zona" required><option value="">Elige una opción</option>__ZONAS__</select></label>
+<label>Dirección o referencia (calle, cuadra, colegio, mercado cercano)<input name="ref" type="text" maxlength="160" required autocomplete="street-address"></label>
+<label>Cuéntanos qué ocurre (opcional)<textarea name="detalle" rows="4" maxlength="500"></textarea></label>
+<div class="rep-two"><label>Tu nombre (opcional)<input name="nombre" type="text" maxlength="80" autocomplete="name"></label>
+<label>Tu teléfono (opcional)<input name="tel" type="tel" maxlength="20" autocomplete="tel"></label></div>
+<label class="rep-ok"><input type="checkbox" name="ok" required> Acepto que mi reporte se envíe por WhatsApp al equipo digital y se use para ordenar y canalizar reportes. <a href="~/politica-de-privacidad.html">Política de privacidad</a>.</label>
+<button class="btn" type="submit">Enviar reporte por WhatsApp</button>
+<p class="rep-note">Se abrirá WhatsApp con el mensaje listo; tú decides si lo envías. Puedes adjuntar fotos en el chat. Si no se abre, escribe al +51 941 608 731.</p>
+</form>
+<h2>Situación actual en Piura (27 de noviembre de 2026)</h2>
+<p>Resumen con las fuentes de hoy. Las cifras cambian durante el día: confirma siempre en <a href="https://www.senamhi.gob.pe/" rel="noopener" target="_blank">Senamhi</a> e <a href="https://portal.indeci.gob.pe/" rel="noopener" target="_blank">Indeci</a>.</p>
+<ul>
+<li><strong>Alerta roja del Senamhi:</strong> lluvias de moderada a extrema intensidad en la costa y sierra norte, con aviso meteorológico N.° 486 hasta el domingo 29 de noviembre, según <a href="https://forbes.pe/actualidad/2026-11-27/lluvias-e-inundaciones-golpean-piura-y-tumbes-crece-la-emergencia-por-el-nino" rel="noopener" target="_blank">Forbes Perú</a> y <a href="https://elcomercio.pe/peru/piura/luvias-en-piura-exhortan-a-implementar-clases-virtuales-y-teletrabajo-este-viernes-27-de-noviembre-ante-emergencia-fenomeno-el-nino-apuesplan-ultimas-noticia/" rel="noopener" target="_blank">El Comercio</a>.</li>
+<li><strong>Lo que cayó el 26 de noviembre:</strong> <a href="https://infobae.com/peru/2026/11/27/lluvias-extremas-en-piura-en-una-noche-cayo-lo-que-llueve-en-un-ano-y-fue-la-mayor-tormenta-desde-2017" rel="noopener" target="_blank">Infobae</a> reporta 73,2 mm en Piura y 75,3 mm en El Chira. Algunas cifras son estimaciones de un meteorólogo, no datos oficiales.</li>
+<li><strong>Afectación:</strong> Forbes Perú cita al Indeci con unas 2.000 familias afectadas en Piura, y un reporte preliminar del COEN sin daños a personas. Hay calles inundadas y tránsito interrumpido en varias avenidas de la ciudad, y ambientes inundados en el Hospital Regional Cayetano Heredia. La altura del agua varía mucho por zona.</li>
+<li><strong>Medidas:</strong> la Defensoría del Pueblo pidió clases virtuales y evaluar el teletrabajo este viernes 27; el Ejército y el Ministerio de Vivienda hacen labores de drenaje.</li>
+</ul>
+<h2>Qué hacer mientras tanto</h2>
+<p>Sigue las precauciones de Indeci, evita cruzar zonas inundadas y mantén a la mano los teléfonos de emergencia. Lo tienes en la <a href="~/explica/lluvias-en-piura-que-hacer-y-telefonos-de-emergencia.html">guía de lluvias en Piura</a>. Para ver cómo ha trabajado César Revilla frente al Fenómeno El Niño, entra a <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a>.</p>
+<h2>Preguntas frecuentes</h2>
+__FAQ__
+<p class="upd">Información revisada el 27 de noviembre de 2026 en medios y avisos públicos. Los reportes ciudadanos no son datos oficiales.</p>
+</div></section>
+<script>
+(function(){var f=document.getElementById("rep-form");if(!f)return;
+f.addEventListener("submit",function(e){e.preventDefault();
+var v=function(n){return(f.elements[n].value||"").trim()};
+var m="Reporte de lluvias (cesarrevilla.com)\\n";
+m+="Problema: "+v("tipo")+"\\nZona: "+v("zona")+"\\nReferencia: "+v("ref")+"\\n";
+if(v("detalle"))m+="Detalle: "+v("detalle")+"\\n";
+if(v("nombre"))m+="Nombre: "+v("nombre")+"\\n";
+if(v("tel"))m+="Teléfono: "+v("tel")+"\\n";
+m+="Enviado: "+new Date().toLocaleString("es-PE");
+try{if(window.gtag)gtag("event","reporte_lluvias",{tipo:v("tipo"),zona:v("zona")})}catch(x){}
+window.open("https://wa.me/__WA__?text="+encodeURIComponent(m),"_blank","noopener");});})();
+</script>"""
+REP_BODY = (REP_BODY.replace("__WA__", REPORTE_WA).replace("__TIPOS__", _rep_opts(REP_TIPOS))
+            .replace("__ZONAS__", _rep_opts(REP_ZONAS))
+            .replace("__FAQ__", "".join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in REP_FAQ)))
+add("reporta-lluvias.html", "Reporta tu problema por las lluvias en Piura",
+    "Reporta calles inundadas, viviendas afectadas o servicios caídos por las lluvias en Piura, con el estado de la emergencia al 27 de noviembre de 2026.",
+    REP_BODY, h1="Reporta tu problema por las lluvias en Piura",
+    lead="Cuéntanos qué pasa en tu calle o distrito. Tu reporte llega por WhatsApp al equipo digital de César Revilla.",
+    crumbs=[("Reporta lluvias", "reporta-lluvias.html")], brand=False, date="2026-11-27",
+    ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
+               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in REP_FAQ]}])
 
 # ============ HUBS DE TEMA ============
 for slug, t in TEMAS.items():

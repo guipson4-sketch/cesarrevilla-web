@@ -1554,6 +1554,61 @@ add("en-vivo.html", "En vivo: sesiones del Pleno del Congreso",
                "embedUrl": f"https://www.youtube.com/embed/{EV_VID}",
                "publisher": {"@type": "Organization", "name": "Congreso de la República del Perú"}}])
 
+# ============ VISITA A IGNACIO MERINO, 27 DE NOVIEMBRE (fotos y videos) ============
+IM_DIR = "img/lluvias-27nov/"
+IM_FOTOS = [  # (archivo, pie de foto, alt)
+    ("01-personas-zona-inundada.jpg", "Personas y equipos de respuesta en una zona inundada, de noche", "Grupo de personas con impermeables y equipos de respuesta en una calle inundada, de noche"),
+    ("02-recorrido-bajo-la-lluvia.jpg", "Recorrido bajo la lluvia con prensa presente, noche del 27 de noviembre", "Funcionarios con impermeables conversan bajo la lluvia mientras la prensa les acerca micrófonos de RPP y TVPerú"),
+    ("04-carpa-bidones-agua.jpg", "Carpa con bidones de agua en una zona afectada", "Carpa blanca con bidones de agua y personas debajo, en una calle con restos de la inundación"),
+    ("05-prensa-durante-el-recorrido.jpg", "Micrófonos de TVPerú y RPP durante el recorrido", "Micrófonos de TVPerú y RPP frente a funcionarios, de noche, durante el recorrido"),
+    ("07-recorrido-calle-inundada.jpg", "Recorrido por una calle inundada, noche del 27 de noviembre", "Funcionarios caminan por una calle con agua, de noche, rodeados de personas"),
+    ("09-calle-anegada-de-noche.jpg", "Calle anegada de noche durante la lluvia del 27 de noviembre", "Calle con agua acumulada de noche, con personas y funcionarios con camisas de Perú Responde"),
+    ("10-equipos-de-respuesta.jpg", "Funcionarios con camisas de «Perú Responde» en una calle inundada", "Funcionarios con camisas de Perú Responde y botas de jebe sobre una calle con agua"),
+    ("11-conversacion-bajo-la-lluvia.jpg", "Conversación con la prensa bajo la lluvia", "Funcionarios con impermeables conversan frente a un micrófono de TVPerú"),
+    ("13-calle-inundada-y-equipos.jpg", "Calle inundada con funcionarios y equipos, urbanización Ignacio Merino", "Funcionarios y personas con botas en una calle inundada, de noche"),
+    ("14-avance-por-calle-inundada.jpg", "Avance por una calle inundada durante el recorrido", "Funcionarios avanzan por una calle con agua rodeados de personas, de noche"),
+    ("15-recorrido-nocturno.jpg", "Recorrido nocturno con personal de apoyo", "Funcionarios y personal de apoyo en una calle de noche, con casas al fondo"),
+    ("17-supervision-en-calle-inundada.jpg", "Supervisión en una calle inundada, noche del 27 de noviembre", "Funcionarios supervisan una calle con agua, de noche"),
+]
+IM_VIDEOS = [  # (n, título, duración legible)
+    (1, "Lluvia de noche sobre la avenida", "21 s"),
+    (2, "Personas en la calle durante la lluvia", "16 s"),
+    (3, "Lluvia y cableado en la calle, de noche", "10 s"),
+    (4, "Recorrido entre personas en la zona afectada", "50 s"),
+]
+IM_TITULO = "La presidenta Keiko Fujimori llega a Piura y encabeza la respuesta a la emergencia por lluvias"
+IM_BAJADA = "El diputado César Revilla coordina con los ministros Marco Antonio Vinelli y Rafael Belaunde la distribución de ayuda y la supervisión de los equipos de respuesta en las zonas más afectadas."
+IM_NOTA = [
+    "La presidenta de la República, Keiko Fujimori, llegó a Piura en la noche del 27 de noviembre de 2026 para dirigir las acciones de respuesta ante las intensas lluvias que afectaron distintos sectores de la ciudad.",
+    "Una de las zonas más críticas es la urbanización Ignacio Merino, donde el agua superó el metro de altura. Allí se realizan labores de evacuación, drenaje y asistencia a las familias afectadas. La mandataria recorrió la zona en un bote inflable para verificar directamente la situación de los vecinos.",
+    "El diputado César Revilla acompaña y coordina las acciones junto al ministro de Desarrollo Agrario y Riego, Marco Antonio Vinelli Ruiz, y al ministro de Defensa, Rafael Belaunde Llosa. Entre ellas figuran la distribución de ayuda humanitaria, la organización de equipos de apoyo y la verificación del funcionamiento de los Sistemas Alternativos de Recolección y Evacuación de Agua de Lluvia (SARE), de las motobombas y de los equipos de trasvase desplegados en los puntos críticos de Piura.",
+    "En Ignacio Merino, el Ejecutivo dispuso reforzar la capacidad de drenaje con equipos adicionales, mientras efectivos de las Fuerzas Armadas y de la Policía participan en el rescate y la evacuación. Revilla acompañó a los ministros en la supervisión de estos trabajos y en las coordinaciones para que las motobombas drenen con rapidez las zonas que siguen inundadas.",
+]
+def im_galeria():
+    figs = "".join(
+        f'<figure><a href="~/{IM_DIR}{f}" target="_blank" rel="noopener"><img src="~/{IM_DIR}{f}" alt="{esc(alt)}" loading="lazy" width="800" height="600"></a>'
+        f'<figcaption>{esc(cap)}</figcaption></figure>' for f, cap, alt in IM_FOTOS)
+    return f'<div class="gallery im-gallery">{figs}</div>'
+def im_videos():
+    vs = "".join(
+        f'<figure class="im-video"><video controls preload="none" playsinline poster="~/{IM_DIR}poster-{n}.jpg" title="{esc(t)}" aria-label="{esc(t)}">'
+        f'<source src="~/{IM_DIR}video-{n}.mp4" type="video/mp4"></video>'
+        f'<figcaption>{esc(t)} · {d} · noche del 27 de noviembre</figcaption></figure>' for n, t, d in IM_VIDEOS)
+    return f'<div class="im-videos">{vs}</div>'
+IM_SEC = f"""<h2 id="ignacio-merino">27 de noviembre: respuesta a las lluvias en Ignacio Merino</h2>
+<article class="im-nota">
+<h3>{esc(IM_TITULO)}</h3>
+<p class="im-bajada"><strong>{esc(IM_BAJADA)}</strong></p>
+{''.join(f'<p>{esc(p)}</p>' for p in IM_NOTA)}
+<p class="fen-fecha">Nota informativa del 27 de noviembre de 2026, difundida en las cuentas de César Revilla y replicada por medios locales; texto editado para esta página. Fuentes: <a href="https://www.facebook.com/story.php?story_fbid=1768234545312255&amp;id=100063771796817" rel="noopener" target="_blank">publicación en Facebook</a> y <a href="https://www.instagram.com/p/DgRLeSHjis1/" rel="noopener" target="_blank">publicación en Instagram</a>.</p>
+</article>
+<h3>Fotos</h3>
+{im_galeria()}
+<h3>Videos</h3>
+{im_videos()}
+<p class="upd">Fotos y videos de la noche del 27 de noviembre de 2026. Los pies describen lo que se ve; el lugar corresponde al indicado en la nota.</p>
+"""
+
 # ============ REVILLA EN EL FEN (galería de videos y fotos) ============
 FEN_ITEMS = [  # más nuevo primero; cada ítem: fecha ISO, fecha legible, título, texto de César, fuente (url), etiqueta de fuente, nota Explica
     dict(iso="2026-11-24", fecha="24 de noviembre de 2026",
@@ -1570,7 +1625,7 @@ FEN_ITEMS = [  # más nuevo primero; cada ítem: fecha ISO, fecha legible, títu
 ]
 FEN_FAQ = [
     ("¿Qué es el FEN?", "Es el Fenómeno El Niño: calentamiento del mar que en el norte del Perú puede traer lluvias intensas e inundaciones. Para 2026-2027 el Gobierno declaró estado de emergencia por peligro ante lluvias asociadas a El Niño, según Infobae (3 de noviembre de 2026)."),
-    ("¿De dónde salen los videos y fotos de esta página?", "De las cuentas oficiales de César Revilla. Cada uno indica su fecha y enlaza a la publicación original. Cuando hay notas de prensa o comunicados oficiales sobre la actividad, se enlazan aparte."),
+    ("¿De dónde salen los videos y fotos de esta página?", "De las cuentas oficiales de César Revilla y, en el caso de la noche del 27 de noviembre, de las fotos y videos que acompañan la nota informativa. Cada uno indica su fecha y, cuando existe, enlaza a la publicación original. Cuando hay notas de prensa o comunicados oficiales sobre la actividad, se enlazan aparte."),
     ("¿Esta página afirma que César Revilla logró obras o ayuda?", "No. Solo muestra lo que él publicó y lo que dicen las fuentes citadas. Los resultados se agregan únicamente cuando hay un documento o una nota que los respalde."),
 ]
 def _fen_item(it, n, total):
@@ -1599,6 +1654,7 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
     f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> aquí se reúnen, con fecha y fuente, los videos y fotos de César Revilla, diputado por Piura, en las zonas afectadas por las lluvias del Fenómeno El Niño (FEN). Se actualiza a medida que se publican nuevas actividades.</p>
 <p class="rep-cta"><a class="btn" href="~/reporta-lluvias.html">¿Lluvias en tu zona? Reporta tu problema</a> <a class="btn ghost" href="~/fenomeno-el-nino-2026-2027.html">Datos del Senamhi en vivo</a></p>
+{IM_SEC}
 <h2>El recorrido de César Revilla en el FEN</h2>
 <p>Cada parada es una actividad que César Revilla publicó. La más reciente va primero. La ruta de abajo muestra el recorrido en orden, de la primera a la última parada. Toca un video para verlo y usa «Compartir» para enviarlo.</p>
 {_fen_ruta()}
@@ -1620,11 +1676,11 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
 </div>
 <h2>Preguntas frecuentes</h2>
 {''.join(f'<details class="faq"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in FEN_FAQ)}
-<p class="upd">Los videos pertenecen a las cuentas de César Revilla y se muestran incrustados desde Facebook. Actualizado el 24 de noviembre de 2026.</p>
+<p class="upd">Los videos pertenecen a las cuentas de César Revilla y se muestran incrustados desde Facebook. Actualizado el 27 de noviembre de 2026.</p>
 </div></section>""",
     h1="Revilla en el FEN: videos y fotos desde las zonas afectadas por las lluvias",
     lead="Sus visitas y gestiones ante el Fenómeno El Niño en Piura, con fecha y fuente.",
-    crumbs=[("Revilla en el FEN", "revilla-en-el-fen.html")], brand=False, date="2026-11-24",
+    crumbs=[("Revilla en el FEN", "revilla-en-el-fen.html")], brand=False, date="2026-11-27",
     ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FEN_FAQ]}])
 
@@ -2223,6 +2279,7 @@ home_body = f"""<section class="hero"><div class="grid-bg" aria-hidden="true"></
 </div></section>
 <div class="ticker" aria-label="Temas"><div class="track">{ticker_items}{ticker_items}{ticker_items}{ticker_items}</div></div>
 <section class="block pr-cta"><div class="wrap"><div class="pr-banner"><div><p class="eyebrow">Presupuesto 2027 · aprobado el 20 de noviembre</p><h2>¿Está presupuestada la obra de tu distrito, provincia o región?</h2><p>Averígualo aquí: busca por distrito, obra o número CUI y mira el monto asignado.</p></div><a class="btn" href="~/presupuesto-2027.html">Revisa el presupuesto 2027</a></div></div></section>
+<section class="block im-home"><div class="wrap"><div class="im-home-grid"><div><p class="eyebrow">Lluvias en Piura · 27 de noviembre</p><h2>Respuesta a las lluvias en Ignacio Merino: fotos, videos y la nota</h2><p>La presidenta Keiko Fujimori llegó a Piura para encabezar la respuesta a la emergencia. César Revilla acompaña y coordina las acciones con los ministros de Desarrollo Agrario y de Defensa, según la nota informativa.</p><p><a class="btn" href="~/revilla-en-el-fen.html#ignacio-merino">Ver fotos y videos</a><a class="btn ghost" href="~/fenomeno-el-nino-2026-2027.html">Datos del Senamhi</a></p></div><div class="im-home-fotos">{''.join(f'<a href="~/revilla-en-el-fen.html#ignacio-merino"><img src="~/{IM_DIR}{f}" alt="{esc(alt)}" loading="lazy" width="400" height="300"></a>' for f, cap, alt in IM_FOTOS[:3])}</div></div></div></section>
 <section class="stats"><div class="wrap">
 <div class="stat"><strong data-count="23816">23,816</strong><span>votos preferenciales en Piura (2026), la primera votación de la región</span></div>
 <div class="stat"><strong data-count="4">4</strong><span>comisiones del Congreso presididas</span></div>

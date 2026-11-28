@@ -531,3 +531,20 @@ section.alt .imp,section.alt .chart-fig,section.alt .tile{background:#fff}
 .ni-tabla{width:100%;border-collapse:collapse;font-size:.92rem}
 .ni-tabla th,.ni-tabla td{padding:.45rem .6rem;border-bottom:1px solid var(--hairline);text-align:left}
 .ni-fallo{color:var(--smoke)}
+
+/* Visita a Ignacio Merino, 27 nov */
+.im-nota{max-width:760px}
+.im-nota h3{font-size:1.45rem;line-height:1.25;margin:.2rem 0 .6rem}
+.im-bajada{font-size:1.05rem}
+.im-gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.im-gallery figure a{display:block}
+.im-gallery img{aspect-ratio:4/3;object-fit:cover}
+.im-videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.im-video{margin:0}
+.im-video video{width:100%;aspect-ratio:16/9;background:#000;border-radius:var(--r)}
+.im-video figcaption{font-size:.85rem;color:var(--smoke);margin-top:.4rem}
+.im-home-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+.im-home-fotos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.im-home-fotos a:first-child{grid-column:1/-1}
+.im-home-fotos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r)}
+@media (max-width:760px){.im-home-grid{grid-template-columns:1fr}}

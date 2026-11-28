@@ -1584,6 +1584,30 @@ IM_VIDEOS = [  # (n, título, duración legible)
     (3, "Lluvia y cableado en la calle, de noche", "10 s"),
     (4, "Recorrido entre personas en la zona afectada", "50 s"),
 ]
+
+def _dur(sec): return f"PT{sec}S"
+IM_VID_DUR = {1: 21, 2: 16, 3: 10, 4: 50}
+def im_ld(include_videos=True, lista=None):
+    lista = lista or IM_FOTOS
+    imgs = [{"@type": "ImageObject", "contentUrl": f"{BASE}/{IM_DIR}{f}", "url": f"{BASE}/{IM_DIR}{f}", "name": cap, "description": alt,
+             "uploadDate": "2026-11-27", "representativeOfPage": False, "encodingFormat": "image/jpeg"} for f, cap, alt in lista]
+    out = [{"@context": "https://schema.org", "@type": "ImageGallery", "name": "Fotos de la respuesta a las lluvias en Ignacio Merino, Piura (27 de noviembre de 2026)",
+            "dateCreated": "2026-11-27", "inLanguage": "es-PE", "image": imgs, "about": {"@type": "Thing", "name": "Fenómeno El Niño en Piura"}}]
+    if include_videos:
+        for n, t, d in IM_VIDEOS:
+            out.append({"@context": "https://schema.org", "@type": "VideoObject", "name": t,
+                        "description": f"{t}. Video grabado la noche del 27 de noviembre de 2026 durante las lluvias en Piura.",
+                        "thumbnailUrl": f"{BASE}/{IM_DIR}poster-{n}.jpg", "uploadDate": "2026-11-27", "duration": _dur(IM_VID_DUR[n]),
+                        "contentUrl": f"{BASE}/{IM_DIR}video-{n}.mp4", "inLanguage": "es-PE"})
+    return out
+SM_EXTRA = {}  # path -> xml de imágenes/videos para el sitemap
+def _sm_img(lista):
+    return "".join(f"<image:image><image:loc>{BASE}/{IM_DIR}{f}</image:loc><image:caption>{esc(cap)}</image:caption></image:image>" for f, cap, alt in lista)
+def _sm_vid():
+    return "".join(f"<video:video><video:thumbnail_loc>{BASE}/{IM_DIR}poster-{n}.jpg</video:thumbnail_loc><video:title>{esc(t)}</video:title>"
+                   f"<video:description>{esc(t)}. Video de la noche del 27 de noviembre de 2026 durante las lluvias en Piura.</video:description>"
+                   f"<video:content_loc>{BASE}/{IM_DIR}video-{n}.mp4</video:content_loc><video:duration>{IM_VID_DUR[n]}</video:duration>"
+                   f"<video:publication_date>2026-11-27</video:publication_date></video:video>" for n, t, d in IM_VIDEOS)
 IM_TITULO = "La presidenta Keiko Fujimori llega a Piura y encabeza la respuesta a la emergencia por lluvias"
 IM_BAJADA = "El diputado César Revilla coordina con los ministros Marco Antonio Vinelli y Rafael Belaunde la distribución de ayuda y la supervisión de los equipos de respuesta en las zonas más afectadas."
 IM_NOTA = [
@@ -1663,8 +1687,8 @@ def _fen_ruta():
     pts = list(reversed(FEN_ITEMS))
     chips = ''.join(f'<li{" class=\"fen-ahora\"" if i == len(pts)-1 else ""}>{x["lugar"]}</li>' for i, x in enumerate(pts))
     return f'<ol class="fen-chips" aria-label="Recorrido en orden cronológico">{chips}</ol>'
-add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
-    "Videos y fotos de César Revilla en las zonas afectadas por las lluvias y el Fenómeno El Niño en Piura, con fecha y enlace a cada publicación original.",
+add("revilla-en-el-fen.html", "Revilla en el FEN: fotos y videos de las lluvias en Piura",
+    "Fotos, videos y la nota del 27 de noviembre de 2026 sobre la respuesta a las lluvias en Ignacio Merino, Piura, y el recorrido de César Revilla en el FEN.",
     f"""<section class="block"><div class="wrap">
 <p class="resumen"><strong>En breve:</strong> aquí se reúnen, con fecha y fuente, los videos y fotos de César Revilla, diputado por Piura, en las zonas afectadas por las lluvias del Fenómeno El Niño (FEN). Se actualiza a medida que se publican nuevas actividades.</p>
 <p class="rep-cta"><a class="btn" href="~/reporta-lluvias.html">¿Lluvias en tu zona? Reporta tu problema</a> <a class="btn ghost" href="~/fenomeno-el-nino-2026-2027.html">Datos del Senamhi en vivo</a></p>
@@ -1696,8 +1720,13 @@ add("revilla-en-el-fen.html", "Revilla en el FEN: videos y fotos",
     h1="Revilla en el FEN: videos y fotos desde las zonas afectadas por las lluvias",
     lead="Sus visitas y gestiones ante el Fenómeno El Niño en Piura, con fecha y fuente.",
     crumbs=[("Revilla en el FEN", "revilla-en-el-fen.html")], brand=False, date="2026-11-27",
-    ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
+    ld_extra=im_ld(False) + [{"@context": "https://schema.org", "@type": "NewsArticle", "headline": IM_TITULO, "description": IM_BAJADA,
+               "datePublished": "2026-11-27", "dateModified": "2026-11-27", "inLanguage": "es-PE",
+               "image": [f"{BASE}/{IM_DIR}{IM_FOTOS[0][0]}"], "mainEntityOfPage": f"{BASE}/revilla-en-el-fen",
+               "about": {"@type": "Thing", "name": "Lluvias y Fenómeno El Niño en Piura"}, "publisher": PERSON_REF},
+              {"@context": "https://schema.org", "@type": "FAQPage",
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FEN_FAQ]}])
+SM_EXTRA["revilla-en-el-fen.html"] = _sm_img(IM_FOTOS)
 
 # ============ GALERÍA DEL FENÓMENO EL NIÑO ============
 GAL_FAQ = [
@@ -1725,8 +1754,9 @@ add("galeria-fenomeno-el-nino.html", "Galería del Fenómeno El Niño en Piura: 
     h1="Galería del Fenómeno El Niño en Piura: fotos y videos",
     lead="Las lluvias y la respuesta a la emergencia, en imágenes y con fecha.",
     crumbs=[("Galería El Niño", "galeria-fenomeno-el-nino.html")], brand=False, date="2026-11-27",
-    ld_extra=[{"@context": "https://schema.org", "@type": "FAQPage",
+    ld_extra=im_ld(True, IM_FOTOS_TODAS) + [{"@context": "https://schema.org", "@type": "FAQPage",
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in GAL_FAQ]}])
+SM_EXTRA["galeria-fenomeno-el-nino.html"] = _sm_img(IM_FOTOS_TODAS) + _sm_vid()
 
 # ============ REPORTA TU PROBLEMA POR LAS LLUVIAS ============
 REPORTE_WA_B64 = "NTE5NDE2MDg3MzE="   # número que recibe los reportes, en base64 (no va en texto plano en la página)
@@ -1771,7 +1801,7 @@ REP_BODY = """<section class="block"><div class="wrap">
 </ul>
 <p><strong>Datos en vivo:</strong> mira los <a href="~/fenomeno-el-nino-2026-2027.html">avisos del Senamhi y el estado de El Niño 2026–2027</a>.</p>
 <h2>Qué hacer mientras tanto</h2>
-<p>Sigue las precauciones de Indeci, evita cruzar zonas inundadas y mantén a la mano los teléfonos de emergencia. Lo tienes en la <a href="~/explica/lluvias-en-piura-que-hacer-y-telefonos-de-emergencia.html">guía de lluvias en Piura</a>. Para ver cómo ha trabajado César Revilla frente al Fenómeno El Niño, entra a <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a>.</p>
+<p>Sigue las precauciones de Indeci, evita cruzar zonas inundadas y mantén a la mano los teléfonos de emergencia. Lo tienes en la <a href="~/explica/lluvias-en-piura-que-hacer-y-telefonos-de-emergencia.html">guía de lluvias en Piura</a>. Para ver cómo ha trabajado César Revilla frente al Fenómeno El Niño, entra a <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a> o a la <a href="~/galeria-fenomeno-el-nino.html">galería con fotos y videos</a>.</p>
 <h2>Preguntas frecuentes</h2>
 __FAQ__
 <p class="upd">Información revisada el 27 de noviembre de 2026 en medios y avisos públicos. Los reportes ciudadanos no son datos oficiales.</p>
@@ -1835,7 +1865,7 @@ NI_BODY = """<section class="block"><div class="wrap">
 <li><a href="https://portal.indeci.gob.pe/" rel="noopener" target="_blank">Indeci: emergencias y recomendaciones</a></li>
 </ul>
 <h2>Qué hacer</h2>
-<p>Revisa la <a href="~/explica/lluvias-en-piura-que-hacer-y-telefonos-de-emergencia.html">guía de lluvias en Piura</a>, <a href="~/reporta-lluvias.html">reporta tu problema</a> y conoce el trabajo de César Revilla en <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a>.</p>
+<p>Revisa la <a href="~/explica/lluvias-en-piura-que-hacer-y-telefonos-de-emergencia.html">guía de lluvias en Piura</a>, mira la <a href="~/galeria-fenomeno-el-nino.html">galería del Fenómeno El Niño</a>, <a href="~/reporta-lluvias.html">reporta tu problema</a> y conoce el trabajo de César Revilla en <a href="~/revilla-en-el-fen.html">Revilla en el FEN</a>.</p>
 <h2>Preguntas frecuentes</h2>
 __FAQ__
 <p class="upd">Datos de Senamhi y ENFEN leídos en vivo; modelo Open-Meteo referencial. Captura estática del 27 de noviembre de 2026.</p>
@@ -2395,7 +2425,7 @@ def build():
         with open(full, "w", encoding="utf-8") as fh:
             fh.write(layout(p))
         if p["index"]:
-            sitemap.append((BASE + "/" + ("" if p["path"] == "index.html" else p["path"][:-5]), p["date"] or PUB))
+            sitemap.append((BASE + "/" + ("" if p["path"] == "index.html" else p["path"][:-5]), p["date"] or PUB, SM_EXTRA.get(p["path"], "")))
 
     e404 = dict(path="404.html", title="Página no encontrada", desc="La página que buscas no existe.", kind="page", index=False,
                 h1="Página no encontrada", lead=None, crumbs=[], date=None, keys=[], home=False, ld_extra=None, in_feed=False, brand=True,
@@ -2404,8 +2434,8 @@ def build():
         fh.write(layout(e404))
 
     with open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8") as fh:
-        fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-                 + "\n".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in sitemap) + "\n</urlset>\n")
+        fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n'
+                 + "\n".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod>{x}</url>" for u, d, x in sitemap) + "\n</urlset>\n")
     with open(os.path.join(OUT, "CNAME"), "w", encoding="utf-8") as fh:
         fh.write(BASE.replace("https://", "") + "\n")
     open(os.path.join(OUT, ".nojekyll"), "w").close()
@@ -2442,6 +2472,10 @@ def build():
 - [Biografía]({BASE}/biografia)
 - [Leyes y proyectos]({BASE}/proyectos-de-ley)
 - [Gestión por Piura]({BASE}/gestion)
+- [Fenómeno El Niño 2026–2027: datos del Senamhi]({BASE}/fenomeno-el-nino-2026-2027): avisos meteorológicos y estado de El Niño costero, leídos de Senamhi/ENFEN
+- [Galería del Fenómeno El Niño]({BASE}/galeria-fenomeno-el-nino): fotos y videos de la respuesta a las lluvias del 27 de noviembre de 2026 en Ignacio Merino, Piura
+- [Revilla en el FEN]({BASE}/revilla-en-el-fen): recorrido de César Revilla en la emergencia por lluvias, con la nota informativa
+- [Reporta tu problema por las lluvias]({BASE}/reporta-lluvias): formulario ciudadano
 - [En los medios]({BASE}/medios)
 - [Canales oficiales]({BASE}/canales-oficiales)
 - [Transparencia]({BASE}/transparencia)

@@ -1619,6 +1619,12 @@ IM_SEC = f"""<h2 id="ignacio-merino">27 de noviembre: respuesta a las lluvias en
 
 # ============ REVILLA EN EL FEN (galería de videos y fotos) ============
 FEN_ITEMS = [  # más nuevo primero; cada ítem: fecha ISO, fecha legible, título, texto de César, fuente (url), etiqueta de fuente, nota Explica
+    dict(iso="2026-11-27", fecha="27 de noviembre de 2026",
+         lugar="Ignacio Merino, Piura", titulo="Supervisión del SARE de Ignacio Merino junto a la presidenta Keiko Fujimori",
+         cita="Junto a nuestra presidenta Keiko Sofia Fujimori Higuchi, supervisamos en campo la respuesta del SARE de Ignacio Merino ante las lluvias. Seguimos en la cancha, trabajando por la seguridad y bienestar de las familias piuranas.",
+         fb="https://www.facebook.com/reel/1462092135369165",
+         resumen="César Revilla publicó que, junto a la presidenta Keiko Fujimori, supervisó en campo la respuesta del SARE (sistema de recolección y evacuación de agua de lluvia) de Ignacio Merino ante las lluvias.",
+         explica=None),
     dict(iso="2026-11-24", fecha="24 de noviembre de 2026",
          lugar="Sobrevuelo del río Piura y Chulucanas", titulo="Respuesta inmediata: descolmatación y ayuda para familias afectadas",
          cita="Hoy, junto con el Premier, ministros y colegas diputados, sobrevolamos el río Piura para verificar los trabajos de descolmatación y evaluar la situación ante las intensas lluvias. Sobrevolamos Chulucanas y venimos coordinando la entrega de ayuda para las familias afectadas. Sabemos lo que significa para nuestros hermanos piuranos vivir con la incertidumbre de las lluvias. Por eso, no hay tiempo que perder. La ayuda debe llegar cuanto antes a quienes más la necesitan. Seguimos trabajando desde la cancha, porque ¡Perú responde!",

@@ -2393,7 +2393,7 @@ home_body = f"""<section class="hero"><div class="grid-bg" aria-hidden="true"></
 {faq_html}
 </div></section>"""
 add("index.html", "César Revilla | Diputado por Piura · Fuerza Popular",
-    "César Revilla, diputado por Piura de Fuerza Popular (2026–2031) en el Congreso bicameral del Perú: leyes sobre AFP, CTS, mypes y El Niño, con fuentes.",
+    "César Revilla, diputado por Piura (Fuerza Popular, 2026–2031): leyes sobre AFP, CTS y mypes, Presupuesto 2027 y respuesta a las lluvias del Niño, con fuentes.",
     home_body, home=True, ld_extra=faq_ld, brand=False)
 
 

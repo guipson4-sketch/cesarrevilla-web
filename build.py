@@ -1595,7 +1595,7 @@ IM_NOTA = [
 def im_galeria(lista=None):
     figs = "".join(
         f'<figure><a href="~/{IM_DIR}{f}" target="_blank" rel="noopener"><img src="~/{IM_DIR}{f}" alt="{esc(alt)}" loading="lazy" width="800" height="600"></a>'
-        f'<figcaption>{esc(cap)}</figcaption></figure>' for f, cap, alt in (lista or IM_FOTOS))
+        f'</figure>' for f, cap, alt in (lista or IM_FOTOS))
     return f'<div class="gallery im-gallery">{figs}</div>'
 def im_videos():
     vs = "".join(
@@ -1614,7 +1614,7 @@ IM_SEC = f"""<h2 id="ignacio-merino">27 de noviembre: respuesta a las lluvias en
 {im_galeria()}
 <h3>Videos</h3>
 {im_videos()}
-<p class="upd">Fotos y videos de la noche del 27 de noviembre de 2026. Los pies describen lo que se ve; el lugar corresponde al indicado en la nota.</p>
+<p class="upd">Fotos y videos de la noche del 27 de noviembre de 2026.</p>
 """
 
 # ============ REVILLA EN EL FEN (galería de videos y fotos) ============
